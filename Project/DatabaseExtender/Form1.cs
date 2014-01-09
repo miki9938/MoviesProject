@@ -65,13 +65,13 @@ namespace DatabaseExtender
             bool c = dbMovie.addMovie(tempMovie);
 
             textBox2.Text = c.ToString();
-
-            tempMovie.id = (dbMovie.getMovieByTitle(tempMovie.title)).id;
             
             cast tempCast = new cast();
             tempCast.movie_id = tempMovie.id;
 
             char[] separator = { ' ' };
+
+            tempMovie.id = (dbMovie.getMovieByTitle(tempMovie.title)).id;
 
             foreach (string a in data["actors"])
             {
@@ -87,11 +87,14 @@ namespace DatabaseExtender
                 tempPerson.name = d.ToLower();
 
                 dbPerson.addNewPerson(tempPerson);
-
-
             }
 
+            foreach (string w in data["writers"])
+            {
+                tempPerson.name = w.ToLower();
 
+                dbPerson.addNewPerson(tempPerson);
+            }
 
             foreach (string a2 in data["actors"])
             {
@@ -106,6 +109,14 @@ namespace DatabaseExtender
 
                 tempCast.person_id = (dbPerson.getPersonByName(d2)).id;
                 tempCast.role = 1;
+                dbPerson.addRole(tempCast);
+            }
+
+            foreach (string w2 in data["writers"])
+            {
+
+                tempCast.person_id = (dbPerson.getPersonByName(w2)).id;
+                tempCast.role = 3;
                 dbPerson.addRole(tempCast);
             }
 
