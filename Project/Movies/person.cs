@@ -24,7 +24,6 @@ namespace Movies
     
         public int id { get; set; }
         public string name { get; set; }
-        public string surname { get; set; }
         public string description { get; set; }
         public Nullable<System.DateTime> birth_date { get; set; }
         public string birth_place { get; set; }
