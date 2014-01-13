@@ -9,9 +9,10 @@ namespace Movies.Repositories
     {
         MoviesEntities db;
 
-        UsersRepository()
+        public UsersRepository()
         {
             db = new MoviesEntities();
         }
+        
     }
 }

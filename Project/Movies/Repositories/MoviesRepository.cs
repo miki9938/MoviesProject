@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Drawing;
 
 namespace Movies.Repositories
 {
@@ -48,8 +49,34 @@ namespace Movies.Repositories
         /// <returns></returns>
         public IQueryable<movie> getMovieByTitleSubstring(string substring)
         {
-            return db.movie.Where(a => a.title.Contains(substring));
+            return db.movie.Take(10) 
+                           .Where(a => a.title.Contains(substring));
         }
 
+        public IQueryable<cast> getCastByMovieId(int id)
+        {
+           return db.cast.Where(a => a.id.Equals(id));
+            
+        }
+
+        public bool deleteMovieById(int id)
+        {
+            try
+            {
+                foreach(cast c in getCastByMovieId(id))
+                {
+                    db.cast.Remove(c);
+                }
+
+                db.movie.Remove(getMovieById(id));
+
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

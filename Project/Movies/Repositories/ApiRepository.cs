@@ -32,5 +32,22 @@ namespace Movies.Repositories
 
             return xmlTemp; 
         }
+
+        public XDocument getXmlByPersonId(int id)
+        {
+            person temp = db.person.Where(a => a.id.Equals(id)).FirstOrDefault();
+
+            XDocument xmlTemp = new XDocument(
+                new XElement("Name", temp.name),
+                new XElement("Biography", temp.description),
+                new XElement("Birth date", temp.birth_date),
+                new XElement("Birth place", temp.birth_place),
+                new XElement("Directed movies", temp.cast.Where(a => a.role.Equals(1))),
+                new XElement("Wrote movies", temp.cast.Where(a => a.role.Equals(3))),
+                new XElement("Played movies", temp.cast.Where(a => a.role.Equals(2)))
+                                            );
+
+            return xmlTemp;
+        }
     }
 }
