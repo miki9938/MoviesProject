@@ -11,8 +11,8 @@ namespace Movies
         {
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "WEBapi/{controller}/{id}",
+                defaults: new { controller = "WebApi", id = RouteParameter.Optional }
             );
         }
     }
