@@ -1,0 +1,999 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MoviesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MoviesModelStoreContainer">
+          <EntitySet Name="cast" EntityType="MoviesModel.Store.cast" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="comment" EntityType="MoviesModel.Store.comment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="comment_answer" EntityType="MoviesModel.Store.comment_answer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="image" EntityType="MoviesModel.Store.image" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="image_relation" EntityType="MoviesModel.Store.image_relation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="movie" EntityType="MoviesModel.Store.movie" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="movie_relation" EntityType="MoviesModel.Store.movie_relation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="person" EntityType="MoviesModel.Store.person" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="user" EntityType="MoviesModel.Store.user" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="users_vote" EntityType="MoviesModel.Store.users_vote" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_cast_movie" Association="MoviesModel.Store.FK_cast_movie">
+            <End Role="movie" EntitySet="movie" />
+            <End Role="cast" EntitySet="cast" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cast_person" Association="MoviesModel.Store.FK_cast_person">
+            <End Role="person" EntitySet="person" />
+            <End Role="cast" EntitySet="cast" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comment_answer_comment" Association="MoviesModel.Store.FK_comment_answer_comment">
+            <End Role="comment" EntitySet="comment" />
+            <End Role="comment_answer" EntitySet="comment_answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comment_answer_user" Association="MoviesModel.Store.FK_comment_answer_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="comment_answer" EntitySet="comment_answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comment_movie1" Association="MoviesModel.Store.FK_comment_movie1">
+            <End Role="movie" EntitySet="movie" />
+            <End Role="comment" EntitySet="comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comment_person1" Association="MoviesModel.Store.FK_comment_person1">
+            <End Role="person" EntitySet="person" />
+            <End Role="comment" EntitySet="comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comment_user" Association="MoviesModel.Store.FK_comment_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="comment" EntitySet="comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_image_movie" Association="MoviesModel.Store.FK_image_movie">
+            <End Role="movie" EntitySet="movie" />
+            <End Role="image" EntitySet="image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_image_person" Association="MoviesModel.Store.FK_image_person">
+            <End Role="person" EntitySet="person" />
+            <End Role="image" EntitySet="image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_image_relation_image" Association="MoviesModel.Store.FK_image_relation_image">
+            <End Role="image" EntitySet="image" />
+            <End Role="image_relation" EntitySet="image_relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_image_relation_movie" Association="MoviesModel.Store.FK_image_relation_movie">
+            <End Role="movie" EntitySet="movie" />
+            <End Role="image_relation" EntitySet="image_relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_image_relation_person" Association="MoviesModel.Store.FK_image_relation_person">
+            <End Role="person" EntitySet="person" />
+            <End Role="image_relation" EntitySet="image_relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_movie_relation_movie" Association="MoviesModel.Store.FK_movie_relation_movie">
+            <End Role="movie" EntitySet="movie" />
+            <End Role="movie_relation" EntitySet="movie_relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_movie_relation_movie1" Association="MoviesModel.Store.FK_movie_relation_movie1">
+            <End Role="movie" EntitySet="movie" />
+            <End Role="movie_relation" EntitySet="movie_relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_vote_movie_relation" Association="MoviesModel.Store.FK_users_vote_movie_relation">
+            <End Role="movie_relation" EntitySet="movie_relation" />
+            <End Role="users_vote" EntitySet="users_vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_vote_user" Association="MoviesModel.Store.FK_users_vote_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="users_vote" EntitySet="users_vote" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="cast">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="movie_id" Type="int" Nullable="false" />
+          <Property Name="person_id" Type="int" Nullable="false" />
+          <Property Name="role" Type="int" Nullable="false" />
+          <Property Name="character_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="text" Type="text" Nullable="false" />
+          <Property Name="movie_id" Type="int" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="person_id" Type="int" />
+        </EntityType>
+        <EntityType Name="comment_answer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="comment_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="text" Type="text" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="image">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="movie_id" Type="int" />
+          <Property Name="person_id" Type="int" />
+        </EntityType>
+        <EntityType Name="image_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="image_id" Type="int" />
+          <Property Name="person_id" Type="int" />
+          <Property Name="movie_id" Type="int" />
+        </EntityType>
+        <EntityType Name="movie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="release_date" Type="date" Nullable="false" />
+          <Property Name="description" Type="text" />
+        </EntityType>
+        <EntityType Name="movie_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="movie_1_id" Type="int" Nullable="false" />
+          <Property Name="movie_2_id" Type="int" Nullable="false" />
+          <Property Name="auto_created" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="person">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="description" Type="text" />
+          <Property Name="birth_date" Type="date" />
+          <Property Name="birth_place" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="nvarchar" Nullable="false" MaxLength="25" />
+          <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="admin" Type="bit" Nullable="false" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="users_vote">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="relation_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="relation_id" Type="int" Nullable="false" />
+          <Property Name="vote" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_cast_movie">
+          <End Role="movie" Type="MoviesModel.Store.movie" Multiplicity="1" />
+          <End Role="cast" Type="MoviesModel.Store.cast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cast">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cast_person">
+          <End Role="person" Type="MoviesModel.Store.person" Multiplicity="1" />
+          <End Role="cast" Type="MoviesModel.Store.cast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cast">
+              <PropertyRef Name="person_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comment_answer_comment">
+          <End Role="comment" Type="MoviesModel.Store.comment" Multiplicity="1" />
+          <End Role="comment_answer" Type="MoviesModel.Store.comment_answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment_answer">
+              <PropertyRef Name="comment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comment_answer_user">
+          <End Role="user" Type="MoviesModel.Store.user" Multiplicity="1" />
+          <End Role="comment_answer" Type="MoviesModel.Store.comment_answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment_answer">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comment_movie1">
+          <End Role="movie" Type="MoviesModel.Store.movie" Multiplicity="0..1" />
+          <End Role="comment" Type="MoviesModel.Store.comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comment_person1">
+          <End Role="person" Type="MoviesModel.Store.person" Multiplicity="0..1" />
+          <End Role="comment" Type="MoviesModel.Store.comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment">
+              <PropertyRef Name="person_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comment_user">
+          <End Role="user" Type="MoviesModel.Store.user" Multiplicity="1" />
+          <End Role="comment" Type="MoviesModel.Store.comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_image_movie">
+          <End Role="movie" Type="MoviesModel.Store.movie" Multiplicity="0..1" />
+          <End Role="image" Type="MoviesModel.Store.image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="image">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_image_person">
+          <End Role="person" Type="MoviesModel.Store.person" Multiplicity="0..1" />
+          <End Role="image" Type="MoviesModel.Store.image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="image">
+              <PropertyRef Name="person_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_image_relation_image">
+          <End Role="image" Type="MoviesModel.Store.image" Multiplicity="0..1" />
+          <End Role="image_relation" Type="MoviesModel.Store.image_relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="image">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="image_relation">
+              <PropertyRef Name="image_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_image_relation_movie">
+          <End Role="movie" Type="MoviesModel.Store.movie" Multiplicity="0..1" />
+          <End Role="image_relation" Type="MoviesModel.Store.image_relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="image_relation">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_image_relation_person">
+          <End Role="person" Type="MoviesModel.Store.person" Multiplicity="0..1" />
+          <End Role="image_relation" Type="MoviesModel.Store.image_relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="image_relation">
+              <PropertyRef Name="person_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_movie_relation_movie">
+          <End Role="movie" Type="MoviesModel.Store.movie" Multiplicity="1" />
+          <End Role="movie_relation" Type="MoviesModel.Store.movie_relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="movie_relation">
+              <PropertyRef Name="movie_1_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_movie_relation_movie1">
+          <End Role="movie" Type="MoviesModel.Store.movie" Multiplicity="1" />
+          <End Role="movie_relation" Type="MoviesModel.Store.movie_relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="movie_relation">
+              <PropertyRef Name="movie_2_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_vote_movie_relation">
+          <End Role="movie_relation" Type="MoviesModel.Store.movie_relation" Multiplicity="1" />
+          <End Role="users_vote" Type="MoviesModel.Store.users_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie_relation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users_vote">
+              <PropertyRef Name="relation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_vote_user">
+          <End Role="user" Type="MoviesModel.Store.user" Multiplicity="1" />
+          <End Role="users_vote" Type="MoviesModel.Store.users_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users_vote">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MoviesModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MoviesEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="casts" EntityType="MoviesModel.cast" />
+          <EntitySet Name="comments" EntityType="MoviesModel.comment" />
+          <EntitySet Name="comment_answer" EntityType="MoviesModel.comment_answer" />
+          <EntitySet Name="images" EntityType="MoviesModel.image" />
+          <EntitySet Name="image_relation" EntityType="MoviesModel.image_relation" />
+          <EntitySet Name="movies" EntityType="MoviesModel.movie" />
+          <EntitySet Name="movie_relation" EntityType="MoviesModel.movie_relation" />
+          <EntitySet Name="people" EntityType="MoviesModel.person" />
+          <EntitySet Name="users" EntityType="MoviesModel.user" />
+          <EntitySet Name="users_vote" EntityType="MoviesModel.users_vote" />
+          <AssociationSet Name="FK_cast_movie" Association="MoviesModel.FK_cast_movie">
+            <End Role="movie" EntitySet="movies" />
+            <End Role="cast" EntitySet="casts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cast_person" Association="MoviesModel.FK_cast_person">
+            <End Role="person" EntitySet="people" />
+            <End Role="cast" EntitySet="casts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comment_answer_comment" Association="MoviesModel.FK_comment_answer_comment">
+            <End Role="comment" EntitySet="comments" />
+            <End Role="comment_answer" EntitySet="comment_answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comment_movie1" Association="MoviesModel.FK_comment_movie1">
+            <End Role="movie" EntitySet="movies" />
+            <End Role="comment" EntitySet="comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comment_person1" Association="MoviesModel.FK_comment_person1">
+            <End Role="person" EntitySet="people" />
+            <End Role="comment" EntitySet="comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comment_user" Association="MoviesModel.FK_comment_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="comment" EntitySet="comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comment_answer_user" Association="MoviesModel.FK_comment_answer_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="comment_answer" EntitySet="comment_answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_image_movie" Association="MoviesModel.FK_image_movie">
+            <End Role="movie" EntitySet="movies" />
+            <End Role="image" EntitySet="images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_image_person" Association="MoviesModel.FK_image_person">
+            <End Role="person" EntitySet="people" />
+            <End Role="image" EntitySet="images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_image_relation_image" Association="MoviesModel.FK_image_relation_image">
+            <End Role="image" EntitySet="images" />
+            <End Role="image_relation" EntitySet="image_relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_image_relation_movie" Association="MoviesModel.FK_image_relation_movie">
+            <End Role="movie" EntitySet="movies" />
+            <End Role="image_relation" EntitySet="image_relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_image_relation_person" Association="MoviesModel.FK_image_relation_person">
+            <End Role="person" EntitySet="people" />
+            <End Role="image_relation" EntitySet="image_relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_movie_relation_movie" Association="MoviesModel.FK_movie_relation_movie">
+            <End Role="movie" EntitySet="movies" />
+            <End Role="movie_relation" EntitySet="movie_relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_movie_relation_movie1" Association="MoviesModel.FK_movie_relation_movie1">
+            <End Role="movie" EntitySet="movies" />
+            <End Role="movie_relation" EntitySet="movie_relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_vote_movie_relation" Association="MoviesModel.FK_users_vote_movie_relation">
+            <End Role="movie_relation" EntitySet="movie_relation" />
+            <End Role="users_vote" EntitySet="users_vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_vote_user" Association="MoviesModel.FK_users_vote_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="users_vote" EntitySet="users_vote" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MoviesModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MoviesModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <EntityType Name="cast">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="movie_id" Type="Int32" Nullable="false" />
+          <Property Name="person_id" Type="Int32" Nullable="false" />
+          <Property Name="role" Type="Int32" Nullable="false" />
+          <Property Name="character_name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="movie" Relationship="MoviesModel.FK_cast_movie" FromRole="cast" ToRole="movie" />
+          <NavigationProperty Name="person" Relationship="MoviesModel.FK_cast_person" FromRole="cast" ToRole="person" />
+        </EntityType>
+        <EntityType Name="comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="text" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="movie_id" Type="Int32" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="person_id" Type="Int32" />
+          <NavigationProperty Name="comment_answer" Relationship="MoviesModel.FK_comment_answer_comment" FromRole="comment" ToRole="comment_answer" />
+          <NavigationProperty Name="movie" Relationship="MoviesModel.FK_comment_movie1" FromRole="comment" ToRole="movie" />
+          <NavigationProperty Name="person" Relationship="MoviesModel.FK_comment_person1" FromRole="comment" ToRole="person" />
+          <NavigationProperty Name="user" Relationship="MoviesModel.FK_comment_user" FromRole="comment" ToRole="user" />
+        </EntityType>
+        <EntityType Name="comment_answer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="comment_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="text" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="comment" Relationship="MoviesModel.FK_comment_answer_comment" FromRole="comment_answer" ToRole="comment" />
+          <NavigationProperty Name="user" Relationship="MoviesModel.FK_comment_answer_user" FromRole="comment_answer" ToRole="user" />
+        </EntityType>
+        <EntityType Name="image">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="movie_id" Type="Int32" />
+          <Property Name="person_id" Type="Int32" />
+          <NavigationProperty Name="movie" Relationship="MoviesModel.FK_image_movie" FromRole="image" ToRole="movie" />
+          <NavigationProperty Name="person" Relationship="MoviesModel.FK_image_person" FromRole="image" ToRole="person" />
+          <NavigationProperty Name="image_relation" Relationship="MoviesModel.FK_image_relation_image" FromRole="image" ToRole="image_relation" />
+        </EntityType>
+        <EntityType Name="image_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="image_id" Type="Int32" />
+          <Property Name="person_id" Type="Int32" />
+          <Property Name="movie_id" Type="Int32" />
+          <NavigationProperty Name="image" Relationship="MoviesModel.FK_image_relation_image" FromRole="image_relation" ToRole="image" />
+          <NavigationProperty Name="movie" Relationship="MoviesModel.FK_image_relation_movie" FromRole="image_relation" ToRole="movie" />
+          <NavigationProperty Name="person" Relationship="MoviesModel.FK_image_relation_person" FromRole="image_relation" ToRole="person" />
+        </EntityType>
+        <EntityType Name="movie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="release_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="casts" Relationship="MoviesModel.FK_cast_movie" FromRole="movie" ToRole="cast" />
+          <NavigationProperty Name="comments" Relationship="MoviesModel.FK_comment_movie1" FromRole="movie" ToRole="comment" />
+          <NavigationProperty Name="images" Relationship="MoviesModel.FK_image_movie" FromRole="movie" ToRole="image" />
+          <NavigationProperty Name="image_relation" Relationship="MoviesModel.FK_image_relation_movie" FromRole="movie" ToRole="image_relation" />
+          <NavigationProperty Name="movie_relation" Relationship="MoviesModel.FK_movie_relation_movie" FromRole="movie" ToRole="movie_relation" />
+          <NavigationProperty Name="movie_relation1" Relationship="MoviesModel.FK_movie_relation_movie1" FromRole="movie" ToRole="movie_relation" />
+        </EntityType>
+        <EntityType Name="movie_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="movie_1_id" Type="Int32" Nullable="false" />
+          <Property Name="movie_2_id" Type="Int32" Nullable="false" />
+          <Property Name="auto_created" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="movie" Relationship="MoviesModel.FK_movie_relation_movie" FromRole="movie_relation" ToRole="movie" />
+          <NavigationProperty Name="movie1" Relationship="MoviesModel.FK_movie_relation_movie1" FromRole="movie_relation" ToRole="movie" />
+          <NavigationProperty Name="users_vote" Relationship="MoviesModel.FK_users_vote_movie_relation" FromRole="movie_relation" ToRole="users_vote" />
+        </EntityType>
+        <EntityType Name="person">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="birth_date" Type="DateTime" Precision="0" />
+          <Property Name="birth_place" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="casts" Relationship="MoviesModel.FK_cast_person" FromRole="person" ToRole="cast" />
+          <NavigationProperty Name="comments" Relationship="MoviesModel.FK_comment_person1" FromRole="person" ToRole="comment" />
+          <NavigationProperty Name="images" Relationship="MoviesModel.FK_image_person" FromRole="person" ToRole="image" />
+          <NavigationProperty Name="image_relation" Relationship="MoviesModel.FK_image_relation_person" FromRole="person" ToRole="image_relation" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="admin" Type="Boolean" Nullable="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="comments" Relationship="MoviesModel.FK_comment_user" FromRole="user" ToRole="comment" />
+          <NavigationProperty Name="comment_answer" Relationship="MoviesModel.FK_comment_answer_user" FromRole="user" ToRole="comment_answer" />
+          <NavigationProperty Name="users_vote" Relationship="MoviesModel.FK_users_vote_user" FromRole="user" ToRole="users_vote" />
+        </EntityType>
+        <EntityType Name="users_vote">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="relation_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="relation_id" Type="Int32" Nullable="false" />
+          <Property Name="vote" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="movie_relation" Relationship="MoviesModel.FK_users_vote_movie_relation" FromRole="users_vote" ToRole="movie_relation" />
+          <NavigationProperty Name="user" Relationship="MoviesModel.FK_users_vote_user" FromRole="users_vote" ToRole="user" />
+        </EntityType>
+        <Association Name="FK_cast_movie">
+          <End Role="movie" Type="MoviesModel.movie" Multiplicity="1" />
+          <End Role="cast" Type="MoviesModel.cast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cast">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cast_person">
+          <End Role="person" Type="MoviesModel.person" Multiplicity="1" />
+          <End Role="cast" Type="MoviesModel.cast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cast">
+              <PropertyRef Name="person_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comment_answer_comment">
+          <End Role="comment" Type="MoviesModel.comment" Multiplicity="1" />
+          <End Role="comment_answer" Type="MoviesModel.comment_answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment_answer">
+              <PropertyRef Name="comment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comment_movie1">
+          <End Role="movie" Type="MoviesModel.movie" Multiplicity="0..1" />
+          <End Role="comment" Type="MoviesModel.comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comment_person1">
+          <End Role="person" Type="MoviesModel.person" Multiplicity="0..1" />
+          <End Role="comment" Type="MoviesModel.comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment">
+              <PropertyRef Name="person_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comment_user">
+          <End Role="user" Type="MoviesModel.user" Multiplicity="1" />
+          <End Role="comment" Type="MoviesModel.comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comment_answer_user">
+          <End Role="user" Type="MoviesModel.user" Multiplicity="1" />
+          <End Role="comment_answer" Type="MoviesModel.comment_answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment_answer">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_image_movie">
+          <End Role="movie" Type="MoviesModel.movie" Multiplicity="0..1" />
+          <End Role="image" Type="MoviesModel.image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="image">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_image_person">
+          <End Role="person" Type="MoviesModel.person" Multiplicity="0..1" />
+          <End Role="image" Type="MoviesModel.image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="image">
+              <PropertyRef Name="person_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_image_relation_image">
+          <End Role="image" Type="MoviesModel.image" Multiplicity="0..1" />
+          <End Role="image_relation" Type="MoviesModel.image_relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="image">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="image_relation">
+              <PropertyRef Name="image_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_image_relation_movie">
+          <End Role="movie" Type="MoviesModel.movie" Multiplicity="0..1" />
+          <End Role="image_relation" Type="MoviesModel.image_relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="image_relation">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_image_relation_person">
+          <End Role="person" Type="MoviesModel.person" Multiplicity="0..1" />
+          <End Role="image_relation" Type="MoviesModel.image_relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="image_relation">
+              <PropertyRef Name="person_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_movie_relation_movie">
+          <End Role="movie" Type="MoviesModel.movie" Multiplicity="1" />
+          <End Role="movie_relation" Type="MoviesModel.movie_relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="movie_relation">
+              <PropertyRef Name="movie_1_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_movie_relation_movie1">
+          <End Role="movie" Type="MoviesModel.movie" Multiplicity="1" />
+          <End Role="movie_relation" Type="MoviesModel.movie_relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="movie_relation">
+              <PropertyRef Name="movie_2_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_vote_movie_relation">
+          <End Role="movie_relation" Type="MoviesModel.movie_relation" Multiplicity="1" />
+          <End Role="users_vote" Type="MoviesModel.users_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie_relation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users_vote">
+              <PropertyRef Name="relation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_vote_user">
+          <End Role="user" Type="MoviesModel.user" Multiplicity="1" />
+          <End Role="users_vote" Type="MoviesModel.users_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users_vote">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MoviesModelStoreContainer" CdmEntityContainer="MoviesEntities">
+          <EntitySetMapping Name="casts">
+            <EntityTypeMapping TypeName="MoviesModel.cast">
+              <MappingFragment StoreEntitySet="cast">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="movie_id" ColumnName="movie_id" />
+                <ScalarProperty Name="person_id" ColumnName="person_id" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="character_name" ColumnName="character_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comments">
+            <EntityTypeMapping TypeName="MoviesModel.comment">
+              <MappingFragment StoreEntitySet="comment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="movie_id" ColumnName="movie_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="person_id" ColumnName="person_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comment_answer">
+            <EntityTypeMapping TypeName="MoviesModel.comment_answer">
+              <MappingFragment StoreEntitySet="comment_answer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="comment_id" ColumnName="comment_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="images">
+            <EntityTypeMapping TypeName="MoviesModel.image">
+              <MappingFragment StoreEntitySet="image">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="movie_id" ColumnName="movie_id" />
+                <ScalarProperty Name="person_id" ColumnName="person_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="image_relation">
+            <EntityTypeMapping TypeName="MoviesModel.image_relation">
+              <MappingFragment StoreEntitySet="image_relation">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="image_id" ColumnName="image_id" />
+                <ScalarProperty Name="person_id" ColumnName="person_id" />
+                <ScalarProperty Name="movie_id" ColumnName="movie_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="movies">
+            <EntityTypeMapping TypeName="MoviesModel.movie">
+              <MappingFragment StoreEntitySet="movie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="release_date" ColumnName="release_date" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="movie_relation">
+            <EntityTypeMapping TypeName="MoviesModel.movie_relation">
+              <MappingFragment StoreEntitySet="movie_relation">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="movie_1_id" ColumnName="movie_1_id" />
+                <ScalarProperty Name="movie_2_id" ColumnName="movie_2_id" />
+                <ScalarProperty Name="auto_created" ColumnName="auto_created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="people">
+            <EntityTypeMapping TypeName="MoviesModel.person">
+              <MappingFragment StoreEntitySet="person">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+                <ScalarProperty Name="birth_place" ColumnName="birth_place" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="MoviesModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="admin" ColumnName="admin" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users_vote">
+            <EntityTypeMapping TypeName="MoviesModel.users_vote">
+              <MappingFragment StoreEntitySet="users_vote">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="relation_id" ColumnName="relation_id" />
+                <ScalarProperty Name="vote" ColumnName="vote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MoviesModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MoviesModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MoviesModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MoviesModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MoviesModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MoviesModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MoviesModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MoviesModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MoviesModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

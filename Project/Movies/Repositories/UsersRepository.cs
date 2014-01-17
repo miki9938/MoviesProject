@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Data.Entity.Validation;
-using System.Diagnostics;
+
+using Movies.Mappings;
 
 namespace Movies.Repositories
 {
@@ -18,31 +16,31 @@ namespace Movies.Repositories
 
         public user getUserById(int id)
         {
-            return db.user.Where(u => u.id.Equals(id)).FirstOrDefault();
+            return db.users.Where(u => u.id.Equals(id)).FirstOrDefault();
         }
 
         public user getUserByEmail(string email)
         {
-            return db.user.Where(u => u.email.Equals(email)).FirstOrDefault();
+            return db.users.Where(u => u.email.Equals(email)).FirstOrDefault();
         }
 
         public user getUserByLogin(string login)
         {
-            return db.user.Where(u => u.login.Equals(login)).FirstOrDefault();
+            return db.users.Where(u => u.login.Equals(login)).FirstOrDefault();
         }
 
         public bool addUser(user temp)
         {
             try
             {
-                db.user.Add(temp);
+                db.users.Add(temp);
                 db.SaveChanges();
                 return true;
             }
 
             catch
             {
-                db.user.Remove(temp);
+                db.users.Remove(temp);
 
                 return false;
             }

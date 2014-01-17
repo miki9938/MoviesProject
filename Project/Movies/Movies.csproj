@@ -166,15 +166,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="cast.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="comment.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="comment_answer.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -183,60 +174,82 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="image.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
+    <Compile Include="Mappings\cast.cs">
+      <DependentUpon>MoviesModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="image_relation.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
+    <Compile Include="Mappings\comment.cs">
+      <DependentUpon>MoviesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\comment_answer.cs">
+      <DependentUpon>MoviesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\image.cs">
+      <DependentUpon>MoviesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\image_relation.cs">
+      <DependentUpon>MoviesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\movie.cs">
+      <DependentUpon>MoviesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\MoviesModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MoviesModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\MoviesModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MoviesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\MoviesModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MoviesModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\movie_relation.cs">
+      <DependentUpon>MoviesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\person.cs">
+      <DependentUpon>MoviesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>MoviesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\sp_helpdiagrams_Result.cs">
+      <DependentUpon>MoviesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\user.cs">
+      <DependentUpon>MoviesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\users_vote.cs">
+      <DependentUpon>MoviesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="movie.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MovieModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MovieModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MovieModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MovieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MovieModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MovieModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="movie_relation.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="person.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApiRepository.cs" />
     <Compile Include="Repositories\MoviesRepository.cs" />
     <Compile Include="Repositories\PersonRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="user.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="users_vote.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\arrow.png" />
+    <Content Include="Content\images\cameraRoll-footer.png" />
+    <Content Include="Content\images\cameraRoll-icon.png" />
+    <Content Include="Content\images\cameraRoll.png" />
+    <Content Include="Content\images\example.jpg" />
+    <Content Include="Content\images\grot.png" />
+    <Content Include="Scripts\jquery-2.0.3.js" />
+    <Content Include="Scripts\jquery-2.0.3.min.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\moviesScript.js" />
+    <Content Include="Content\reset.css" />
+    <Content Include="Content\images\similarToBlue.png" />
+    <Content Include="Content\images\similarToGreen.png" />
+    <Content Include="Content\images\similarToPink.png" />
+    <Content Include="Content\images\similarToPurple.png" />
+    <Content Include="Content\images\similarToYellow.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -293,22 +306,22 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="MovieModel.edmx">
+    <EntityDeploy Include="Mappings\MoviesModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MovieModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>MoviesModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="MovieModel.Context.tt">
+    <Content Include="Mappings\MoviesModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MovieModel.edmx</DependentUpon>
-      <LastGenOutput>MovieModel.Context.cs</LastGenOutput>
+      <DependentUpon>MoviesModel.edmx</DependentUpon>
+      <LastGenOutput>MoviesModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="MovieModel.edmx.diagram">
-      <DependentUpon>MovieModel.edmx</DependentUpon>
+    <Content Include="Mappings\MoviesModel.edmx.diagram">
+      <DependentUpon>MoviesModel.edmx</DependentUpon>
     </Content>
-    <Content Include="MovieModel.tt">
+    <Content Include="Mappings\MoviesModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MovieModel.edmx</DependentUpon>
-      <LastGenOutput>MovieModel.cs</LastGenOutput>
+      <DependentUpon>MoviesModel.edmx</DependentUpon>
+      <LastGenOutput>MoviesModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -334,7 +347,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />

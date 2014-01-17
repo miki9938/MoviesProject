@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using Movies.Mappings;
 
 namespace Movies.Repositories
 {
@@ -18,51 +17,50 @@ namespace Movies.Repositories
         { 
             try
             {
-                db.person.Add(temp);
+                db.people.Add(temp);
                 db.SaveChanges();
-                return true;
-            }
+                return true;}
             catch
             {
-                db.person.Remove(temp);
+                db.people.Remove(temp);
                 return false;
             }
         }
 
         public person getPersonById(int id)
         { 
-            return db.person.Where(a => a.id.Equals(id)).FirstOrDefault();
+            return db.people.Where(a => a.id.Equals(id)).FirstOrDefault();
         }
 
         public bool addRole(cast temp)
         {
             try
             {
-                db.cast.Add(temp);
+                db.casts.Add(temp);
                 db.SaveChanges();
                 return true;
             }
             catch
             {
-                db.cast.Remove(temp);
+                db.casts.Remove(temp);
                 return false;
             }                    
         }
 
         public person getPersonByName(string name)
         {
-            return db.person.Where(a => a.name.Equals(name)).FirstOrDefault();
+            return db.people.Where(a => a.name.Equals(name)).FirstOrDefault();
         }
 
         public IQueryable<person> getPersonByNameSubstring(string substring)
         {
-            return db.person.Take(10)
+            return db.people.Take(10)
                             .Where(a => a.name.Contains(substring));
         }
 
         public IQueryable<cast> getCastByPersonId(int id)
         {
-            return db.cast.Where(a => a.id.Equals(id));
+            return db.casts.Where(a => a.id.Equals(id));
 
         }
 
@@ -72,10 +70,10 @@ namespace Movies.Repositories
             {
                 foreach (cast c in getCastByPersonId(id))
                 {
-                    db.cast.Remove(c);
+                    db.casts.Remove(c);
                 }
 
-                db.person.Remove(getPersonById(id));
+                db.people.Remove(getPersonById(id));
 
                 db.SaveChanges();
 
@@ -97,14 +95,14 @@ namespace Movies.Repositories
 
             try
             {
-                db.cast.Add(temp);
+                db.casts.Add(temp);
                 db.SaveChanges();
 
                 return true;
             }
             catch
             {
-                db.cast.Remove(temp);
+                db.casts.Remove(temp);
 
                 return false;
             }
@@ -121,14 +119,14 @@ namespace Movies.Repositories
 
             try
             {
-                db.cast.Add(temp);
+                db.casts.Add(temp);
                 db.SaveChanges();
 
                 return true;
             }
             catch
             {
-                db.cast.Remove(temp);
+                db.casts.Remove(temp);
 
                 return false;
             }
@@ -136,12 +134,12 @@ namespace Movies.Repositories
 
         public cast getRoleById(int castId)
         { 
-            return db.cast.Where(a => a.id.Equals(castId)).FirstOrDefault();
+            return db.casts.Where(a => a.id.Equals(castId)).FirstOrDefault();
         }
 
         public void deleteRole(int castId)
         {
-            db.cast.Remove(getRoleById(castId));
+            db.casts.Remove(getRoleById(castId));
         }
 
     }
