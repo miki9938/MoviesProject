@@ -146,6 +146,7 @@
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="movie_1_id" Type="int" Nullable="false" />
           <Property Name="movie_2_id" Type="int" Nullable="false" />
+          <Property Name="auto_created" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="person">
           <Key>
@@ -172,9 +173,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="login" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="login" Type="nvarchar" Nullable="false" MaxLength="25" />
+          <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="admin" Type="bit" Nullable="false" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="users_vote">
           <Key>
@@ -603,6 +605,7 @@
           <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="movie_1_id" Type="Int32" Nullable="false" />
           <Property Name="movie_2_id" Type="Int32" Nullable="false" />
+          <Property Name="auto_created" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="movie" Relationship="MoviesModel.FK_movie_relation_movie" FromRole="movie_relation" ToRole="movie" />
           <NavigationProperty Name="movie1" Relationship="MoviesModel.FK_movie_relation_movie1" FromRole="movie_relation" ToRole="movie" />
           <NavigationProperty Name="users_vote" Relationship="MoviesModel.FK_users_vote_movie_relation" FromRole="movie_relation" ToRole="users_vote" />
@@ -636,9 +639,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="login" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="admin" Type="Boolean" Nullable="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="comment" Relationship="MoviesModel.FK_comment_user" FromRole="user" ToRole="comment" />
           <NavigationProperty Name="comment_answer" Relationship="MoviesModel.FK_comment_answer_user" FromRole="user" ToRole="comment_answer" />
           <NavigationProperty Name="users_vote" Relationship="MoviesModel.FK_users_vote_user" FromRole="user" ToRole="users_vote" />
@@ -932,6 +936,7 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="movie_1_id" ColumnName="movie_1_id" />
                 <ScalarProperty Name="movie_2_id" ColumnName="movie_2_id" />
+                <ScalarProperty Name="auto_created" ColumnName="auto_created" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -964,6 +969,7 @@
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="admin" ColumnName="admin" />
+                <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -20,11 +20,13 @@ namespace Movies.Controllers
             data = new ApiRepository();
         }
 
+        [AllowAnonymous]
         public ActionResult Movie(int id)
         {
             return Content("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + Environment.NewLine + data.getXmlByMovieId(id).ToString(),"xml");
         }
 
+        [AllowAnonymous]
         public ActionResult Person(int id)
         {
             return Content("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + Environment.NewLine + data.getXmlByPersonId(id).ToString(), "xml");

@@ -25,6 +25,7 @@ namespace Movies
         public string login { get; set; }
         public string password { get; set; }
         public bool admin { get; set; }
+        public string email { get; set; }
     
         public virtual ICollection<comment> comment { get; set; }
         public virtual ICollection<comment_answer> comment_answer { get; set; }

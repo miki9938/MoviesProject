@@ -1,0 +1,54 @@
+﻿@model Movies.Models.RegistrationUserModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registration</title>
+</head>
+<body>
+    @Html.BeginForm()
+    {
+        @Html.ValidationSummary(true, "Registration data is incorrect")
+        <div>
+            <fieldset>
+                <legend>Create New User</legend>
+                <div class="editor-label">
+                    @Html.LabelFor(u => u.email)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(u => u.email)
+                    @Html.ValidationMessageFor(u => u.email)
+                </div>
+                 <div class="editor-label">
+                    @Html.LabelFor(u => u.login)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(u => u.login)
+                    @Html.ValidationMessageFor(u => u.login)
+                </div>
+                 <div class="editor-label">
+                    @Html.LabelFor(u => u.password)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(u => u.password)
+                    @Html.ValidationMessageFor(u => u.password)
+                </div>
+                 <div class="editor-label">
+                    @Html.LabelFor(u => u.ConfirmPassword, "Confirm password")
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(u => u.ConfirmPassword)
+                    @Html.ValidationMessageFor(u => u.ConfirmPassword)
+                </div>
+                <input type="submit" value="Create user" />
+            </fieldset>
+        </div>
+    }
+</body>
+</html>

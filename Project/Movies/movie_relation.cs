@@ -22,6 +22,7 @@ namespace Movies
         public int id { get; set; }
         public int movie_1_id { get; set; }
         public int movie_2_id { get; set; }
+        public bool auto_created { get; set; }
     
         public virtual movie movie { get; set; }
         public virtual movie movie1 { get; set; }
