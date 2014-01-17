@@ -1,0 +1,5 @@
+green: #19b24c
+pink: #ee1c47
+yellow: #d6d80f
+purple: #b400ff
+blue: #00d8ff

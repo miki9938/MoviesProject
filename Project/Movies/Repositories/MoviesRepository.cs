@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Drawing;
+using Movies.Mappings;
 
 namespace Movies.Repositories
 {
@@ -21,25 +19,25 @@ namespace Movies.Repositories
         {
             try
             {
-                db.movie.Add(temp);
+                db.movies.Add(temp);
                 db.SaveChanges();
                 return true;
             }
             catch
             {
-                db.movie.Remove(temp);
+                db.movies.Remove(temp);
                 return false;
             }
         }
 
         public movie getMovieById(int id)
         {
-            return db.movie.Where(a => a.id.Equals(id)).FirstOrDefault();
+            return db.movies.Where(a => a.id.Equals(id)).FirstOrDefault();
         }
 
         public movie getMovieByTitle(string title)
         {
-            return db.movie.Where(a => a.title.Equals(title)).FirstOrDefault();
+            return db.movies.Where(a => a.title.Equals(title)).FirstOrDefault();
         }
 
         /// <summary>
@@ -49,13 +47,13 @@ namespace Movies.Repositories
         /// <returns></returns>
         public IQueryable<movie> getMovieByTitleSubstring(string substring)
         {
-            return db.movie.Take(10) 
+            return db.movies.Take(10) 
                            .Where(a => a.title.Contains(substring));
         }
 
         public IQueryable<cast> getCastByMovieId(int id)
         {
-           return db.cast.Where(a => a.id.Equals(id));
+           return db.casts.Where(a => a.id.Equals(id));
             
         }
 
@@ -65,10 +63,10 @@ namespace Movies.Repositories
             {
                 foreach(cast c in getCastByMovieId(id))
                 {
-                    db.cast.Remove(c);
+                    db.casts.Remove(c);
                 }
 
-                db.movie.Remove(getMovieById(id));
+                db.movies.Remove(getMovieById(id));
 
                 db.SaveChanges();
                 return true;

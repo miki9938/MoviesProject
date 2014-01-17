@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Xml.Linq;
+using Movies.Mappings;
 
 namespace Movies.Repositories
 {
@@ -20,7 +19,7 @@ namespace Movies.Repositories
         { 
             int i = 0;
 
-            movie temp = db.movie.Where(a => a.id.Equals(id)).FirstOrDefault();
+            movie temp = db.movies.Where(a => a.id.Equals(id)).FirstOrDefault();
 
             XDocument xmlTemp = new XDocument(
                 new XElement("Movie",
@@ -32,7 +31,7 @@ namespace Movies.Repositories
                     new XElement("Actors")
                                                 ));
 
-            foreach (cast c in temp.cast.Where(a => a.role.Equals(1)))
+            foreach (cast c in temp.casts.Where(a => a.role.Equals(1)))
             {
                 i++;
                 XElement tempElement = new XElement("D" + i.ToString(), c.person.name);
@@ -40,7 +39,7 @@ namespace Movies.Repositories
             }
 
             i = 0;
-            foreach (cast c in temp.cast.Where(a => a.role.Equals(3)))
+            foreach (cast c in temp.casts.Where(a => a.role.Equals(3)))
             {
                 i++;
                 XElement tempElement = new XElement("W" + i.ToString(), c.person.name);
@@ -48,7 +47,7 @@ namespace Movies.Repositories
             }
 
             i = 0;
-            foreach (cast c in temp.cast.Where(a => a.role.Equals(2)))
+            foreach (cast c in temp.casts.Where(a => a.role.Equals(2)))
             {
                 i++;
                 XElement tempElement = new XElement("A" + i.ToString(), c.person.name);
@@ -62,7 +61,7 @@ namespace Movies.Repositories
         {
             int i = 0;
 
-            person temp = db.person.Where(a => a.id.Equals(id)).FirstOrDefault();
+            person temp = db.people.Where(a => a.id.Equals(id)).FirstOrDefault();
 
             XDocument xmlTemp = new XDocument(
                 new XElement("Person",
@@ -75,7 +74,7 @@ namespace Movies.Repositories
                     new XElement("Played movies")
                                             ));
 
-            foreach (cast c in temp.cast.Where(a => a.role.Equals(1)))
+            foreach (cast c in temp.casts.Where(a => a.role.Equals(1)))
             {
                 i++;
                 XElement tempElement = new XElement("D" + i.ToString(), c.person.name);
@@ -83,7 +82,7 @@ namespace Movies.Repositories
             }
 
             i = 0;
-            foreach (cast c in temp.cast.Where(a => a.role.Equals(3)))
+            foreach (cast c in temp.casts.Where(a => a.role.Equals(3)))
             {
                 i++;
                 XElement tempElement = new XElement("W" + i.ToString(), c.person.name);
@@ -91,7 +90,7 @@ namespace Movies.Repositories
             }
 
             i = 0;
-            foreach (cast c in temp.cast.Where(a => a.role.Equals(2)))
+            foreach (cast c in temp.casts.Where(a => a.role.Equals(2)))
             {
                 i++;
                 XElement tempElement = new XElement("A" + i.ToString(), c.person.name);
