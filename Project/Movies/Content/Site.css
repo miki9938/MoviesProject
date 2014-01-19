@@ -308,6 +308,7 @@ p{
     font-family: Arial, Helvetica;
     /*padding: 5px 40px 5px 10px;*/
     z-index: 99999;
+    display: none;
 }
 
     #SearchBlur #CloseSearchBlur {

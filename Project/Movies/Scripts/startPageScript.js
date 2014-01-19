@@ -1,32 +1,22 @@
 function showSearchWithKey() {
 
-	$(document).keypress(function (){
-    
-		$("html, body").animate({ scrollTop: 0 }, "slow");
-   		showBlur();  		
-   		noScroll();
-   		
-   		var input = $("#searchInput");
-		input[0].selectionStart = input[0].selectionEnd = input.val().length;   		
+    $(document).keypress(function () {
 
-
+        checkScrollAndGo();
+        $("#incentive").css({ "display": "none" });
 	}); 
 
-	$("#SearchBox").click(function(){
+	$("#SearchBox").click(function () {
 
-		//$("html, body").animate({ scrollTop: 0 }, "slow");
-   		showBlur(); 		
-   		noScroll();
-
-   		var input = $("#searchInput");
-		input[0].selectionStart = input[0].selectionEnd = input.val().length;
-   		
-
+	    checkScrollAndGo();
 	});
 
 }
 
-$(document).ready(function(){
-    showSearchWithKey();
+$(document).ready(function () {
 
+    showSearchWithKey();
 });
+
+
+

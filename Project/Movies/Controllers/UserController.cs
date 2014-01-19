@@ -21,11 +21,6 @@ namespace Movies.Controllers
             dbUser = new UsersRepository();
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult LogIn()
         {
             return View();

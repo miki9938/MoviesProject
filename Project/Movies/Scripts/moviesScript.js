@@ -134,11 +134,29 @@ function prevent() {
         else
             e.css({ 'position': 'fixed', 'left': '', 'right': '100px;' });
 
-        console.log("f");
     });
 }
 
 function showBlur() {
+
+    $(document).keyup(function (e) {
+
+        var display = $("#SearchBlur").css('display');
+
+        if (e.keyCode == 27 && display != "none") {
+
+            $("#SearchBlur").fadeOut(500);
+
+            $('#searchInput').val("");
+
+            if ($('#searchInput').val().length == 0) {
+
+                $("#incentive").css({ "display": "block" });
+            }
+
+            yesScroll();
+        }
+    });
 
     $("#SearchBlur").fadeIn(800);
 
@@ -156,34 +174,16 @@ function showBlur() {
         yesScroll();
 
     });
-
-    $(document).keyup(function (e) {
-
-        if (e.keyCode == 27) {
-
-            $("#SearchBlur").fadeOut(500);
-
-            $('#searchInput').val("");
-
-            if ($('#searchInput').val().length == 0) {
-
-                $("#incentive").css({ "display": "block" });
-            }
-
-            yesScroll();
-        }
-    });
 }
 
 function checkWritting() {
 
     $(document).bind('keypress', function (e) {
 
-        var code = e.keyCode || e.which;
-
+       /* var code = e.keyCode || e.which;
         var keyValue = String.fromCharCode(e.keyCode);
 
-        $('#searchInput').val($('#searchInput').val() + keyValue);
+        $('#searchInput').val($('#searchInput').val() + keyValue); */
 
         if ($('#searchInput').val().length != 0) {
 
@@ -209,7 +209,7 @@ function specialCharacter() {
 
         if (e.keyCode == 13) {
 
-            console.log("<__/enter");
+           /* console.log("<__/enter"); */
         }
 
         if ($('#searchInput').val().length == 0) {
@@ -237,35 +237,40 @@ function yesScroll() {
     $(window).unbind('scroll');
 }
 
-function inputTyping() {
 
-    $("#searchInput").keypress(function () {
-
-        $("#incentive").css({ "display": "none" });
-
-    });
-}
 
 function searchOnBar() {
     
     $("#SearchBarLink").click(function () {
 
+        checkScrollAndGo();
+
+    });
+}
+
+function checkScrollAndGo() {
+
+    var scrollTop = $(window).scrollTop();
+
+    if (scrollTop == 0) {
         showBlur();
         noScroll();
 
         var input = $("#searchInput");
         input[0].selectionStart = input[0].selectionEnd = input.val().length;
-
-    });
+    }
+    else {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        setTimeout(checkScrollAndGo, 200);
+    }
 }
-
 
 $(document).ready(function () {
     setPage();
     writeSize();
     //prevent();
-    inputTyping();
     searchOnBar();
+    checkWritting();
 
    
 

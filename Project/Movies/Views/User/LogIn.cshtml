@@ -13,17 +13,18 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag</title>
 </head>
-    <body>
-        
-       <div class="formFields">
-            @using (Html.BeginForm("LogIn", "User", FormMethod.Post))
-            {
-                @Html.EditorForModel()
+<body>
 
-                <br/> <input type="submit" value="Log in" class="input-submit" />
-            }
-        </div>
-        @*
+    <div class="formFields">
+        @using (Html.BeginForm("LogIn", "User", FormMethod.Post))
+        {
+            @Html.EditorForModel()
+
+            <br /> <input type="submit" value="Log in" class="input-submit" />
+        }
+    </div>
+
+    @*
         @Html.BeginForm()
         {
         @Html.ValidationSummary(true, "Login data is incorrect")
@@ -48,5 +49,5 @@
             </fieldset>
         </div>
         }*@
-    </body>
+</body>
 </html>

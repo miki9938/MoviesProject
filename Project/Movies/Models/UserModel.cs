@@ -24,7 +24,7 @@ namespace Movies.Models
         [DataType(DataType.Password)]
         [StringLength(25, MinimumLength = 6)]
         public string password { get; set; }
-        
+
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "retype password")]
