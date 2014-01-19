@@ -23,14 +23,36 @@
             </section>
         </div>
 
-		<div id="MainBar">			
-			<ul id="MainBarList">
-			    <li>@Html.ActionLink("something else","","", null, new { @class="MainBarListLink"})</li>
-			    <li>@Html.ActionLink("add movie","","", null, new { @class="MainBarListLink"})</li>
+        <div id="MainBar">			
+            <ul id="MainBarList">
+                <li><span class="MainBarListLink" id="SearchBarLink">search</span></li>
+                <li>@Html.ActionLink("add movie","","", null, new { @class="MainBarListLink"})</li>
                 <li>@Html.ActionLink("sign up","Registration","User", null, new { @class="MainBarListLink"})</li>
-			    <li>@Html.ActionLink("sign in","LogIn","User", null, new { @class="MainBarListLink"})</li>
-			</ul>		
-		</div>
+                <li>@Html.ActionLink("sign in","LogIn","User", null, new { @class="MainBarListLink"})</li>
+            </ul>		
+        </div>
+        
+        <div id='SearchBlur' style='display: none;'>
+				
+				<div id="searchField">
+					<input type="text" id="searchInput">
+				    <p id="incentive">  type what to find</p>
+					<div class="lineSeparator"></div>
+				</div>	
+
+				<div id="moviesResult">
+					<p>search results for movies</p>
+
+				</div>
+
+				<div id="peopleResult">
+					<p>search results for people</p>
+
+				</div>
+
+				<div id='CloseSearchBlur'>x</div>
+
+			</div>
         
         <div class="Footer" >			
             <ul id="FotterMenuList">

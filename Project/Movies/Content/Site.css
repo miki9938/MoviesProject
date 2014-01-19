@@ -31,23 +31,6 @@ p{
 	min-width: 840px;
 }
 
-/*
-.Page{
-	position: absolute;
-	top: 0px;
-	right: 0px;
-    left: 0px;
-    text-align: center;
-
-}
-
-.StartPage{
-	position: absolute;
-	top:80px;
-	left: 0px;
-	right: 0px;
-	height: 800px;
-}*/
 
 /*** górne menu ***/
 
@@ -94,18 +77,22 @@ p{
 			text-decoration: none;
 			font-family: Segoe UI;
 			font-weight: normal;
-            padding-left: 10px;
+		    position: static;
+
 		 }
 
 		a.MainBarListLink{
 			color: #f7f7f7;
 			text-decoration: none;			
 			font-size: 20px;
+		    padding-left: 10px;
+            padding-right: 10px;
 		}
 
         a.MainBarListLink:hover
-		{			
+		{
 			font-weight: bold;
+
 		}
 
 		a.MainBarListLink:active
@@ -134,26 +121,6 @@ p{
 			padding-right: 20px;
 		}
 
-/*img#MainLogo{
-		position: absolute;
-		height: 100px;
-		width: 100px;
-		left: 345px;
-		top: 0px;//16px;
-	}*/
-
-/*#MainBar div.SiteName{
-		position: absolute;
-		color: #e2e2e2;
-		font-size: 50px;
-		font-family: Segoe UI;
-		font-weight: normal;
-		//font-style: italic;
-		left: 450px;
-		top: 5px; //21px;
-		width: 260px;
-	}*/
-
 /*** elementy strony ***/
 
 #SearchBox{
@@ -169,6 +136,7 @@ p{
 	font-size: 25px;
 	color: #bdbcbc;
 	line-height: 100px;
+    cursor: text;
 }
 
 /*** wykres podobieństwa ***/
@@ -284,69 +252,6 @@ p{
 			color: #f7f7f7;
 		}
 
-
-/*.NewsField{
-	left: 500px; // 650px;
-	top: 110px;
-	background-color: #e2e2e2; //#ffffff;
-	position: absolute;
-	width: 670px;
-	height: 500px;
-}*/
-
-/*.BorderBox{
-	background-color: #e2e2e2;
-	left: 50px; //370px;
-	top: 110px;
-	width: 250px;
-	height: 270px;
-	position: absolute;
-
-}*/
-
-/*
-#page{
-	width: 1020px;
-	height: 2000px;
-	top: 140px;
-	left: 450px;
-	right: 450px;
-
-}*/
-
-/*
-#NewsField1{
-	position: absolute;
-
-}
-
-#NewsField2{
-	position: absolute;
-
-}
-
-#NewsField3{
-	position: absolute;
-
-}
-
-#Box1{
-	position: absolute;
-	top: 140px;
-
-}
-
-#Box2{
-	position: absolute;
-
-}
-
-#Box3{
-	position: absolute;
-
-}*/
-
-
 #MainBarPink{
 
 		background-color: #ee1c47;
@@ -457,6 +362,7 @@ p{
 	text-align: center;
 	bottom: 0;
 	width: 600px;
+    height: 30px;
 
 }
 
@@ -478,8 +384,68 @@ p{
 
 }
 
-#formFields{
-
-	position: relative;
+.formFields{
+	position: absolute;
 	width: 200px;
 }
+
+input{
+	width: 180px;
+	height: 20px;
+    border: 1px solid rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, .5);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+	font-size: 12px;
+	color: #000000;
+    padding: 5px;
+}
+
+.input-validation-error
+{
+    border:1px solid rgba(255, 0, 0, .5);
+}
+
+.field-validation-error {
+    font-size: 10px;
+    margin-bottom: 5px;
+    display: block;
+    color: rgb(255, 0, 0);
+}
+
+#SearchBarLink {
+	color: #f7f7f7;
+	text-decoration: none;			
+	font-size: 20px;
+    cursor: pointer;
+    font-weight: lighter;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#SearchBarLink:hover {
+    font-weight: bold;
+}
+
+#SearchBarLink:active
+{			
+	color: rgba(255, 255, 255, .5);			
+}
+
+.input-submit {
+    width: 195px;
+	height: 30px;
+    border: 1px solid rgba(128, 126, 125, 0.5);
+    background-color: rgba(255, 255, 255, .5);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+	font-size: 14px;
+	color: #000000;
+    padding: 5px;
+}
+
+.input-submit:hover {
+    background-color: rgba(128, 126, 125, 0.5); /*rgba(25, 178, 76, .5);*/
+    color: #ffffff;
+}
+

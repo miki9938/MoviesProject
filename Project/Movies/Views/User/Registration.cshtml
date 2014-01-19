@@ -1,6 +1,8 @@
 ﻿@model Movies.Models.RegistrationUserModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Sign up";
+
 }
 
 <!DOCTYPE html>
@@ -8,16 +10,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Registration</title>
+    <title>@ViewBag</title>
 </head>
     <body>
         
         <div class="formFields">
-            @using (Html.BeginForm("Registration", "User", FormMethod.Post))
+            @using (Html.BeginForm("Registration", "User", FormMethod.Post, new {placeholder = ViewData.ModelMetadata.Watermark }))
             {
                 @Html.EditorForModel()
 
-                <br/> <input type="submit" value="Create user" />
+                <br/> <input type="submit" value="Sign up" class="input-submit"/>
             }
         </div>
         

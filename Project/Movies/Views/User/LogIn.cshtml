@@ -2,6 +2,8 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Sign in";
+
 }
 
 <!DOCTYPE html>
@@ -9,23 +11,33 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>LogIn</title>
+    <title>@ViewBag</title>
 </head>
-<body>
-    @Html.BeginForm()
-    {
+    <body>
+        
+       <div class="formFields">
+            @using (Html.BeginForm("LogIn", "User", FormMethod.Post))
+            {
+                @Html.EditorForModel()
+
+                <br/> <input type="submit" value="Log in" class="input-submit" />
+            }
+        </div>
+        @*
+        @Html.BeginForm()
+        {
         @Html.ValidationSummary(true, "Login data is incorrect")
         <div>
             <fieldset>
                 <legend>Log In</legend>
-                 <div class="editor-label">
+                <div class="editor-label">
                     @Html.LabelFor(u => u.login)
                 </div>
                 <div class="editor-field">
                     @Html.TextBoxFor(u => u.login)
                     @Html.ValidationMessageFor(u => u.login)
                 </div>
-                 <div class="editor-label">
+                <div class="editor-label">
                     @Html.LabelFor(u => u.password)
                 </div>
                 <div class="editor-field">
@@ -35,6 +47,6 @@
                 <input type="submit" value="Log In" />
             </fieldset>
         </div>
-   }
-</body>
+        }*@
+    </body>
 </html>
