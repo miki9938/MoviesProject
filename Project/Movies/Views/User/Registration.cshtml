@@ -1,7 +1,6 @@
 ﻿@model Movies.Models.RegistrationUserModel
-
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -11,9 +10,21 @@
     <meta name="viewport" content="width=device-width" />
     <title>Registration</title>
 </head>
-<body>
-    @Html.BeginForm()
-    {
+    <body>
+        
+        <div class="formFields">
+            @using (Html.BeginForm("Registration", "User", FormMethod.Post))
+            {
+                @Html.EditorForModel()
+
+                <br/> <input type="submit" value="Create user" />
+            }
+        </div>
+        
+
+        @*
+        @Html.BeginForm()
+        {
         @Html.ValidationSummary(true, "Registration data is incorrect")
         <div>
             <fieldset>
@@ -25,21 +36,21 @@
                     @Html.TextBoxFor(u => u.email)
                     @Html.ValidationMessageFor(u => u.email)
                 </div>
-                 <div class="editor-label">
+                <div class="editor-label">
                     @Html.LabelFor(u => u.login)
                 </div>
                 <div class="editor-field">
                     @Html.TextBoxFor(u => u.login)
                     @Html.ValidationMessageFor(u => u.login)
                 </div>
-                 <div class="editor-label">
+                <div class="editor-label">
                     @Html.LabelFor(u => u.password)
                 </div>
                 <div class="editor-field">
                     @Html.TextBoxFor(u => u.password)
                     @Html.ValidationMessageFor(u => u.password)
                 </div>
-                 <div class="editor-label">
+                <div class="editor-label">
                     @Html.LabelFor(u => u.ConfirmPassword, "Confirm password")
                 </div>
                 <div class="editor-field">
@@ -49,6 +60,7 @@
                 <input type="submit" value="Create user" />
             </fieldset>
         </div>
-    }
-</body>
+        }
+        *@
+    </body>
 </html>

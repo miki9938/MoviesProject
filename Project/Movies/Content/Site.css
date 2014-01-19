@@ -23,11 +23,11 @@ p{
 /* Strona */
 
 .background{
-	/*background-color: #43484c; //#e2e2e2;*/
-	background-image:url('../Content/images/example.jpg');
-	/*background-size: cover;
+	/*background-color: #43484c; //#e2e2e2;	
+	//background-size: cover;
     //background-repeat: no-repeat;
 	//overflow-x: hidden;*/
+	background-image:url('../Content/images/example.jpg');
 	min-width: 840px;
 }
 
@@ -68,7 +68,7 @@ p{
 
 #MainBar{
 
-	background-color: #19b24c; 
+	background-color: #19b24c;
 	z-index: 99998;
 	position: fixed;
 	top: 0px;
@@ -87,20 +87,45 @@ p{
 		padding-left: 420px;
 		top: 50px;
 	}
-
-		ul#MainBarList li { 			
+		ul#MainBarList li { 		
 			display: block;
 			float: left;
 			top: 11px;
 			text-decoration: none;
 			font-family: Segoe UI;
 			font-weight: normal;
+            padding-left: 10px;
 		 }
 
 		a.MainBarListLink{
 			color: #f7f7f7;
 			text-decoration: none;			
 			font-size: 20px;
+		}
+
+        a.MainBarListLink:hover
+		{			
+			font-weight: bold;
+		}
+
+		a.MainBarListLink:active
+		{			
+			color: rgba(255, 255, 255, .5);			
+		}
+
+		.MenuArrow:active{
+
+			webkit-transform: rotate(90deg);
+    		-moz-transform: rotate(90deg);
+   			-ms-transform: rotate(90deg);   			
+    		-o-transform: rotate(90deg);
+   			transform: rotate(90deg);
+		}
+
+		.MenuArrow{
+			width: 20px;
+			height: 10px;
+			
 		}
 
 		.MenuArrow{
@@ -141,9 +166,8 @@ p{
     -webkit-background-clip: padding-box; /* for Safari */
     background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
 	text-align: center;
-	font-family: Corbel;
 	font-size: 25px;
-	color: #f7f7f7;
+	color: #bdbcbc;
 	line-height: 100px;
 }
 
@@ -224,15 +248,16 @@ p{
 /*** stopka ***/
 
 .Footer{
-		position: absolute;		
-		text-align: center;
-		background-color: #5c5c5c;
-		height: 200px;
-		left: 0px;
-		right: 0px;
-		top: 700px;
-		opacity: 0.7;
-	}
+	position: absolute;		
+	text-align: center;
+	background-color: #5c5c5c;
+	height: 240px;
+	left: 0px;
+	right: 0px;
+    bottom: 0px;
+	top: 700px;
+	opacity: 0.7;
+    }
 
 		#FooterLogo{
 			position: relative;
@@ -324,7 +349,7 @@ p{
 
 #MainBarPink{
 
-		background-color: #ee1c47; 
+		background-color: #ee1c47;
 		z-index: 99999;
 		position: fixed;
 		top: 0px;
@@ -334,7 +359,7 @@ p{
 	}
 #MainBarYellow{
 
-		background-color: #d6d80f; 
+		background-color: #d6d80f;
 		z-index: 99999;
 		position: fixed;
 		top: 0px;
@@ -344,7 +369,7 @@ p{
 	}
 #MainBarPurple{
 
-		background-color: #b400ff; 
+		background-color: #b400ff;
 		z-index: 99999;
 		position: fixed;
 		top: 0px;
@@ -354,7 +379,7 @@ p{
 	}
 #MainBarBlue{
 
-		background-color: #00d8ff; 
+		background-color: #00d8ff;
 		z-index: 99999;
 		position: fixed;
 		top: 0px;
@@ -362,3 +387,99 @@ p{
 		height: 80px;
 		width: 1280px;
 	}
+
+
+
+#SearchBlur {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    background-color: #000000;
+    opacity: 0.75;
+    color: #ffffff;
+    font-size: 12px;
+    font-family: Arial, Helvetica;
+    /*padding: 5px 40px 5px 10px;*/
+    z-index: 99999;
+}
+
+    #SearchBlur #CloseSearchBlur {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        right: 25px;
+        top: 15px;
+        background-color: #666666;
+        color: #000000;
+        text-align: center;
+        font-size: 26px;
+        font-family: Arial, Helvetica;
+        cursor: pointer;
+        -webkit-border-radius: 100%;
+        border-radius: 100%;
+        -webkit-transition: all 0.5s ease-in;
+        -moz-transition: all 0.5s ease-in;
+        -ms-transition: all 0.5s ease-in;
+        -o-transition: all 0.5s ease-in;
+        transition: all 0.5s ease-in;
+        z-index: 99999;
+    }
+    
+    #SearchBlur #SearchBlur:hover {
+        background-color: #888888;
+    }
+
+#searchField{
+	position: relative;
+
+}
+
+#moviesResult{
+	position: relative;
+}
+
+#peopleResult{
+	position: relative;
+}    
+
+#searchInput{
+
+	position: absolute;
+	background: transparent;
+	font-size: 30px;
+	font-weight: lighter;
+	font-family: Segoe UI;
+	/*font-family: Corbel;*/
+	color: #ffffff;
+	border-width: 0px;
+	text-align: center;
+	bottom: 0;
+	width: 600px;
+
+}
+
+.lineSeparator{
+
+	border-bottom : 1px solid #ffffff;
+	width: 600px;
+	height: 3px;
+	position: absolute;
+	bottom: 0;
+}
+
+#incentive{
+
+	font-size:30px;
+	display: block;
+	position: absolute;
+	bottom: 0;
+
+}
+
+#formFields{
+
+	position: relative;
+	width: 200px;
+}

@@ -27,7 +27,7 @@ namespace Movies.Models
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
+        public string confirmPassword { get; set; }
     }
 
     public class LogInUserModel
