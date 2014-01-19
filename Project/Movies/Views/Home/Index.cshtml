@@ -1,12 +1,25 @@
 ﻿@{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Search";
+
 }
 
-<h2>@ViewBag.Title</h2>
+@Scripts.Render("~/Scripts/startPageScript.js")
 
-		<div class="MainPage">
+<!DOCTYPE html>
 
-		    <div id="SearchBox">and the question is?</div>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag</title>
+</head>
+<body>
 
-		</div>
+    <div class="StartPage">
+
+        <div id="SearchBox">and the question is?</div>
+
+    </div>
+
+</body>
+</html>

@@ -5,6 +5,7 @@ using Movies.Mappings;
 using Movies.Repositories;
 using System.Web.Security;
 using System.Web.Helpers;
+using Movies.Models;
 
 namespace Movies.Controllers
 {
@@ -20,11 +21,6 @@ namespace Movies.Controllers
             dbUser = new UsersRepository();
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult LogIn()
         {
             return View();
@@ -32,7 +28,7 @@ namespace Movies.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult LogIn(Models.LogInUserModel user)
+        public ActionResult LogIn(LogInUserModel user)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +53,7 @@ namespace Movies.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registration(Models.RegistrationUserModel temp)
+        public ActionResult Registration(RegistrationUserModel temp)
         {
             if (ModelState.IsValid)
             {
