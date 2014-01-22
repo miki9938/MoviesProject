@@ -31,9 +31,9 @@ namespace DatabaseExtender
         private void button1_Click(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
-                getDataTwo();
+               getDataTwo();
             else
-                getDataOne();
+               getDataOne();
         }
 
         private void getDataOne()
@@ -72,69 +72,72 @@ namespace DatabaseExtender
 
                 textBox2.Text = c.ToString();
 
-                cast tempCast = new cast();
-                tempCast.movie_id = tempMovie.id;
-
-                char[] separator = { ' ' };
-
-                tempMovie.id = (dbMovie.getMovieByTitle(tempMovie.title)).id;
-
-                foreach (string a in data["actors"])
+                if (c == true)
                 {
-                    tempPerson.name = a.ToLower();
+                    cast tempCast = new cast();
+                    tempCast.movie_id = tempMovie.id;
 
-                    dbPerson.addNewPerson(tempPerson);
+                    char[] separator = { ' ' };
+
+                    tempMovie.id = (dbMovie.getMovieByTitle(tempMovie.title)).id;
+
+                    foreach (string a in data["actors"])
+                    {
+                        tempPerson.name = a.ToLower();
+
+                        dbPerson.addNewPerson(tempPerson);
 
 
+                    }
+
+                    foreach (string d in data["directors"])
+                    {
+                        tempPerson.name = d.ToLower();
+
+                        dbPerson.addNewPerson(tempPerson);
+                    }
+
+                    foreach (string w in data["writers"])
+                    {
+                        tempPerson.name = w.ToLower();
+
+                        dbPerson.addNewPerson(tempPerson);
+                    }
+
+                    foreach (string a2 in data["actors"])
+                    {
+
+                        tempCast.person_id = (dbPerson.getPersonByName(a2)).id;
+                        tempCast.role = 2;
+                        dbPerson.addRole(tempCast);
+                    }
+
+                    foreach (string d2 in data["directors"])
+                    {
+
+                        tempCast.person_id = (dbPerson.getPersonByName(d2)).id;
+                        tempCast.role = 1;
+                        dbPerson.addRole(tempCast);
+                    }
+
+                    foreach (string w2 in data["writers"])
+                    {
+
+                        tempCast.person_id = (dbPerson.getPersonByName(w2)).id;
+                        tempCast.role = 3;
+                        dbPerson.addRole(tempCast);
+                    }
+
+                    dataStream.Close();
+                    reader.Close();
+                    response.Close();
+
+                    textBox1.Clear();
                 }
-
-                foreach (string d in data["directors"])
-                {
-                    tempPerson.name = d.ToLower();
-
-                    dbPerson.addNewPerson(tempPerson);
-                }
-
-                foreach (string w in data["writers"])
-                {
-                    tempPerson.name = w.ToLower();
-
-                    dbPerson.addNewPerson(tempPerson);
-                }
-
-                foreach (string a2 in data["actors"])
-                {
-
-                    tempCast.person_id = (dbPerson.getPersonByName(a2)).id;
-                    tempCast.role = 2;
-                    dbPerson.addRole(tempCast);
-                }
-
-                foreach (string d2 in data["directors"])
-                {
-
-                    tempCast.person_id = (dbPerson.getPersonByName(d2)).id;
-                    tempCast.role = 1;
-                    dbPerson.addRole(tempCast);
-                }
-
-                foreach (string w2 in data["writers"])
-                {
-
-                    tempCast.person_id = (dbPerson.getPersonByName(w2)).id;
-                    tempCast.role = 3;
-                    dbPerson.addRole(tempCast);
-                }
-
-                dataStream.Close();
-                reader.Close();
-                response.Close();
-
-                textBox1.Clear();
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Nie można połączyć z serwerem");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -173,79 +176,96 @@ namespace DatabaseExtender
                 bool c = dbMovie.addMovie(tempMovie);
 
                 textBox2.Text = c.ToString();
-
-                cast tempCast = new cast();
-                tempCast.movie_id = tempMovie.id;
-
-                char[] separator = { ' ' };
-
-                tempMovie.id = (dbMovie.getMovieByTitle(tempMovie.title)).id;
-
-                string[] Actors = Convert.ToString(data["Actors"]).Split(',');
-                string[] Writers = Convert.ToString(data["Writer"]).Split(',');
-                string[] Directors = Convert.ToString(data["Director"]).Split(',');
-
-                foreach (string a in Actors)
+                
+                if (c == true)
                 {
-                    tempPerson.name = a.ToLower();
+                    cast tempCast = new cast();
+                    tempCast.movie_id = tempMovie.id;
 
-                    dbPerson.addNewPerson(tempPerson);
+                    char[] separator = { ' ' };
 
+                    tempMovie.id = (dbMovie.getMovieByTitle(tempMovie.title)).id;
 
+                    string[] Actors = Convert.ToString(data["Actors"]).Split(',');
+                    string[] Writers = Convert.ToString(data["Writer"]).Split(',');
+                    string[] Directors = Convert.ToString(data["Director"]).Split(',');
+
+                    for (int i = 0; i < Actors.Length; i++)
+                    {
+                        Actors[i] = Actors[i].Trim();
+                    }
+
+                    for (int i = 0; i < Writers.Length; i++)
+                    {
+                        Writers[i] = Writers[i].Trim();
+                    }
+
+                    for (int i = 0; i < Directors.Length; i++)
+                    {
+                        Directors[i] = Directors[i].Trim();
+                    }
+
+                    foreach (string a in Actors)
+                    {
+                        tempPerson.name = a.ToLower();
+
+                        dbPerson.addNewPerson(tempPerson);
+                    }
+
+                    foreach (string d in Directors)
+                    {
+                        tempPerson.name = d.ToLower();
+
+                        dbPerson.addNewPerson(tempPerson);
+
+                    }
+
+                    foreach (string w in Writers)
+                    {
+                        string[] tempName = w.ToLower()
+                                             .Split('(');
+
+                        tempPerson.name = tempName[0];
+                        dbPerson.addNewPerson(tempPerson);
+                    }
+
+                    foreach (string a2 in Actors)
+                    {
+
+                        tempCast.person_id = (dbPerson.getPersonByName(a2)).id;
+                        tempCast.role = 2;
+                        dbPerson.addRole(tempCast);
+                    }
+
+                    foreach (string d2 in Directors)
+                    {
+
+                        tempCast.person_id = (dbPerson.getPersonByName(d2)).id;
+                        tempCast.role = 1;
+                        dbPerson.addRole(tempCast);
+                    }
+
+                    foreach (string w2 in Writers)
+                    {
+                        string[] tempName = w2.ToLower()
+                                             .Split('(');
+                        tempCast.person_id = (dbPerson.getPersonByName(tempName[0])).id;
+                        tempCast.role = 3;
+                        dbPerson.addRole(tempCast);
+                    }
+
+                    dataStream.Close();
+                    reader.Close();
+                    response.Close();
+
+                    textBox1.Clear();
                 }
-
-                foreach (string d in Directors)
-                {
-                    tempPerson.name = d.ToLower();
-
-                    dbPerson.addNewPerson(tempPerson);
-
-                }
-
-                foreach (string w in Writers)
-                {
-                    string[] tempName = w.ToLower()
-                                         .Split('(');
-
-                    tempPerson.name = tempName[0];
-                    dbPerson.addNewPerson(tempPerson);
-                }
-
-                foreach (string a2 in Actors)
-                {
-
-                    tempCast.person_id = (dbPerson.getPersonByName(a2)).id;
-                    tempCast.role = 2;
-                    dbPerson.addRole(tempCast);
-                }
-
-                foreach (string d2 in Directors)
-                {
-
-                    tempCast.person_id = (dbPerson.getPersonByName(d2)).id;
-                    tempCast.role = 1;
-                    dbPerson.addRole(tempCast);
-                }
-
-                foreach (string w2 in Writers)
-                {
-                    string[] tempName = w2.ToLower()
-                                         .Split('(');
-                    tempCast.person_id = (dbPerson.getPersonByName(tempName[0])).id;
-                    tempCast.role = 3;
-                    dbPerson.addRole(tempCast);
-                }
-
-                dataStream.Close();
-                reader.Close();
-                response.Close();
-
-                textBox1.Clear();
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Nie można połączyć z serwerem");
-            }            
+                MessageBox.Show(ex.Message);
+            } 
+            
         }
     }
 }
