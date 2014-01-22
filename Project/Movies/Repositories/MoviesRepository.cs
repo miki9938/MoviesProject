@@ -12,8 +12,6 @@ namespace Movies.Repositories
         public MovieRepository()
         {
             db = new MoviesEntities();
-            MoviesEntities asd = new MoviesEntities();
-           
         }
 
         public bool addMovie(movie temp)

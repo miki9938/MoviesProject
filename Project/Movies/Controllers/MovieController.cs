@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Movies.Repositories;
@@ -27,12 +25,12 @@ namespace Movies.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [AllowAnonymous]
-        public ActionResult Index(int id)
+        public ActionResult Movies(int id)
         {
             movie temp = dbMovie.getMovieById(id);
             
             ///Tytuł
-            ViewBag.Title = temp.title;
+            ViewBag.Name = temp.title;
             ///Fabuła
             ViewBag.Plot = temp.description;
             ///Data wydania
