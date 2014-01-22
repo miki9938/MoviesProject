@@ -2,6 +2,7 @@
 using System.Linq;
 using Movies.Mappings;
 using System.Collections.Generic;
+using Movies.Repositories;
 
 namespace Movies.Repositories
 {
@@ -12,6 +13,8 @@ namespace Movies.Repositories
         public MovieRepository()
         {
             db = new MoviesEntities();
+            MoviesEntities asd = new MoviesEntities();
+           
         }
 
         public bool addMovie(movie temp)
@@ -50,17 +53,32 @@ namespace Movies.Repositories
                            .Where(a => a.title.Contains(substring));
         }
 
-        public IQueryable<cast> getCastByMovieId(int id)
+        private IQueryable<cast> getCast(int id)
         {
            return db.casts.Where(a => a.id.Equals(id));
-            
+        }
+
+        public List<person> getCastByMovieId(int id)
+        {
+            PersonRepository dbPerson = new PersonRepository();
+
+            List<person> tempList = new List<person>();
+
+            IQueryable<cast> temp = getCast(id);
+
+            foreach(cast c in temp)
+            {
+                tempList.Add(dbPerson.getPersonById(c.person_id));
+            }
+
+            return tempList;
         }
 
         public bool deleteMovieById(int id)
         {
             try
             {
-                foreach(cast c in getCastByMovieId(id))
+                foreach(cast c in getCast(id))
                 {
                     db.casts.Remove(c);
                 }
