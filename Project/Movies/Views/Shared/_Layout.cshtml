@@ -8,7 +8,10 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/moviesScript.js")
-
+    
+    @{
+      HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+      }
 </head>
 <body class="background">
 
@@ -28,8 +31,17 @@
         <ul id="MainBarList">
             <li><span class="MainBarListLink" id="SearchBarLink">search</span></li>
             <li>@Html.ActionLink("add movie", "", "", null, new { @class = "MainBarListLink" })</li>
-            <li>@Html.ActionLink("sign up", "Registration", "User", null, new { @class = "MainBarListLink" })</li>
-            <li>@Html.ActionLink("sign in", "LogIn", "User", null, new { @class = "MainBarListLink" })</li>
+            @{
+                if (authCookie == null)
+                {
+                    <li>@Html.ActionLink("sign in", "LogIn", "User", null, new { @class = "MainBarListLink" })</li>
+                    <li>@Html.ActionLink("sign up", "Registration", "User", null, new { @class = "MainBarListLink" })</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("logout", "LogOut", "User", null, new { @class = "MainBarListLink" })</li>
+                }
+             }
         </ul>
     </div>
 

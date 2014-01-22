@@ -13,7 +13,7 @@ namespace Movies.Controllers
 {
     public class ApiController: Controller
     {
-        ApiRepository data;
+        private ApiRepository data;
 
         public ApiController()
         {
