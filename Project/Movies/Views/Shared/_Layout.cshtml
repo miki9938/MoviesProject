@@ -11,7 +11,7 @@
     
     @{
       HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
-      }
+     }
 </head>
 <body class="background">
 
@@ -26,7 +26,7 @@
             @RenderBody()
         </section>
     </div>
-
+   
     <div id="MainBar">
         <ul id="MainBarList">
             <li><span class="MainBarListLink" id="SearchBarLink">search</span></li>
@@ -39,6 +39,9 @@
                 }
                 else
                 {
+                    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+                    string name = ticket.Name;
+                    <li><p class="MainBarListP">@Html.Raw(name.ToUpper())</p></li>
                     <li>@Html.ActionLink("logout", "LogOut", "User", null, new { @class = "MainBarListLink" })</li>
                 }
              }

@@ -168,7 +168,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiController.cs" />
-    <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
@@ -387,6 +386,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\User\Registration.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
+    <Content Include="Views\Movie\Movies.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
