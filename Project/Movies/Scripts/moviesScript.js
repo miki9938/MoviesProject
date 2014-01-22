@@ -180,10 +180,23 @@ function checkWritting() {
 
     $(document).bind('keypress', function (e) {
 
-       /* var code = e.keyCode || e.which;
+        var code = e.keyCode || e.which;
         var keyValue = String.fromCharCode(e.keyCode);
 
-        $('#searchInput').val($('#searchInput').val() + keyValue); */
+        /* $('#searchInput').val($('#searchInput').val() + keyValue); */
+
+        var moviePack =
+
+        $.ajax({
+            url: '/api/contactus/newmessage',
+            type: 'POST',
+            contentType: 'application/json',
+            done: submissionSucceeded,
+            fail: submissionFailed,
+            data: dataObject
+        });
+
+        console.log("wpisuje " + keyValue + "!");
 
         if ($('#searchInput').val().length != 0) {
 
