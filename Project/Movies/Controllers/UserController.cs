@@ -14,7 +14,7 @@ namespace Movies.Controllers
         //
         // GET: /User/
 
-        UsersRepository dbUser;
+        private  UsersRepository dbUser;
 
         public UserController()
         {

@@ -14,10 +14,10 @@
     <title>@ViewBag</title>
 </head>
 <body>
-
     <div class="formFields">
         @using (Html.BeginForm("LogIn", "User", FormMethod.Post))
         {
+            @Html.ValidationSummary(true)
             @Html.EditorForModel()
 
             <br /> <input type="submit" value="Log in" class="input-submit" />

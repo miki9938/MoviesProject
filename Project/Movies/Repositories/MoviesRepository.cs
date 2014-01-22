@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Movies.Mappings;
+using System.Collections.Generic;
 
 namespace Movies.Repositories
 {
@@ -75,6 +76,26 @@ namespace Movies.Repositories
             {
                 return false;
             }
+        }
+
+        public List<movie> getSimilarMoviesByMovieId(int id)
+        {
+            IQueryable<movie_relation> temp = from a in db.movie_relation
+                                              where
+                                                  a.movie_1_id == id || a.movie_2_id == id
+                                              select a;
+
+            List<movie> movieList = new List<movie>();
+
+            foreach (movie_relation tempRel in temp)
+            {
+                if (tempRel.movie_1_id.Equals(id))
+                    movieList.Add(getMovieById(tempRel.movie_2_id));
+                else
+                    movieList.Add(getMovieById(tempRel.movie_1_id));
+            }
+
+            return movieList;       
         }
     }
 }

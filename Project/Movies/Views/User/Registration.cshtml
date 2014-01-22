@@ -18,6 +18,7 @@
         <div class="formFields">
             @using (Html.BeginForm("Registration", "User", FormMethod.Post))
             {
+                @Html.ValidationSummary(true, "Registration data is incorrect")
                 @Html.EditorForModel()
 
                 <br/> <input type="submit" value="Sign up" class="input-submit"/>

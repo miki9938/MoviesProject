@@ -28,7 +28,7 @@ namespace Movies.Models
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "retype password")]
-        [Compare("password", ErrorMessage = "Passwords do not match.")]
+        [Compare("password", ErrorMessage = "Passwords does not match.")]
         public string retypedPassword { get; set; }
     }
 
