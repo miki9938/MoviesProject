@@ -172,6 +172,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -230,6 +231,7 @@
       <DependentUpon>MoviesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MovieModel.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -245,6 +247,7 @@
     <Content Include="Content\images\cameraRoll.png" />
     <Content Include="Content\images\example.jpg" />
     <Content Include="Content\images\grot.png" />
+    <Content Include="Content\images\hobbit.jpg" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Content\Site.css" />
