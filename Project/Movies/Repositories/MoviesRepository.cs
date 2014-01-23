@@ -69,7 +69,7 @@ namespace Movies.Repositories
 
         private IQueryable<cast> getCast(int id)
         {
-           return db.casts.Where(a => a.id.Equals(id));
+           return db.casts.Where(a => a.movie_id.Equals(id));
         }
 
         public List<person> getCastByMovieId(int id)

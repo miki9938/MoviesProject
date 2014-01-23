@@ -11,19 +11,20 @@ namespace Movies
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
                 name: "MovieDisplay",
                 url: "Movie/{id}",
-                defaults: new { controller = "Movie", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Movie", action = "Movies", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 name: "PersonDisplay",
                 url: "Person/{id}",
                 defaults: new { controller = "Person", action = "Index", id = UrlParameter.Optional }
-            );            
+            );
 
             routes.MapRoute(
                 name: "Default",

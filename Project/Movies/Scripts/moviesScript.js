@@ -212,8 +212,7 @@ function searchMovie(subtitle)
         success: function (data) {
             $(".searchResult").remove();
             for (var i = 0; i < data.length; i++) {
-                $("#moviesResult").append("<div class='searchResult'><br><p>" + data[i].title + " - " + data[i].releaseDate + "</p></div>");
-                //"<div class='searchResult'><br><a href='@Url.Action("+ data[i].id", "Movie")'><p>" + data[i].title + " - " + data[i].releaseDate + "</p><a/></div>"
+                $("#moviesResult").append("<div class='searchResult'><br><a href=/Movie/Index/"+data[i].id+"><p>" + data[i].title + " - " + data[i].releaseDate + "</p><a/></div>");
                 //"<div class='searchResult'><br><p>" + data[i].title + " - " + data[i].releaseDate + "</p></div>"
             }
         },

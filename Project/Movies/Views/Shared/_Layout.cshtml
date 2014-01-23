@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title - SIMILAR.to</title>
+    @*projekt: grupa 14 *@
     @*<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />*@
     <meta name="viewport" content="width=device-width" />d
     @Styles.Render("~/Content/css")
@@ -26,7 +27,7 @@
     <div id="MainBar">
         <ul id="MainBarList">
             <li><span class="MainBarListLink" id="SearchBarLink">search</span></li>
-            <li>@Html.ActionLink("add movie", "Movies", "Movie", null, new { @class = "MainBarListLink" })</li>
+            <li>@Html.ActionLink("add movie", "", "", null, new { @class = "MainBarListLink" })</li>
             @{
                 HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
                 if (authCookie == null)

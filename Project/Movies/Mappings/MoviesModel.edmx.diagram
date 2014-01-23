@@ -5,16 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c73322fcb82d45d7b4bd128002fc2fa0" Name="Diagram1">
-        <EntityTypeShape EntityType="MoviesModel.cast" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoviesModel.cast" Width="1.5" PointX="3.125" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MoviesModel.comment" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MoviesModel.comment_answer" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MoviesModel.image" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MoviesModel.image_relation" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoviesModel.image" Width="1.5" PointX="3.125" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoviesModel.image_relation" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MoviesModel.movie" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MoviesModel.movie_relation" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoviesModel.movie_relation" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MoviesModel.person" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MoviesModel.user" Width="1.5" PointX="3.75" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MoviesModel.users_vote" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoviesModel.user" Width="1.5" PointX="6" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoviesModel.users_vote" Width="1.5" PointX="8.375" PointY="10.5" IsExpanded="true" />
         <AssociationConnector Association="MoviesModel.FK_cast_movie" ManuallyRouted="false" />
         <AssociationConnector Association="MoviesModel.FK_cast_person" ManuallyRouted="false" />
         <AssociationConnector Association="MoviesModel.FK_comment_answer_comment" ManuallyRouted="false" />
