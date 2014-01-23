@@ -16,7 +16,7 @@ namespace Movies
             routes.MapRoute(
                 name: "MovieDisplay",
                 url: "Movie/{id}",
-                defaults: new { controller = "Movie", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Movie", action = "Movies", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
