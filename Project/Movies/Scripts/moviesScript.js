@@ -185,18 +185,7 @@ function checkWritting() {
 
         /* $('#searchInput').val($('#searchInput').val() + keyValue); */
 
-        var moviePack =
-
-        $.ajax({
-            url: '/api/contactus/newmessage',
-            type: 'POST',
-            contentType: 'application/json',
-            done: submissionSucceeded,
-            fail: submissionFailed,
-            data: dataObject
-        });
-
-        console.log("wpisuje " + keyValue + "!");
+        searchMovie($('#searchInput').val());
 
         if ($('#searchInput').val().length != 0) {
 
@@ -205,6 +194,42 @@ function checkWritting() {
     });
 
     specialCharacter();
+}
+
+function searchMovie(subtitle)
+{
+    var table = new Array();
+    var title = subtitle;
+    var moviePack = new movie(title);
+    table[0] = moviePack;
+
+    $.ajax({
+        type: 'POST',
+        url: '/Search/glassSearchSubstring',
+        data: JSON.stringify(table),
+        contentType: 'application/json',
+        dataType: 'json',
+        success: function (data) {
+            $(".SearchResult").remove();
+            for (var i = 0; i < data.length; i++) {
+                $("#moviesResult").append("<div class='SearchResult'><a href=/Movie/" + data[i].id + " class='oneResult'><img class='searchPoster' src='/Content/images/hobbit.jpg'><p>" + data[i].title+ "</p></a></div>");
+                //"<div class='searchResult'><br><p>" + data[i].title + " - " + data[i].releaseDate + "</p></div>"
+                //"<div class='searchResult'><br><a href=/Movie/Index/"+data[i].id+"><p>" + data[i].title + " - " + data[i].releaseDate + "</p><a/></div>"
+                
+            }
+        },
+        error: function (err) {
+            alert('error - ' + err);
+        }
+    });
+}
+
+function movie(title) {
+
+    this.id = null;
+    this.title = title;
+    this.releaseDate = null;
+    this.pictureId = null;
 }
 
 function specialCharacter() {
@@ -218,6 +243,7 @@ function specialCharacter() {
             lastKey = lastKey.slice(0, -1);
 
             $('#searchInput').val(lastKey);
+            searchMovie($('#searchInput').val());
         }
 
         if (e.keyCode == 13) {
@@ -250,14 +276,11 @@ function yesScroll() {
     $(window).unbind('scroll');
 }
 
-
-
 function searchOnBar() {
     
     $("#SearchBarLink").click(function () {
 
         checkScrollAndGo();
-
     });
 }
 
@@ -284,7 +307,6 @@ $(document).ready(function () {
     //prevent();
     searchOnBar();
     checkWritting();
-
    
 
     $(window).resize(function () {

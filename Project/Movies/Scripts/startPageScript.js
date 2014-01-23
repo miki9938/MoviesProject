@@ -1,10 +1,14 @@
 function showSearchWithKey() {
 
-    $(document).keypress(function () {
+    $(document).keyup(function (e) {
 
-        checkScrollAndGo();
-        $("#incentive").css({ "display": "none" });
-	}); 
+        if (e.keyCode > 32) {
+            checkScrollAndGo();
+            var keyValue = String.fromCharCode(e.keyCode);
+            $("#searchinput").val(keyValue);
+            $("#incentive").css({ "display": "none" });
+        }
+    }); 
 
 	$("#SearchBox").click(function () {
 

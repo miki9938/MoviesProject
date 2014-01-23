@@ -2,15 +2,26 @@
     ViewBag.Title = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using Movies.Mappings
 
 <h2>Movies</h2>
-<br/><br/>TYTUŁ<br/><br/>
-<br />@ViewBag.Title
-<br/><br/>DATA<br/><br/>
-<br/> @ViewBag.Date
-<br/><br/>OBSADA<br/><br/>
-<br/> @ViewBag.Cast
-<br/><br/>FABUŁA<br/><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/><br/>TITLE<br/>
+<br />@ViewBag.Name
+<br/><br/>DATE<br/>
+<br/> @ViewBag.Date.Year.@ViewBag.Date.Month.@ViewBag.Date.Day 
+<br/><br/>CAST<br/>
+<br/>
+@{
+    foreach (var person in ViewBag.Cast)
+    {
+        <li>@person.name</li>
+    }
+}
+<br/><br/>PLOT<br/>
 <br/> @ViewBag.Plot
-<br/><br/>PODOBNE<br/><br/>
+<br/><br/>SIMILAR<br/>
 <br/> @ViewBag.Similars

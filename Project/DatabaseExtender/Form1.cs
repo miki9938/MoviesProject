@@ -11,7 +11,7 @@ namespace DatabaseExtender
 {
     public partial class Form1 : Form
     {
-        MovieRepository dbMovie;
+        MoviesRepository dbMovie;
         PersonRepository dbPerson;
 
         string url;
@@ -23,7 +23,7 @@ namespace DatabaseExtender
         {
 
             InitializeComponent();
-            dbMovie = new MovieRepository();
+            dbMovie = new MoviesRepository();
             dbPerson = new PersonRepository();
             urlParams = "&type=json&plot=full&episode=1&lang=en-US&aka=simple&release=full&business=0&tech=0";
         }

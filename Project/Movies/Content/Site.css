@@ -8,7 +8,14 @@ body {
 a {
 	cursor:pointer;
 	font-family: Segoe UI;
-	font-weight: lighter
+    font-weight: lighter;
+    color:#ffffff;
+    font-size: 15px;
+    font-style: normal;
+}
+
+a:hover {
+    font-weight: bold;
 }
 
 .clear {
@@ -472,3 +479,15 @@ input{
     color: #ffffff;
 }
 
+.oneResult {
+    width: 100px;
+    height: 140px;
+    margin: 15px;
+    display: block;
+    float: left;
+}
+
+.searchPoster {
+    width: 100px;
+    height: 120px;
+}
