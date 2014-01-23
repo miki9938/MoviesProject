@@ -210,10 +210,12 @@ function searchMovie(subtitle)
         contentType: 'application/json',
         dataType: 'json',
         success: function (data) {
-            $(".searchResult").remove();
+            $(".SearchResult").remove();
             for (var i = 0; i < data.length; i++) {
-                $("#moviesResult").append("<div class='searchResult'><br><a href=/Movie/Index/"+data[i].id+"><p>" + data[i].title + " - " + data[i].releaseDate + "</p><a/></div>");
+                $("#moviesResult").append("<div class='SearchResult'><a href=/Movie/" + data[i].id + " class='oneResult'><img class='searchPoster' src='/Content/images/hobbit.jpg'><p>" + data[i].title+ "</p></a></div>");
                 //"<div class='searchResult'><br><p>" + data[i].title + " - " + data[i].releaseDate + "</p></div>"
+                //"<div class='searchResult'><br><a href=/Movie/Index/"+data[i].id+"><p>" + data[i].title + " - " + data[i].releaseDate + "</p><a/></div>"
+                
             }
         },
         error: function (err) {

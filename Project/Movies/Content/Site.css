@@ -479,3 +479,15 @@ input{
     color: #ffffff;
 }
 
+.oneResult {
+    width: 100px;
+    height: 140px;
+    margin: 15px;
+    display: block;
+    float: left;
+}
+
+.searchPoster {
+    width: 100px;
+    height: 120px;
+}
