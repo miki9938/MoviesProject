@@ -12,11 +12,11 @@ namespace Movies.Controllers
         //
         // GET: /Movie/
 
-        private MovieRepository dbMovie;
+        private MoviesRepository dbMovie;
 
         public MovieController()
         {
-            dbMovie = new MovieRepository();        
+            dbMovie = new MoviesRepository();        
         }
 
         /// <summary>

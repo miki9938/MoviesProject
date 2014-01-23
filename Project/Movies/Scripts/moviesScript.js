@@ -185,16 +185,9 @@ function checkWritting() {
 
         /* $('#searchInput').val($('#searchInput').val() + keyValue); */
 
-        var moviePack =
+        console.log("wpisuje " + keyValue + "!");
 
-        $.ajax({
-            url: '/api/contactus/newmessage',
-            type: 'POST',
-            contentType: 'application/json',
-            done: submissionSucceeded,
-            fail: submissionFailed,
-            data: dataObject
-        });
+        searchMovie($('#searchInput').val());
 
         console.log("wpisuje " + keyValue + "!");
 
@@ -205,6 +198,42 @@ function checkWritting() {
     });
 
     specialCharacter();
+}
+
+function searchMovie(subtitle)
+{
+    var table = new Array();
+    var title = subtitle;
+    var releaseDate = null;
+    var pictureId = null;
+    var moviePack = new movie(title, releaseDate, pictureId);
+    table[0] = moviePack;
+
+    $.ajax({
+        type: 'POST',
+        url: '/Search/glassSearchSubstring',
+        data: JSON.stringify(table),
+        contentType: 'application/json',
+        dataType: 'json',
+        success: function (data) {
+            $(".searchResult").remove();
+            for (var i = 0; i < data.length; i++) {
+                console.log("tytul: " + data[i].title + " i data: " + data[i].releaseDate);
+
+                $("#moviesResult").append("<div class='searchResult'><br><p>" + data[i].title + " - " + data[i].releaseDate + "</p></div>");
+            }
+        },
+        error: function (err) {
+            alert('error - ' + err);
+        }
+    });
+}
+
+function movie(title, releaseDate, pictureId) {
+
+    this.title = title;
+    this.releaseDate = releaseDate;
+    this.pictureId = pictureId;
 }
 
 function specialCharacter() {
@@ -250,14 +279,11 @@ function yesScroll() {
     $(window).unbind('scroll');
 }
 
-
-
 function searchOnBar() {
     
     $("#SearchBarLink").click(function () {
 
         checkScrollAndGo();
-
     });
 }
 

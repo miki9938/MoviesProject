@@ -2,15 +2,16 @@
 using System.Linq;
 using Movies.Mappings;
 using System.Collections.Generic;
+using Movies.Models;
 using Movies.Repositories;
 
 namespace Movies.Repositories
 {
-    public class MovieRepository
+    public class MoviesRepository
     {
         MoviesEntities db;
 
-        public MovieRepository()
+        public MoviesRepository()
         {
             db = new MoviesEntities();
             MoviesEntities asd = new MoviesEntities();
@@ -51,6 +52,18 @@ namespace Movies.Repositories
         {
             return db.movies.Take(10) 
                            .Where(a => a.title.Contains(substring));
+        }
+
+        public IQueryable<GlassSearchModel> getGlassMovieBySubstring(string substring)
+        {
+            return
+                db.movies.Take(10)
+                    .Where(x => x.title.Contains(substring))
+                    .Select(x => new GlassSearchModel
+                    {
+                        title = x.title,
+                        releaseDate = x.release_date.Year
+                    });
         }
 
         private IQueryable<cast> getCast(int id)
