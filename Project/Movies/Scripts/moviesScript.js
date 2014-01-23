@@ -185,11 +185,7 @@ function checkWritting() {
 
         /* $('#searchInput').val($('#searchInput').val() + keyValue); */
 
-        console.log("wpisuje " + keyValue + "!");
-
         searchMovie($('#searchInput').val());
-
-        console.log("wpisuje " + keyValue + "!");
 
         if ($('#searchInput').val().length != 0) {
 
@@ -204,9 +200,7 @@ function searchMovie(subtitle)
 {
     var table = new Array();
     var title = subtitle;
-    var releaseDate = null;
-    var pictureId = null;
-    var moviePack = new movie(title, releaseDate, pictureId);
+    var moviePack = new movie(title);
     table[0] = moviePack;
 
     $.ajax({
@@ -218,9 +212,9 @@ function searchMovie(subtitle)
         success: function (data) {
             $(".searchResult").remove();
             for (var i = 0; i < data.length; i++) {
-                console.log("tytul: " + data[i].title + " i data: " + data[i].releaseDate);
-
                 $("#moviesResult").append("<div class='searchResult'><br><p>" + data[i].title + " - " + data[i].releaseDate + "</p></div>");
+                //"<div class='searchResult'><br><a href='@Url.Action("+ data[i].id", "Movie")'><p>" + data[i].title + " - " + data[i].releaseDate + "</p><a/></div>"
+                //"<div class='searchResult'><br><p>" + data[i].title + " - " + data[i].releaseDate + "</p></div>"
             }
         },
         error: function (err) {
@@ -229,11 +223,12 @@ function searchMovie(subtitle)
     });
 }
 
-function movie(title, releaseDate, pictureId) {
+function movie(title) {
 
+    this.id = null;
     this.title = title;
-    this.releaseDate = releaseDate;
-    this.pictureId = pictureId;
+    this.releaseDate = null;
+    this.pictureId = null;
 }
 
 function specialCharacter() {
@@ -247,6 +242,7 @@ function specialCharacter() {
             lastKey = lastKey.slice(0, -1);
 
             $('#searchInput').val(lastKey);
+            searchMovie($('#searchInput').val());
         }
 
         if (e.keyCode == 13) {
@@ -310,7 +306,6 @@ $(document).ready(function () {
     //prevent();
     searchOnBar();
     checkWritting();
-
    
 
     $(window).resize(function () {

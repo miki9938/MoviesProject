@@ -61,6 +61,7 @@ namespace Movies.Repositories
                     .Where(x => x.title.Contains(substring))
                     .Select(x => new GlassSearchModel
                     {
+                        id = x.id,
                         title = x.title,
                         releaseDate = x.release_date.Year
                     });
