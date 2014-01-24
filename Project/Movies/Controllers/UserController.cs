@@ -17,10 +17,12 @@ namespace Movies.Controllers
         // GET: /User/
 
         private  UsersRepository dbUser;
+        private MoviesRepository dbMovie;
 
         public UserController()
         {
             dbUser = new UsersRepository();
+            dbMovie = new MoviesRepository();
         }
 
         [AllowAnonymous]
@@ -99,6 +101,21 @@ namespace Movies.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        [MyAuthorize]
+        public ActionResult Vote(voteForSimilarityModel newVote)
+        {
+            users_vote temp = new users_vote();
+
+            temp.relation_id = newVote.relationId;
+            temp.user_id = newVote.userId;
+            temp.vote = newVote.vote;
+
+            dbUser.addVote(temp);
+
+            return View();   
         }
 
         private bool IsValid(string login, string password)

@@ -44,6 +44,23 @@ namespace Movies.Repositories
 
                 return false;
             }
-        }  
+        }
+
+        public bool addVote(users_vote temp)
+        {
+            try
+            {
+                db.users_vote.Add(temp);
+                db.SaveChanges();
+                return true;
+            }
+
+            catch
+            {
+                db.users_vote.Remove(temp);
+
+                return false;
+            }            
+        }
     }
 }

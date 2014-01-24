@@ -172,7 +172,6 @@
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,9 +222,9 @@
       <DependentUpon>MoviesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MovieModel.cs" />
+    <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\UserModel.cs" />
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApiRepository.cs" />
     <Compile Include="Repositories\MoviesRepository.cs" />

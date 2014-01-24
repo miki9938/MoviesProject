@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Movies.Mappings;
+using Movies.Models;
+using System.Collections.Generic;
+using Movies.Repositories;
 
 namespace Movies.Repositories
 {
@@ -52,10 +55,15 @@ namespace Movies.Repositories
             return db.people.Where(a => a.name.Equals(name)).FirstOrDefault();
         }
 
-        public IQueryable<person> getPersonByNameSubstring(string substring)
+        public IQueryable<GlassSearchModel> getGlassPersonByNameSubstring(string substring)
         {
             return db.people.Take(10)
-                            .Where(a => a.name.Contains(substring));
+                            .Where(a => a.name.Contains(substring))
+                            .Select(x => new GlassSearchModel
+                            {
+                                id = x.id,
+                                title = x.name
+                            });
         }
 
         public IQueryable<cast> getCastByPersonId(int id)
@@ -64,11 +72,29 @@ namespace Movies.Repositories
 
         }
 
+        public List<movie> getRolesByPersonId(int id)
+        {
+            MoviesRepository dbMovie = new MoviesRepository();
+
+            List<movie> tempList = new List<movie>();
+
+            IQueryable<cast> temp = getCastByPersonId(id);
+
+            foreach (cast c in temp)
+            {
+                tempList.Add(dbMovie.getMovieById(c.movie_id));
+            }
+
+            return tempList;            
+        }
+
         public bool deletePersonById(int id)
         {
             try
             {
-                foreach (cast c in getCastByPersonId(id))
+                IQueryable<cast> _cast = getCastByPersonId(id);
+
+                foreach (cast c in _cast)
                 {
                     db.casts.Remove(c);
                 }

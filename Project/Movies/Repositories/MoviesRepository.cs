@@ -92,7 +92,9 @@ namespace Movies.Repositories
         {
             try
             {
-                foreach(cast c in getCast(id))
+                IQueryable<cast> _cast = getCast(id);
+
+                foreach(cast c in _cast)
                 {
                     db.casts.Remove(c);
                 }
@@ -126,6 +128,107 @@ namespace Movies.Repositories
             }
 
             return movieList;       
+        }
+
+        public bool AddCastToMovie(int personId, int role, int movieId)
+        {
+            cast temp = new cast();
+
+            temp.person_id = personId;
+            temp.role = role;
+            temp.movie_id = movieId;
+
+            try
+            {
+                db.casts.Add(temp);
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                db.casts.Remove(temp);
+
+                return false;
+            }            
+        }
+
+        public bool AddCastToMovie(int personId, int role, int movieId, string characterName)
+        {
+            cast temp = new cast();
+
+            temp.person_id = personId;
+            temp.role = role;
+            temp.movie_id = movieId;
+            temp.character_name = characterName;
+
+            try
+            {
+                db.casts.Add(temp);
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                db.casts.Remove(temp);
+
+                return false;
+            }
+        }
+
+        public bool AddCastToMovie(cast temp)
+        {
+            try
+            {
+                db.casts.Add(temp);
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                db.casts.Remove(temp);
+
+                return false;
+            }            
+        }
+
+        public bool AddNewSimilarMovie(movie_relation temp)
+        {
+            try
+            {
+                db.movie_relation.Add(temp);
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                db.movie_relation.Remove(temp);
+
+                return false;
+            }                  
+        }
+
+        public movie_relation getMovieRelationById(int id)
+        {
+            return db.movie_relation.Where(r => r.id.Equals(id)).FirstOrDefault();
+        }
+
+        public movie_relation getMovieRelationByMoviesIds(int firstMovieId, int secondMovieId)
+        {
+            IQueryable<movie_relation> temp = from a in db.movie_relation
+                                              where
+                                                (a.movie_1_id == firstMovieId && a.movie_2_id == secondMovieId)
+                                                    ||
+                                                (a.movie_1_id == secondMovieId && a.movie_2_id == firstMovieId)
+                                              select a;
+
+            movie_relation movieRelation = new movie_relation();
+            movieRelation = temp.FirstOrDefault();
+
+            return movieRelation;               
         }
     }
 }
