@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using Movies.Repositories;
 using Movies.Mappings;
+using Movies.Security;
 
 
 namespace Movies.Controllers
@@ -43,21 +44,21 @@ namespace Movies.Controllers
             return View();
         }
 
-        [Authorize]
+        [MyAuthorize(Roles="Admin")]
         public ActionResult Add()
         {
             return View();
         }
 
-        [HttpPost]    
-        [Authorize]
+        [HttpPost]
+        [MyAuthorize(Roles = "Admin")]
         public ActionResult Add(movie newMoive)
         {
             return View();
         }
 
         [HttpGet]
-        [Authorize]
+        [MyAuthorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             return View();

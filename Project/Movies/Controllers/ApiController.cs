@@ -8,6 +8,7 @@ using System.IO;
 using System.Xml.Linq;
 using System.Xml;
 using System.Text;
+using Movies.Security;
 
 namespace Movies.Controllers
 {

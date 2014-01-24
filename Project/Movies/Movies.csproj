@@ -166,9 +166,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
@@ -218,12 +216,6 @@
     <Compile Include="Mappings\person.cs">
       <DependentUpon>MoviesModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>MoviesModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Mappings\sp_helpdiagrams_Result.cs">
-      <DependentUpon>MoviesModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Mappings\user.cs">
       <DependentUpon>MoviesModel.tt</DependentUpon>
     </Compile>
@@ -239,6 +231,7 @@
     <Compile Include="Repositories\MoviesRepository.cs" />
     <Compile Include="Repositories\PersonRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
+    <Compile Include="Security\MyAuthorizeAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\images\arrow.png" />
@@ -371,15 +364,6 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
