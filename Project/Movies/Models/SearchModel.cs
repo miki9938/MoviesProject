@@ -11,8 +11,10 @@ namespace Movies.Models
 
         public string title { get; set; }
 
-        public int releaseDate { get; set; }
+        public int? releaseDate { get; set; }
 
         public int? pictureId { get; set; }
     }
+
+    
 }

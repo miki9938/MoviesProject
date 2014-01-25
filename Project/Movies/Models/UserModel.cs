@@ -27,7 +27,7 @@ namespace Movies.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "retype password")]
+        [Display(Name = "Retype password")]
         [Compare("password", ErrorMessage = "Passwords does not match.")]
         public string retypedPassword { get; set; }
     }
@@ -43,5 +43,17 @@ namespace Movies.Models
         [DataType(DataType.Password)]
         [StringLength(25)]
         public string password { get; set; }
+    }
+
+    public class voteForSimilarityModel
+    {
+        [Required]
+        public int userId { get; set; }
+
+        [Required]
+        public int relationId { get; set; }
+
+        [Required]
+        public bool vote { get; set; }
     }
 }

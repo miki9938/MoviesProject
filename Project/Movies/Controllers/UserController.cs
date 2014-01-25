@@ -6,6 +6,8 @@ using Movies.Repositories;
 using System.Web.Security;
 using System.Web.Helpers;
 using Movies.Models;
+using System.Web;
+using Movies.Security;
 
 namespace Movies.Controllers
 {
@@ -15,12 +17,15 @@ namespace Movies.Controllers
         // GET: /User/
 
         private  UsersRepository dbUser;
+        private MoviesRepository dbMovie;
 
         public UserController()
         {
             dbUser = new UsersRepository();
+            dbMovie = new MoviesRepository();
         }
 
+        [AllowAnonymous]
         public ActionResult LogIn()
         {
             return View();
@@ -34,7 +39,24 @@ namespace Movies.Controllers
             {
                 if (IsValid(user.login, user.password))
                 {
-                    FormsAuthentication.SetAuthCookie(user.login, true);
+                    string userData;
+
+                    if (dbUser.getUserByLogin(user.login).admin == true)
+                        userData = "Admin";
+                    else
+                        userData = "User";
+
+                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
+                        user.login,
+                        DateTime.Now,
+                        DateTime.Now.AddDays(1),
+                        false,
+                        userData,
+                        FormsAuthentication.FormsCookiePath);
+
+                    string encTicket = FormsAuthentication.Encrypt(ticket);
+                    Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
+                    
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -74,11 +96,26 @@ namespace Movies.Controllers
             return View(temp);
         }
 
-        [Authorize]
+        [MyAuthorize]
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        [MyAuthorize]
+        public ActionResult Vote(voteForSimilarityModel newVote)
+        {
+            users_vote temp = new users_vote();
+
+            temp.relation_id = newVote.relationId;
+            temp.user_id = newVote.userId;
+            temp.vote = newVote.vote;
+
+            dbUser.addVote(temp);
+
+            return View();   
         }
 
         private bool IsValid(string login, string password)
