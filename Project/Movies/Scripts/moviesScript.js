@@ -178,26 +178,29 @@ function showBlur() {
 
 function checkWritting() {
 
-    $(document).bind('keypress', function (e) {
+    $(document).bind('keyup', function (e) {
 
-        var code = e.keyCode || e.which;
-        var keyValue = String.fromCharCode(e.keyCode);
+        var keyValue = String.fromCharCode(e.keyCode).toLowerCase();
 
         /* $('#searchInput').val($('#searchInput').val() + keyValue); */
-
-        searchMovie($('#searchInput').val());
 
         if ($('#searchInput').val().length != 0) {
 
             $("#incentive").css({ "display": "none" });
         }
+
+        if ($('#searchInput').val().length == 0) {
+            $('#searchInput').val(keyValue);
+        }
+
+        searchMovie($('#searchInput').val());
     });
 
     specialCharacter();
 }
 
-function searchMovie(subtitle)
-{
+function searchMovie(subtitle) {
+    console.log("substring: " + subtitle);
     var table = new Array();
     var title = subtitle;
     var moviePack = new movie(title);
@@ -212,7 +215,7 @@ function searchMovie(subtitle)
         success: function (data) {
             $(".SearchResult").remove();
             for (var i = 0; i < data.length; i++) {
-                $("#moviesResult").append("<div class='SearchResult'><a href=/Movie/" + data[i].id + " class='oneResult'><img class='searchPoster' src='/Content/images/hobbit.jpg'><p>" + data[i].title+ "</p></a></div>");
+                $("#moviesResult").append("<div class='SearchResult'><a href=/Movie/" + data[i].id + " class='oneResult'><img class='searchPoster' src='/Content/images/defaultPoster.png'><p>" + data[i].title+ "</p></a></div>");
                 //"<div class='searchResult'><br><p>" + data[i].title + " - " + data[i].releaseDate + "</p></div>"
                 //"<div class='searchResult'><br><a href=/Movie/Index/"+data[i].id+"><p>" + data[i].title + " - " + data[i].releaseDate + "</p><a/></div>"
                 
