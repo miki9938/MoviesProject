@@ -17,7 +17,6 @@ namespace Movies.Mappings
         public user()
         {
             this.comments = new HashSet<comment>();
-            this.comment_answer = new HashSet<comment_answer>();
             this.users_vote = new HashSet<users_vote>();
         }
     
@@ -28,7 +27,6 @@ namespace Movies.Mappings
         public string email { get; set; }
     
         public virtual ICollection<comment> comments { get; set; }
-        public virtual ICollection<comment_answer> comment_answer { get; set; }
         public virtual ICollection<users_vote> users_vote { get; set; }
     }
 }

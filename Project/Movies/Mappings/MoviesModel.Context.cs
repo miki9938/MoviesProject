@@ -27,8 +27,8 @@ namespace Movies.Mappings
     
         public DbSet<cast> casts { get; set; }
         public DbSet<comment> comments { get; set; }
-        public DbSet<comment_answer> comment_answer { get; set; }
-        public DbSet<image> images { get; set; }
+        public DbSet<image_movie> image_movie { get; set; }
+        public DbSet<image_person> image_person { get; set; }
         public DbSet<image_relation> image_relation { get; set; }
         public DbSet<movie> movies { get; set; }
         public DbSet<movie_relation> movie_relation { get; set; }

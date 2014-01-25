@@ -56,15 +56,16 @@ namespace Movies.Repositories
 
         public IQueryable<GlassSearchModel> getGlassMovieBySubstring(string substring)
         {
-            return
-                db.movies.Take(10)
-                    .Where(x => x.title.Contains(substring))
-                    .Select(x => new GlassSearchModel
-                    {
-                        id = x.id,
-                        title = x.title,
-                        releaseDate = x.release_date.Year
-                    });
+              return
+                    db.movies
+                        .Where(x => x.title.Contains(substring))
+                        .Take(10)
+                        .Select(x => new GlassSearchModel
+                        {
+                            id = x.id,
+                            title = x.title,
+                            releaseDate = x.release_date.Year
+                        });
         }
 
         private IQueryable<cast> getCast(int id)
@@ -72,7 +73,7 @@ namespace Movies.Repositories
            return db.casts.Where(a => a.movie_id.Equals(id));
         }
 
-        public List<person> getCastByMovieId(int id)
+        public List<person> getDirectorsByMovieId(int id)
         {
             PersonRepository dbPerson = new PersonRepository();
 
@@ -82,7 +83,42 @@ namespace Movies.Repositories
 
             foreach(cast c in temp)
             {
-                tempList.Add(dbPerson.getPersonById(c.person_id));
+                if (c.role == 1)
+                    tempList.Add(dbPerson.getPersonById(c.person_id));
+            }
+
+            return tempList;
+        }
+
+        public List<person> getWritersByMovieId(int id)
+        {
+            PersonRepository dbPerson = new PersonRepository();
+
+            List<person> tempList = new List<person>();
+
+            IQueryable<cast> temp = getCast(id);
+
+            foreach (cast c in temp)
+            {
+                if (c.role == 3)
+                    tempList.Add(dbPerson.getPersonById(c.person_id));
+            }
+
+            return tempList;
+        }
+
+        public List<person> getActorsByMovieId(int id)
+        {
+            PersonRepository dbPerson = new PersonRepository();
+
+            List<person> tempList = new List<person>();
+
+            IQueryable<cast> temp = getCast(id);
+
+            foreach (cast c in temp)
+            {
+                if(c.role == 2)
+                    tempList.Add(dbPerson.getPersonById(c.person_id));
             }
 
             return tempList;

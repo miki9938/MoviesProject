@@ -7,7 +7,7 @@ namespace Movies.Models
 {
     public class GlassSearchModel
     {
-        public int id { get; set; }
+        public int? id { get; set; }
 
         public string title { get; set; }
 

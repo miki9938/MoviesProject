@@ -12,19 +12,13 @@ namespace Movies.Mappings
     using System;
     using System.Collections.Generic;
     
-    public partial class image
+    public partial class image_person
     {
-        public image()
-        {
-            this.image_relation = new HashSet<image_relation>();
-        }
-    
         public int id { get; set; }
-        public Nullable<int> movie_id { get; set; }
-        public Nullable<int> person_id { get; set; }
+        public int perosn_id { get; set; }
+        public bool is_portrait { get; set; }
+        public string source { get; set; }
     
-        public virtual movie movie { get; set; }
         public virtual person person { get; set; }
-        public virtual ICollection<image_relation> image_relation { get; set; }
     }
 }
