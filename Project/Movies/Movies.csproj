@@ -237,6 +237,7 @@
     <Content Include="Content\images\cameraRoll-footer.png" />
     <Content Include="Content\images\cameraRoll-icon.png" />
     <Content Include="Content\images\cameraRoll.png" />
+    <Content Include="Content\images\defaultPoster.png" />
     <Content Include="Content\images\example.jpg" />
     <Content Include="Content\images\grot.png" />
     <Content Include="Content\images\hobbit.jpg" />
