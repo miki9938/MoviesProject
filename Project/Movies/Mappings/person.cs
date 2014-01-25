@@ -18,7 +18,7 @@ namespace Movies.Mappings
         {
             this.casts = new HashSet<cast>();
             this.comments = new HashSet<comment>();
-            this.images = new HashSet<image>();
+            this.image_person = new HashSet<image_person>();
             this.image_relation = new HashSet<image_relation>();
         }
     
@@ -30,7 +30,7 @@ namespace Movies.Mappings
     
         public virtual ICollection<cast> casts { get; set; }
         public virtual ICollection<comment> comments { get; set; }
-        public virtual ICollection<image> images { get; set; }
+        public virtual ICollection<image_person> image_person { get; set; }
         public virtual ICollection<image_relation> image_relation { get; set; }
     }
 }

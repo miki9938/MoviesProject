@@ -182,10 +182,10 @@
     <Compile Include="Mappings\comment.cs">
       <DependentUpon>MoviesModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\comment_answer.cs">
+    <Compile Include="Mappings\image_movie.cs">
       <DependentUpon>MoviesModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\image.cs">
+    <Compile Include="Mappings\image_person.cs">
       <DependentUpon>MoviesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Mappings\image_relation.cs">

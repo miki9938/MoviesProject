@@ -14,11 +14,6 @@ namespace Movies.Mappings
     
     public partial class comment
     {
-        public comment()
-        {
-            this.comment_answer = new HashSet<comment_answer>();
-        }
-    
         public int id { get; set; }
         public int user_id { get; set; }
         public string text { get; set; }
@@ -26,7 +21,6 @@ namespace Movies.Mappings
         public System.DateTime date { get; set; }
         public Nullable<int> person_id { get; set; }
     
-        public virtual ICollection<comment_answer> comment_answer { get; set; }
         public virtual movie movie { get; set; }
         public virtual person person { get; set; }
         public virtual user user { get; set; }

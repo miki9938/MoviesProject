@@ -57,8 +57,9 @@ namespace Movies.Repositories
 
         public IQueryable<GlassSearchModel> getGlassPersonByNameSubstring(string substring)
         {
-            return db.people.Take(10)
+            return db.people
                             .Where(a => a.name.Contains(substring))
+                            .Take(10)
                             .Select(x => new GlassSearchModel
                             {
                                 id = x.id,

@@ -56,15 +56,16 @@ namespace Movies.Repositories
 
         public IQueryable<GlassSearchModel> getGlassMovieBySubstring(string substring)
         {
-            return
-                db.movies.Take(10)
-                    .Where(x => x.title.Contains(substring))
-                    .Select(x => new GlassSearchModel
-                    {
-                        id = x.id,
-                        title = x.title,
-                        releaseDate = x.release_date.Year
-                    });
+              return
+                    db.movies
+                        .Where(x => x.title.Contains(substring))
+                        .Take(10)
+                        .Select(x => new GlassSearchModel
+                        {
+                            id = x.id,
+                            title = x.title,
+                            releaseDate = x.release_date.Year
+                        });
         }
 
         private IQueryable<cast> getCast(int id)

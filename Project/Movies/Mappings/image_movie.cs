@@ -12,15 +12,19 @@ namespace Movies.Mappings
     using System;
     using System.Collections.Generic;
     
-    public partial class comment_answer
+    public partial class image_movie
     {
-        public int id { get; set; }
-        public int comment_id { get; set; }
-        public int user_id { get; set; }
-        public string text { get; set; }
-        public System.DateTime date { get; set; }
+        public image_movie()
+        {
+            this.image_relation = new HashSet<image_relation>();
+        }
     
-        public virtual comment comment { get; set; }
-        public virtual user user { get; set; }
+        public int id { get; set; }
+        public int movie_id { get; set; }
+        public bool is_poster { get; set; }
+        public string source { get; set; }
+    
+        public virtual movie movie { get; set; }
+        public virtual ICollection<image_relation> image_relation { get; set; }
     }
 }
