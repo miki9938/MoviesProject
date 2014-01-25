@@ -43,8 +43,12 @@ namespace Movies.Controllers
             ViewBag.Plot = temp.description;
             ///Data wydania
             ViewBag.Date = temp.release_date;
-            ///Obsada, typ List<person>
-            ViewBag.Cast = dbMovie.getCastByMovieId(id);
+            ///Reżyserowie, typ List<person>
+            ViewBag.Directors = dbMovie.getDirectorsByMovieId(id);
+            ///Scenarzyści/pisarze, typ List<person>
+            ViewBag.Writers = dbMovie.getWritersByMovieId(id);
+            ///Actorzy, typ List<person>
+            ViewBag.Actors = dbMovie.getActorsByMovieId(id);
             ///Podobne filmy, typ List<movies>
             ViewBag.Similars = dbMovie.getSimilarMoviesByMovieId(id); 
             
