@@ -169,5 +169,21 @@ namespace Movies.Repositories
             db.casts.Remove(getRoleById(castId));
         }
 
+        public bool addImageToPerson(image_person temp)
+        {
+            try
+            {
+                db.image_person.Add(temp);
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                db.image_person.Remove(temp);
+
+                return false;
+            }
+        }
     }
 }

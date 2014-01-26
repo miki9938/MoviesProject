@@ -44,7 +44,7 @@
             <End Role="person" EntitySet="person" />
             <End Role="image_person" EntitySet="image_person" />
           </AssociationSet>
-          <AssociationSet Name="FK_image_relation_image_movie" Association="MoviesModel.Store.FK_image_relation_image_movie">
+          <AssociationSet Name="FK_image_relation_image_movie1" Association="MoviesModel.Store.FK_image_relation_image_movie1">
             <End Role="image_movie" EntitySet="image_movie" />
             <End Role="image_relation" EntitySet="image_relation" />
           </AssociationSet>
@@ -94,27 +94,27 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="movie_id" Type="int" Nullable="false" />
           <Property Name="is_poster" Type="bit" Nullable="false" />
           <Property Name="source" Type="nvarchar" MaxLength="50" />
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="image_person">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="perosn_id" Type="int" Nullable="false" />
           <Property Name="is_portrait" Type="bit" Nullable="false" />
           <Property Name="source" Type="nvarchar" MaxLength="50" />
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="image_relation">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="image_id" Type="int" Nullable="false" />
           <Property Name="person_id" Type="int" Nullable="false" />
+          <Property Name="image_id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="movie">
           <Key>
@@ -247,7 +247,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_image_relation_image_movie">
+        <Association Name="FK_image_relation_image_movie1">
           <End Role="image_movie" Type="MoviesModel.Store.image_movie" Multiplicity="1" />
           <End Role="image_relation" Type="MoviesModel.Store.image_relation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -359,7 +359,7 @@
             <End Role="movie" EntitySet="movies" />
             <End Role="image_movie" EntitySet="image_movie" />
           </AssociationSet>
-          <AssociationSet Name="FK_image_relation_image_movie" Association="MoviesModel.FK_image_relation_image_movie">
+          <AssociationSet Name="FK_image_relation_image_movie1" Association="MoviesModel.FK_image_relation_image_movie1">
             <End Role="image_movie" EntitySet="image_movie" />
             <End Role="image_relation" EntitySet="image_relation" />
           </AssociationSet>
@@ -418,21 +418,21 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="movie_id" Type="Int32" Nullable="false" />
           <Property Name="is_poster" Type="Boolean" Nullable="false" />
           <Property Name="source" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="id" Type="Guid" Nullable="false" />
           <NavigationProperty Name="movie" Relationship="MoviesModel.FK_image_movie_movie" FromRole="image_movie" ToRole="movie" />
-          <NavigationProperty Name="image_relation" Relationship="MoviesModel.FK_image_relation_image_movie" FromRole="image_movie" ToRole="image_relation" />
+          <NavigationProperty Name="image_relation" Relationship="MoviesModel.FK_image_relation_image_movie1" FromRole="image_movie" ToRole="image_relation" />
         </EntityType>
         <EntityType Name="image_person">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="perosn_id" Type="Int32" Nullable="false" />
           <Property Name="is_portrait" Type="Boolean" Nullable="false" />
           <Property Name="source" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="id" Type="Guid" Nullable="false" />
           <NavigationProperty Name="person" Relationship="MoviesModel.FK_image_person_person" FromRole="image_person" ToRole="person" />
         </EntityType>
         <EntityType Name="image_relation">
@@ -440,9 +440,9 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="image_id" Type="Int32" Nullable="false" />
           <Property Name="person_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="image_movie" Relationship="MoviesModel.FK_image_relation_image_movie" FromRole="image_relation" ToRole="image_movie" />
+          <Property Name="image_id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="image_movie" Relationship="MoviesModel.FK_image_relation_image_movie1" FromRole="image_relation" ToRole="image_movie" />
           <NavigationProperty Name="person" Relationship="MoviesModel.FK_image_relation_person" FromRole="image_relation" ToRole="person" />
         </EntityType>
         <EntityType Name="movie">
@@ -580,7 +580,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_image_relation_image_movie">
+        <Association Name="FK_image_relation_image_movie1">
           <End Role="image_movie" Type="MoviesModel.image_movie" Multiplicity="1" />
           <End Role="image_relation" Type="MoviesModel.image_relation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -696,20 +696,20 @@
           <EntitySetMapping Name="image_movie">
             <EntityTypeMapping TypeName="MoviesModel.image_movie">
               <MappingFragment StoreEntitySet="image_movie">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="movie_id" ColumnName="movie_id" />
                 <ScalarProperty Name="is_poster" ColumnName="is_poster" />
                 <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="image_person">
             <EntityTypeMapping TypeName="MoviesModel.image_person">
               <MappingFragment StoreEntitySet="image_person">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="perosn_id" ColumnName="perosn_id" />
                 <ScalarProperty Name="is_portrait" ColumnName="is_portrait" />
                 <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -717,8 +717,8 @@
             <EntityTypeMapping TypeName="MoviesModel.image_relation">
               <MappingFragment StoreEntitySet="image_relation">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="image_id" ColumnName="image_id" />
                 <ScalarProperty Name="person_id" ColumnName="person_id" />
+                <ScalarProperty Name="image_id" ColumnName="image_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

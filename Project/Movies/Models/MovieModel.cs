@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace Movies.Models
 {
@@ -50,5 +51,19 @@ namespace Movies.Models
         [Required]
         [DisplayName("Title of similar movie")]
         public string secondMovieTitle { get; set; }
+    }
+
+    public class AddImageToMovieModel
+    {
+        [Required]
+        public int movieId { get; set; }
+
+        [Required]
+        public Image image { get; set; }
+        
+        public bool isPoster { get; set; }
+        
+        [DefaultValue("")]
+        public string source { get; set; }
     }
 }

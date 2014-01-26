@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace Movies.Models
 {
@@ -42,5 +43,19 @@ namespace Movies.Models
         [DisplayName("Name of played character (not required)")]
         [DefaultValue(null)]
         public string characterName { get; set; }
+    }
+
+    public class AddImageToPersonModel
+    {
+        [Required]
+        public int personId { get; set; }
+
+        [Required]
+        public Image image { get; set; }
+
+        public bool isPortrait { get; set; }
+
+        [DefaultValue("")]
+        public string source { get; set; }
     }
 }

@@ -15,8 +15,8 @@ namespace Movies.Mappings
     public partial class image_relation
     {
         public int id { get; set; }
-        public int image_id { get; set; }
         public int person_id { get; set; }
+        public System.Guid image_id { get; set; }
     
         public virtual image_movie image_movie { get; set; }
         public virtual person person { get; set; }

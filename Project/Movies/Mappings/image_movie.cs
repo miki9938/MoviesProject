@@ -19,10 +19,10 @@ namespace Movies.Mappings
             this.image_relation = new HashSet<image_relation>();
         }
     
-        public int id { get; set; }
         public int movie_id { get; set; }
         public bool is_poster { get; set; }
         public string source { get; set; }
+        public System.Guid id { get; set; }
     
         public virtual movie movie { get; set; }
         public virtual ICollection<image_relation> image_relation { get; set; }
