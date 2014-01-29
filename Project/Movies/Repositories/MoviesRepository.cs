@@ -266,5 +266,22 @@ namespace Movies.Repositories
 
             return movieRelation;               
         }
+
+        public bool addImageToMovie(image_movie temp)
+        {
+            try
+            {
+                db.image_movie.Add(temp);
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                db.image_movie.Remove(temp);
+
+                return false;
+            }         
+        }
     }
 }

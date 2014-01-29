@@ -99,5 +99,31 @@ namespace Movies.Controllers
 
             return View();
         }
+
+        [MyAuthorize(Roles = "Admin")]
+        public ActionResult addImage()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [MyAuthorize(Roles = "Admin")]
+        public ActionResult addImage(AddImageToPersonModel newImage)
+        {
+            image_person temp = new image_person();
+            Guid newId = Guid.NewGuid();
+
+            temp.id = newId;
+            temp.perosn_id = newImage.personId;
+            temp.source = newImage.source;
+            temp.is_portrait = newImage.isPortrait;
+
+            if (dbPerson.addImageToPerson(temp).Equals(true))
+            {
+                newImage.image.Save("\\images\\" + newId.ToString(), System.Drawing.Imaging.ImageFormat.Png);
+            }
+
+            return View();
+        }
     }
 }

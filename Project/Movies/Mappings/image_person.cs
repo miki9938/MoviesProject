@@ -14,10 +14,10 @@ namespace Movies.Mappings
     
     public partial class image_person
     {
-        public int id { get; set; }
         public int perosn_id { get; set; }
         public bool is_portrait { get; set; }
         public string source { get; set; }
+        public System.Guid id { get; set; }
     
         public virtual person person { get; set; }
     }

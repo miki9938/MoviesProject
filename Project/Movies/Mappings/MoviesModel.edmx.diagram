@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5f2acbcf705e4f5383b79c0485bae392" Name="Diagram1">
+      <Diagram DiagramId="e8ec6aa639ff49fc850bafb6053eec96" Name="Diagram1">
         <EntityTypeShape EntityType="MoviesModel.cast" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MoviesModel.comment" Width="1.5" PointX="6" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MoviesModel.image_movie" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
@@ -21,7 +21,7 @@
         <AssociationConnector Association="MoviesModel.FK_comment_person1" ManuallyRouted="false" />
         <AssociationConnector Association="MoviesModel.FK_comment_user" ManuallyRouted="false" />
         <AssociationConnector Association="MoviesModel.FK_image_movie_movie" ManuallyRouted="false" />
-        <AssociationConnector Association="MoviesModel.FK_image_relation_image_movie" ManuallyRouted="false" />
+        <AssociationConnector Association="MoviesModel.FK_image_relation_image_movie1" ManuallyRouted="false" />
         <AssociationConnector Association="MoviesModel.FK_image_person_person" ManuallyRouted="false" />
         <AssociationConnector Association="MoviesModel.FK_image_relation_person" ManuallyRouted="false" />
         <AssociationConnector Association="MoviesModel.FK_movie_relation_movie" ManuallyRouted="false" />
