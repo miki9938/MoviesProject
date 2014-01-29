@@ -49,7 +49,7 @@ namespace DatabaseExtender
                 textBox2.Text = "error";
         }
 
-        private void getDataTwo()
+        private void getDataOne()
         {
             try
             {
@@ -154,7 +154,7 @@ namespace DatabaseExtender
             }
         }
 
-        private void getDataOne()
+        private void getDataTwo()
         {
             try
             {

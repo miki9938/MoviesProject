@@ -52,7 +52,7 @@ namespace Movies.Controllers
             ///Podobne filmy, typ List<movies>
             ViewBag.Similars = dbMovie.getSimilarMoviesByMovieId(id); 
             //Url do plakatu
-            //ViewBag.Image
+            ViewBag.Image = dbMovie.getImagebyMovieId(id);
             
             return View();
         }
@@ -100,14 +100,12 @@ namespace Movies.Controllers
             return View();
         }
 
-        [MyAuthorize(Roles="Admin")]
         public ActionResult addSimilarMovie()
         {
             return View();        
         }
 
         [HttpPost]
-        [MyAuthorize(Roles="Admin")]
         public ActionResult addSimilarMovie(AddSimilarMovieModel newSimilar)
         {
             movie_relation temp = new movie_relation();
@@ -160,7 +158,7 @@ namespace Movies.Controllers
 
             if(dbMovie.addImageToMovie(temp).Equals(true))
             {
-                newImage.image.Save("\\images\\" + newId.ToString(), System.Drawing.Imaging.ImageFormat.Png);
+                newImage.image.Save("~/Content/images/" + newId.ToString(), System.Drawing.Imaging.ImageFormat.Png);
             }
 
             return View();

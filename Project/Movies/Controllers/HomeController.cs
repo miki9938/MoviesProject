@@ -11,24 +11,36 @@ namespace Movies.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
             return View();
         }
 
         [AllowAnonymous]
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
-
             return View();
         }
 
         [AllowAnonymous]
-        public ActionResult Contact()
+        public ActionResult Privacy()
         {
-            ViewBag.Message = "Your contact page.";
+            return View();
+        }
 
+        [AllowAnonymous]
+        public ActionResult Advertising()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult Help()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult Terms()
+        {
             return View();
         }
     }

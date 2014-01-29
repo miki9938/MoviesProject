@@ -13,7 +13,7 @@
         <p  class="white">Release date (USA): @ViewBag.Date.ToString("dd MMMM yyyy")</p><br/><br/>
         <ul class="row">
             <li class="col">
-                @ViewBag.Title
+                <img class="searchPoster" src='@Url.Content("~/Content/images/defaultPoster.png")'/>
                 <br/>
             </li>
 
@@ -22,7 +22,7 @@
                     @{
                         foreach (var person in ViewBag.Actors)
                         {
-                            <li class="white">@person.name</li>
+                            <li class="black">@person.name</li>
                         }
                     }
                 </ul><br/><br/>
@@ -33,7 +33,7 @@
                     @{
                         foreach (var person in ViewBag.Directors)
                         {
-                            <li class="white">@person.name</li>
+                            <li class="black">@person.name</li>
                         }
                     }
                 </ul><br/><br/>
@@ -44,7 +44,7 @@
                     @{
                         foreach (var person in ViewBag.Writers)
                         {
-                            <li class="white">@person.name</li>
+                            <li class="black">@person.name</li>
                         }
                     }
                 </ul>

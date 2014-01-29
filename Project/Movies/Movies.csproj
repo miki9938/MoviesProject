@@ -374,6 +374,10 @@
     <Content Include="Views\User\Registration.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
     <Content Include="Views\Movie\Movies.cshtml" />
+    <Content Include="Views\Home\Privacy.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
+    <Content Include="Views\Home\Terms.cshtml" />
+    <Content Include="Views\Home\Advertising.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
