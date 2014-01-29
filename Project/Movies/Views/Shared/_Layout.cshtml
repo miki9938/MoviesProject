@@ -10,7 +10,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/moviesScript.js")
 </head>
-<body class="background">
+<body class='@(ViewData["Background"] ?? "")'>
 
     <div id="MainBarName">
         <a href='@Url.Action("Index", "Home")'>
@@ -63,10 +63,10 @@
         </div>
         
         <br/>
-        <div id="peopleResult">
+        @*<div id="peopleResult">
             <p style="font-size: 16px">search results for people:</p><br/>
 
-        </div>
+        </div>*@
 
         <div id='CloseSearchBlur'>x</div>
 

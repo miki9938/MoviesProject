@@ -51,6 +51,8 @@ namespace Movies.Controllers
             ViewBag.Actors = dbMovie.getActorsByMovieId(id);
             ///Podobne filmy, typ List<movies>
             ViewBag.Similars = dbMovie.getSimilarMoviesByMovieId(id); 
+            //Url do plakatu
+            //ViewBag.Image
             
             return View();
         }

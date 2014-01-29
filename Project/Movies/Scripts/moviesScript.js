@@ -41,9 +41,19 @@ function setPage() {
         var PeopleResultTop = $("#moviesResult").height() + MoviesResultTop + 30;
 
         /***Footer***/
-        var FooterHeight = 180;
-        var FotterTop = 770;
+        var FooterHeight = 240;
         var CopyrightSize = 12;
+        var FooterTop;
+
+        if ($('body').height() < 770) {
+            FooterTop = 770;
+        }
+        else if ($('body').height() > 770) {
+            FooterTop = $('body').height();
+        }
+
+        /***Movies comparison***/
+        var similarMovieTop = $("mainMovie").height() + 100;
     }
 
     /*else if(x < basicX)
@@ -81,10 +91,10 @@ function setPage() {
 
     $(".formFields").css({ "left": centerWidth(".formFields"), "top": centerHeight(".formFields") });
 
-    $(".Footer").css({ "top": FotterTop });
-    $("#Copyright").css({ "font-size": CopyrightSize });
+    $(".similarMovie").css({ "top": similarMovieTop });
 
-    console.log("wykonano");
+    $(".Footer").css({ "top": FooterTop, "height": FooterHeight });
+    $("#Copyright").css({ "font-size": CopyrightSize });
 
 }
 
@@ -154,6 +164,8 @@ function showBlur() {
                 $("#incentive").css({ "display": "block" });
             }
 
+            $(".SearchResult").remove();
+
             yesScroll();
         }
     });
@@ -170,6 +182,8 @@ function showBlur() {
 
             $("#incentive").css({ "display": "block" });
         }
+
+        $(".SearchResult").remove();
 
         yesScroll();
 
@@ -192,7 +206,7 @@ function checkWritting() {
         if ($('#searchInput').val().length == 0) {
             $('#searchInput').val(keyValue);
         }
-
+        console.log("okok: " + e.keyCode);
         searchMovie($('#searchInput').val());
     });
 
@@ -215,7 +229,7 @@ function searchMovie(subtitle) {
         success: function (data) {
             $(".SearchResult").remove();
             for (var i = 0; i < data.length; i++) {
-                $("#moviesResult").append("<div class='SearchResult'><a href=/Movie/" + data[i].id + " class='oneResult'><img class='searchPoster' src='/Content/images/defaultPoster.png'><p>" + data[i].title+ "</p></a></div>");
+                $("#moviesResult").append("<div class='SearchResult'><a href=/Movie/" + data[i].id + " class='oneResult'><img class='searchPoster' src='/Content/images/defaultPoster.png'><p class='oneResultP'>" + data[i].title+ "</p></a></div>");
                 //"<div class='searchResult'><br><p>" + data[i].title + " - " + data[i].releaseDate + "</p></div>"
                 //"<div class='searchResult'><br><a href=/Movie/Index/"+data[i].id+"><p>" + data[i].title + " - " + data[i].releaseDate + "</p><a/></div>"
                 
@@ -283,6 +297,7 @@ function searchOnBar() {
     
     $("#SearchBarLink").click(function () {
 
+        $("#searchInput").val("");
         checkScrollAndGo();
     });
 }
@@ -304,13 +319,15 @@ function checkScrollAndGo() {
     }
 }
 
+
 $(document).ready(function () {
     setPage();
     writeSize();
     //prevent();
     searchOnBar();
     checkWritting();
-   
+
+    console.log($("body").height());
 
     $(window).resize(function () {
         setPage();

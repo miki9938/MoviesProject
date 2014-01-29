@@ -234,13 +234,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\images\arrow.png" />
+    <Content Include="Content\images\background2.jpg" />
     <Content Include="Content\images\cameraRoll-footer.png" />
     <Content Include="Content\images\cameraRoll-icon.png" />
     <Content Include="Content\images\cameraRoll.png" />
     <Content Include="Content\images\defaultPoster.png" />
-    <Content Include="Content\images\example.jpg" />
+    <Content Include="Content\images\background.jpg" />
     <Content Include="Content\images\grot.png" />
-    <Content Include="Content\images\hobbit.jpg" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Content\Site.css" />
