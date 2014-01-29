@@ -165,5 +165,27 @@ namespace Movies.Controllers
 
             return View();
         }
+
+        [MyAuthorize]
+        public ActionResult addComment()
+        {
+            return View();   
+        }
+
+        [HttpPost]
+        [MyAuthorize]
+        public ActionResult addComment(AddCommentToMovieModel newComment)
+        {
+            comment temp = new comment();
+
+            temp.date = DateTime.Now;
+            temp.movie_id = newComment.movieId;
+            temp.user_id = newComment.userId;
+            temp.text = newComment.comment;
+
+            dbUser.addCommentToMovie(temp);
+
+            return View();
+        }
     }
 }

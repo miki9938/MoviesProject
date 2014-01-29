@@ -62,5 +62,39 @@ namespace Movies.Repositories
                 return false;
             }            
         }
+
+        public bool addCommentToMovie(comment temp)
+        {
+            try
+            {
+                db.comments.Add(temp);
+                db.SaveChanges();
+                return true;
+            }
+
+            catch
+            {
+                db.comments.Remove(temp);
+
+                return false;
+            }             
+        }
+
+        public bool addCommentToPerson(comment temp)
+        {
+            try
+            {
+                db.comments.Add(temp);
+                db.SaveChanges();
+                return true;
+            }
+
+            catch
+            {
+                db.comments.Remove(temp);
+
+                return false;
+            }
+        }
     }
 }

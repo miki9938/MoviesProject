@@ -66,4 +66,16 @@ namespace Movies.Models
         [DefaultValue("")]
         public string source { get; set; }
     }
+
+    public class AddCommentToMovieModel
+    {
+        [Required]
+        public int movieId { get; set; }
+
+        [Required]
+        public int userId { get; set; }
+
+        [Required]
+        public string comment { get; set; }
+    }
 }
