@@ -39,8 +39,16 @@
                 {
                     FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
                     string name = ticket.Name;
-                    <li><p class="MainBarListP">@Html.Raw(name.ToUpper())</p></li>
-                    <li>@Html.ActionLink("logout", "LogOut", "User", null, new { @class = "MainBarListLink" })</li>
+                    if (ticket.UserData == "Admin")
+                    {
+                        <li><p class="MainBarListAdmin">@Html.Raw(name.ToUpper())</p></li>
+                        <li>@Html.ActionLink("logout", "LogOut", "User", null, new {@class = "MainBarListLink"})</li>
+                    }
+                    else
+                    {
+                        <li><p class="MainBarListP">@Html.Raw(name.ToUpper())</p></li>
+                        <li>@Html.ActionLink("logout", "LogOut", "User", null, new {@class = "MainBarListLink"})</li>
+                    }
                 }
              }
         </ul>
@@ -74,11 +82,11 @@
 
     <div class="Footer">
         <ul id="FotterMenuList">
-            <li><a href="#" class="MainBarListLink">About</a></li>
-            <li><a href="#" class="MainBarListLink">Terms</a></li>
-            <li><a href="#" class="MainBarListLink">Privacy</a></li>
-            <li><a href="#" class="MainBarListLink">Advertising</a></li>
-            <li><a href="#" class="MainBarListLink">Help</a></li>
+            <li>@Html.ActionLink("About", "About", "Home", null, new {@class = "MainBarListLink"})</li>
+            <li>@Html.ActionLink("Terms", "Terms", "Home", null, new {@class = "MainBarListLink"})</li>
+            <li>@Html.ActionLink("Privacy", "Privacy", "Home", null, new {@class = "MainBarListLink"})</li>
+            <li>@Html.ActionLink("Advertising", "Advertising", "Home", null, new {@class = "MainBarListLink"})</li>
+            <li>@Html.ActionLink("Help", "Help", "Home", null, new {@class = "MainBarListLink"})</li>
         </ul>
         <img src='@Url.Content("~/Content/images/cameraRoll-footer.png")' id="FooterLogo"/>
         <span id="Copyright">&copy; @DateTime.Now.Year similar.to</span>

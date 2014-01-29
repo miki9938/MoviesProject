@@ -12,17 +12,12 @@ namespace Movies.Controllers
 {
     public class SearchController : Controller
     {
-        //
-        // GET: /Search/
-
         private MoviesRepository movieRepo = new MoviesRepository();
 
         [HttpPost]
         [AllowAnonymous]
         public ActionResult glassSearchSubstring(GlassSearchModel[] glassTitle)
         {
-            //glassTitle.title
-
             IQueryable<GlassSearchModel> moviePack = new EnumerableQuery<GlassSearchModel>(movieRepo.getGlassMovieBySubstring(glassTitle[0].title));
 
             return Json(moviePack);

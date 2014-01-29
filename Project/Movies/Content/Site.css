@@ -25,7 +25,6 @@ a:hover {
 p{
 	font-family: Segoe UI;
 	font-weight: lighter;
-    line-height: 1.3em;
 }
 
 /* Strona */
@@ -117,6 +116,13 @@ p{
 
         .MainBarListP{
 			color: #f7f7f7;
+			text-decoration: none;			
+			font-size: 20px;
+		    padding-left: 15px;
+		}
+
+        .MainBarListAdmin{
+			color: #ff0000;
 			text-decoration: none;			
 			font-size: 20px;
 		    padding-left: 15px;
@@ -511,7 +517,7 @@ input{
 .mainTitle {
     font-style: normal;
     font-weight: lighter;
-    font-size: 35px;
+    font-size: 40px;
     color: #ffffff;
 }
 
@@ -542,6 +548,13 @@ li.mainMovie {
 .white {
     color: #ffffff;
     line-height: 1.3em;
+    font-weight: normal;
+}
+
+.black {
+    color: #000000;
+    line-height: 1.3em;
+    font-weight: normal;
 }
 
 .row {
@@ -561,4 +574,12 @@ li.mainMovie {
     top: 100px;
     left: 50px;
     width: 800px;
+}
+
+.trash {
+    position: absolute;
+    top: 150px;
+    left: 20px;
+    color: #ffffff;
+    font-size: 20px;
 }

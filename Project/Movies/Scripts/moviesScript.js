@@ -327,7 +327,7 @@ $(document).ready(function () {
     searchOnBar();
     checkWritting();
 
-    console.log($("body").height());
+    console.log("mmS " + $(".mainMovie").height());
 
     $(window).resize(function () {
         setPage();

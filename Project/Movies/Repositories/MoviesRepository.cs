@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using Movies.Mappings;
 using System.Collections.Generic;
@@ -282,6 +283,11 @@ namespace Movies.Repositories
 
                 return false;
             }         
+        }
+
+        public image_movie getImagebyMovieId(int id)
+        {
+            return db.image_movie.Where(r => r.movie_id.Equals(id)).FirstOrDefault();
         }
     }
 }
