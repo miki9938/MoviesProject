@@ -26,17 +26,30 @@ namespace DatabaseExtender
             dbMovie = new MoviesRepository();
             dbPerson = new PersonRepository();
             urlParams = "&type=json&plot=full&episode=1&lang=en-US&aka=simple&release=full&business=0&tech=0";
+            textBox2.Text = "Waiting for command";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (radioButton1.Checked)
-               getDataTwo();
+            textBox2.Text = "Processing...";
+
+            if (textBox1.Text.Length == 0)
+            {
+                textBox2.Text = "Id is not typed in";
+                return;
+            }
+
+            else if (radioButton1.Checked)
+                getDataOne();
+            else if (radioButton2.Checked)
+                getDataTwo();
+            else if (radioButton1.Checked == false && radioButton2.Checked == false)
+                textBox2.Text = "API is not chosen";
             else
-               getDataOne();
+                textBox2.Text = "error";
         }
 
-        private void getDataOne()
+        private void getDataTwo()
         {
             try
             {
@@ -141,7 +154,7 @@ namespace DatabaseExtender
             }
         }
 
-        private void getDataTwo()
+        private void getDataOne()
         {
             try
             {
@@ -266,6 +279,11 @@ namespace DatabaseExtender
                 MessageBox.Show(ex.Message);
             } 
             
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
