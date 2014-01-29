@@ -283,31 +283,5 @@ namespace Movies.Repositories
                 return false;
             }         
         }
-
-        public Guid getPosterNameByMovieId(int id)
-        {
-            var temp = from a in db.image_movie
-                       where
-                           (a.movie_id == id)
-                                &&
-                           (a.is_poster == true)
-                       select a.id;
-
-            return temp.FirstOrDefault();
-        }
-
-        public List<Guid> getMovieImagesNamesByMovieId(int id)
-        {
-            IQueryable<image_movie> temp = db.image_movie.Where(m => m.movie_id.Equals(id));
-
-            List<Guid> tempList = new List<Guid>();
-
-            foreach(image_movie a in temp)
-            {
-                tempList.Add(a.id);
-            }
-
-            return tempList;
-        }
     }
 }

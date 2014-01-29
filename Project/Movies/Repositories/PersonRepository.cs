@@ -185,31 +185,5 @@ namespace Movies.Repositories
                 return false;
             }
         }
-
-        public Guid getPortraitNameByPersonId(int id)
-        {
-            var temp = from a in db.image_person
-                       where
-                           (a.perosn_id == id)
-                                &&
-                           (a.is_portrait == true)
-                       select a.id;
-
-            return temp.FirstOrDefault();
-        }
-
-        public List<Guid> getMovieImagesNamesByPersonId(int id)
-        {
-            IQueryable<image_person> temp = db.image_person.Where(m => m.perosn_id.Equals(id));
-
-            List<Guid> tempList = new List<Guid>();
-
-            foreach (image_person a in temp)
-            {
-                tempList.Add(a.id);
-            }
-
-            return tempList;
-        }
     }
 }
