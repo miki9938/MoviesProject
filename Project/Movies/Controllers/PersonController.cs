@@ -17,11 +17,13 @@ namespace Movies.Controllers
 
         private PersonRepository dbPerson;
         private MoviesRepository dbMovie;
+        private UsersRepository dbUser;
 
         public PersonController()
         {
             dbPerson = new PersonRepository();
             dbMovie = new MoviesRepository();
+            dbUser = new UsersRepository();
         }
 
 
@@ -122,6 +124,28 @@ namespace Movies.Controllers
             {
                 newImage.image.Save("\\images\\" + newId.ToString(), System.Drawing.Imaging.ImageFormat.Png);
             }
+
+            return View();
+        }
+
+        [MyAuthorize]
+        public ActionResult addComment()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [MyAuthorize]
+        public ActionResult addComment(AddCommentToPersonModel newComment)
+        {
+            comment temp = new comment();
+
+            temp.date = DateTime.Now;
+            temp.movie_id = newComment.personId;
+            temp.user_id = newComment.userId;
+            temp.text = newComment.comment;
+
+            dbUser.addCommentToMovie(temp);
 
             return View();
         }
