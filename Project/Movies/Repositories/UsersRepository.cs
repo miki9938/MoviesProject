@@ -57,7 +57,7 @@ namespace Movies.Repositories
 
             catch
             {
-                db.users_vote.Remove(temp);
+               // db.users_vote.Remove(temp);
 
                 return false;
             }            
@@ -95,6 +95,11 @@ namespace Movies.Repositories
 
                 return false;
             }
+        }
+
+        public int getIdbyName(string name)
+        {
+            return db.users.Where(u => u.login.Equals(name)).Select(u => u.id).FirstOrDefault();
         }
     }
 }

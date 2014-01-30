@@ -17,14 +17,14 @@
     {  
         <label for="browse">Upload image</label> <br/>
         <input type="file" name="file" id="file" style="display: none" /> 
-        <input type="button" name="browse" value="browse" onclick="he()" class="input-submit"/>
+        <input type="button" name="browse" value="browse" onclick="bbc()" class="input-submit"/>
         @Html.EditorForModel()<br/>
         <input type="submit" value="upload" class="input-submit" /> 
     }
 
 
     <script type="text/javascript"> 
-        function he() {
+        function bbc() {
             $("#file").click();
         }
     </script>

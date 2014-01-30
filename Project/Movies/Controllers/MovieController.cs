@@ -2,6 +2,7 @@
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Movies.Repositories;
 using Movies.Models;
 using Movies.Mappings;
@@ -54,6 +55,8 @@ namespace Movies.Controllers
             ViewBag.Similars = dbMovie.getSimilarMoviesByMovieId(id); 
             //Url do plakatu
             ViewBag.Image = dbMovie.getImagebyMovieId(id);
+            //id filmu
+            ViewBag.MovieId = id;
             
             return View();
         }
@@ -101,12 +104,19 @@ namespace Movies.Controllers
             return View();
         }
 
-        public ActionResult addSimilarMovie()
+        [MyAuthorize]
+        public ActionResult addSimilarMovie(int firstMovieId)
         {
+            ViewBag.firstMovieId = firstMovieId;
+            HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+
+            ViewBag.userId = dbUser.getIdbyName(ticket.Name);
             return View();        
         }
 
         [HttpPost]
+        [MyAuthorize]
         public ActionResult addSimilarMovie(AddSimilarMovieModel newSimilar)
         {
             movie_relation temp = new movie_relation();
@@ -127,7 +137,7 @@ namespace Movies.Controllers
 
             dbUser.addVote(tempVote);
 
-            return View();
+            return RedirectToAction("Show", "Movie", new{ id = newSimilar.firstMovieId});
         }
 
         [HttpGet]
