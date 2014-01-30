@@ -96,6 +96,8 @@ function setPage() {
     $(".Footer").css({ "top": FooterTop, "height": FooterHeight });
     $("#Copyright").css({ "font-size": CopyrightSize });
 
+    $(".centerMe").css({ "left": centerWidth(".centerMe"), "top": centerHeight(".centerMe") });
+
 }
 
 function centerWidth(id) {
@@ -229,10 +231,11 @@ function searchMovie(subtitle) {
         success: function (data) {
             $(".SearchResult").remove();
             for (var i = 0; i < data.length; i++) {
-                $("#moviesResult").append("<div class='SearchResult'><a href=/Movie/" + data[i].id + " class='oneResult'><img class='searchPoster' src='/Content/images/defaultPoster.png'><p class='oneResultP'>" + data[i].title+ "</p></a></div>");
-                //"<div class='searchResult'><br><p>" + data[i].title + " - " + data[i].releaseDate + "</p></div>"
-                //"<div class='searchResult'><br><a href=/Movie/Index/"+data[i].id+"><p>" + data[i].title + " - " + data[i].releaseDate + "</p><a/></div>"
-                
+
+                if (data[i].pictureId == "") {
+                    data[i].pictureId = "defaultPoster";
+                }
+                $("#moviesResult").append("<div class='SearchResult'><a href=/Movie/Show/" + data[i].id + " class='oneResult'><img class='searchPoster' src='/Content/images/uploaded" + data[i].pictureId + ".png'><p class='oneResultP'>" + data[i].title + "</p></a></div>");
             }
         },
         error: function (err) {
@@ -327,7 +330,6 @@ $(document).ready(function () {
     searchOnBar();
     checkWritting();
 
-    console.log("mmS " + $(".mainMovie").height());
 
     $(window).resize(function () {
         setPage();

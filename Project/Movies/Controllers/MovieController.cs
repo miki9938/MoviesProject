@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using Movies.Repositories;
@@ -33,7 +34,7 @@ namespace Movies.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [AllowAnonymous]
-        public ActionResult Movies(int id)
+        public ActionResult Show(int id)
         {
             movie temp = dbMovie.getMovieById(id);
             
@@ -139,28 +140,8 @@ namespace Movies.Controllers
         }
 
         [MyAuthorize(Roles = "Admin")]
-        public ActionResult addImage()
+        public ActionResult AddImage()
         {
-            return View();
-        }
-
-        [HttpPost]
-        [MyAuthorize(Roles = "Admin")]
-        public ActionResult addImage(AddImageToMovieModel newImage)
-        {
-            image_movie temp = new image_movie();
-            Guid newId = Guid.NewGuid();
-
-            temp.id = newId;
-            temp.movie_id = newImage.movieId;
-            temp.source = newImage.source;
-            temp.is_poster = newImage.isPoster;
-
-            if(dbMovie.addImageToMovie(temp).Equals(true))
-            {
-                newImage.image.Save("~/Content/images/" + newId.ToString(), System.Drawing.Imaging.ImageFormat.Png);
-            }
-
             return View();
         }
 
@@ -184,6 +165,30 @@ namespace Movies.Controllers
             dbUser.addCommentToMovie(temp);
 
             return View();
+        }
+
+        [HttpPost]
+        [MyAuthorize]
+        public ActionResult UploadImage(AddImageToMovieModel imagePack)
+        {
+            if (imagePack != null)
+            {
+                image_movie temp = new image_movie();
+                Guid newId = Guid.NewGuid();
+
+                temp.id = newId;
+                temp.movie_id = imagePack.movieId;
+                temp.source = imagePack.source;
+                temp.is_poster = imagePack.isPoster;
+
+                if (dbMovie.addImageToMovie(temp).Equals(true))
+                {
+                    string path = System.IO.Path.Combine(Server.MapPath("~/Content/images/uploaded"),
+                        temp.id.ToString() + ".png");
+                    imagePack.file.SaveAs(path);
+                }
+            }
+            return RedirectToAction("AddImage", "Movie");
         }
     }
 }

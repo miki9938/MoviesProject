@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Add Image";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Background"] = "background1";
+}
+
+@model Movies.Models.AddImageToMovieModel
+
+
+<div class="centerMe">
+    
+    <h1>@ViewBag.Title</h1>
+    <br/><br/>
+
+    @using (Html.BeginForm("UploadImage", "Movie", FormMethod.Post,
+        new { enctype = "multipart/form-data" }))
+    {  
+        <label for="browse">Upload image</label> <br/>
+        <input type="file" name="file" id="file" style="display: none" /> 
+        <input type="button" name="browse" value="browse" onclick="he()" class="input-submit"/>
+        @Html.EditorForModel()<br/>
+        <input type="submit" value="upload" class="input-submit" /> 
+    }
+
+
+    <script type="text/javascript"> 
+        function he() {
+            $("#file").click();
+        }
+    </script>
+    
+</div>
