@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MoviesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MoviesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="MoviesModelStoreContainer">
           <EntitySet Name="cast" EntityType="MoviesModel.Store.cast" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="comment" EntityType="MoviesModel.Store.comment" store:Type="Tables" Schema="dbo" />
@@ -124,6 +124,7 @@
           <Property Name="title" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="release_date" Type="date" Nullable="false" />
           <Property Name="description" Type="text" />
+          <Property Name="trailer_link" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="movie_relation">
           <Key>
@@ -133,6 +134,7 @@
           <Property Name="movie_1_id" Type="int" Nullable="false" />
           <Property Name="movie_2_id" Type="int" Nullable="false" />
           <Property Name="auto_created" Type="bit" Nullable="false" />
+          <Property Name="vote_count" Type="int" />
         </EntityType>
         <EntityType Name="person">
           <Key>
@@ -319,8 +321,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+        <Function Name="get_score" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="relation_id" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MoviesModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -458,6 +462,7 @@
           <NavigationProperty Name="image_movie" Relationship="MoviesModel.FK_image_movie_movie" FromRole="movie" ToRole="image_movie" />
           <NavigationProperty Name="movie_relation" Relationship="MoviesModel.FK_movie_relation_movie" FromRole="movie" ToRole="movie_relation" />
           <NavigationProperty Name="movie_relation1" Relationship="MoviesModel.FK_movie_relation_movie1" FromRole="movie" ToRole="movie_relation" />
+          <Property Type="String" Name="trailer_link" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="movie_relation">
           <Key>
@@ -470,6 +475,7 @@
           <NavigationProperty Name="movie" Relationship="MoviesModel.FK_movie_relation_movie" FromRole="movie_relation" ToRole="movie" />
           <NavigationProperty Name="movie1" Relationship="MoviesModel.FK_movie_relation_movie1" FromRole="movie_relation" ToRole="movie" />
           <NavigationProperty Name="users_vote" Relationship="MoviesModel.FK_users_vote_movie_relation" FromRole="movie_relation" ToRole="users_vote" />
+          <Property Type="Int32" Name="vote_count" />
         </EntityType>
         <EntityType Name="person">
           <Key>
@@ -725,6 +731,7 @@
           <EntitySetMapping Name="movies">
             <EntityTypeMapping TypeName="MoviesModel.movie">
               <MappingFragment StoreEntitySet="movie">
+                <ScalarProperty Name="trailer_link" ColumnName="trailer_link" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="release_date" ColumnName="release_date" />
@@ -735,6 +742,7 @@
           <EntitySetMapping Name="movie_relation">
             <EntityTypeMapping TypeName="MoviesModel.movie_relation">
               <MappingFragment StoreEntitySet="movie_relation">
+                <ScalarProperty Name="vote_count" ColumnName="vote_count" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="movie_1_id" ColumnName="movie_1_id" />
                 <ScalarProperty Name="movie_2_id" ColumnName="movie_2_id" />

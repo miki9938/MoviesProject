@@ -232,10 +232,10 @@ function searchMovie(subtitle) {
             $(".SearchResult").remove();
             for (var i = 0; i < data.length; i++) {
 
-                if (data[i].pictureId == "") {
+                if (data[i].pictureId == "00000000-0000-0000-0000-000000000000") {
                     data[i].pictureId = "defaultPoster";
                 }
-                $("#moviesResult").append("<div class='SearchResult'><a href=/Movie/Show/" + data[i].id + " class='oneResult'><img class='searchPoster' src='/Content/images/uploaded" + data[i].pictureId + ".png'><p class='oneResultP'>" + data[i].title + "</p></a></div>");
+                $("#moviesResult").append("<div class='SearchResult'><a href=/Movie/Show/" + data[i].id + " class='oneResult'><img class='searchPoster' src='/Content/images/uploaded/" + data[i].pictureId + ".png'><p class='oneResultP'>" + data[i].title + "</p></a></div>");
             }
         },
         error: function (err) {

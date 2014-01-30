@@ -13,7 +13,7 @@
         <p  class="white">Release date (USA): @ViewBag.Date.ToString("dd MMMM yyyy")</p><br/><br/>
         <ul class="row">
             <li class="col">
-                <img class="searchPoster" src='@Url.Content("~/Content/images/defaultPoster.png")'/>
+                <img class="searchPoster" src='@Url.Content("~/Content/images/uploaded/"+@ViewBag.Image+".png")'/>
                 <br/>
             </li>
 
@@ -51,14 +51,15 @@
             </li>
   
             <li class="col">
+                <br/>
                 <p class="subtitle">Plot</p><br/>
-                <p class="white">@ViewBag.Plot</p><br/><br/>
+                <p class="black">@ViewBag.Plot</p><br/><br/>
             </li>
         </ul> 
 
     </div>
 
-    <div class="similarMovie">
+   @* <div class="similarMovie">
         <p class="mainTitle">Similar movies</p><br/>
 
         @{
@@ -70,6 +71,6 @@
             }
         }
 
-    </div>
+    </div>*@
 
 </div>

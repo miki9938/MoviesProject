@@ -66,7 +66,7 @@ namespace Movies.Repositories
                             id = x.id,
                             title = x.title,
                             releaseDate = x.release_date.Year,
-                            pictureId = db.image_movie.Where(r => r.movie_id.Equals(x.id)).Select(r => r.id.ToString()).FirstOrDefault()
+                            pictureId = db.image_movie.Where(r => r.movie_id.Equals(x.id)).Select(r => r.id).FirstOrDefault()
                         });
         }
 
@@ -286,9 +286,9 @@ namespace Movies.Repositories
             }         
         }
 
-        public image_movie getImagebyMovieId(int id)
+        public string getImagebyMovieId(int id)
         {
-            return db.image_movie.Where(r => r.movie_id.Equals(id)).FirstOrDefault();
+            return db.image_movie.Where(r => r.movie_id.Equals(id)).Select(r => r.id).FirstOrDefault().ToString();
         }
 
         public Guid getPosterNameByMovieId(int id)
