@@ -1,0 +1,18 @@
+﻿@using Movies.Security
+@{
+    ViewBag.Title = "AdminPanel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+}
+    @if (ticket.UserData == "Admin")
+    {
+
+
+        <br/><br/><br/><br/><br/><br/>
+        <h2>AdminPanel</h2>
+
+
+    }

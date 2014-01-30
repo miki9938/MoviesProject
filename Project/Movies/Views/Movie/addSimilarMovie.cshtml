@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "addSimilarMovie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Background"] = "background1";
+}
+@model Movies.Models.AddSimilarMovieModel
+
+<div class="centerMe">
+    <h1>Add new similar movie to </h1>
+    
+    <br/><br/>
+    user id - @ViewBag.userId -
+    <br/>
+    first movie id - @ViewBag.firstMovieId -
+    
+    @using (Html.BeginForm("addSimilarMovie", "Movie", FormMethod.Post))
+    {        
+        
+        
+        <input name="userId" id="userId" type="hidden" value="@ViewBag.userId">
+        
+         @(Html.HiddenFor(m => m.firstMovieId));
+         @(Html.EditorFor(m => m.secondMovieTitle));
+
+        <input type="submit" value="Add" class="input-submit" /> 
+    }
+
+</div>

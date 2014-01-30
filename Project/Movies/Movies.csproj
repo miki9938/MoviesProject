@@ -382,6 +382,8 @@
     <Content Include="Views\Home\Terms.cshtml" />
     <Content Include="Views\Home\Advertising.cshtml" />
     <Content Include="Views\Movie\AddImage.cshtml" />
+    <Content Include="Views\Movie\addSimilarMovie.cshtml" />
+    <Content Include="Views\Home\AdminPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

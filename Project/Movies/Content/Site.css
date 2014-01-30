@@ -36,6 +36,7 @@ p{
 	//overflow-x: hidden;*/
 	background-image:url('../Content/images/background.jpg');
 	min-width: 840px;
+    max-height: 770px;
 }
 
 .background2 {
@@ -547,12 +548,20 @@ li.mainMovie {
 
 }
 
-.similarMovie {
+.mainSimTitle {
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 30px;
+    color: #000000;
+}
+
+.sim {
     clear: both;
     width: 800px;
     overflow: hidden;
-    position: absolute;
+    position: relative;
     top: 400px;
+    left: 70px;
 }
 
 .white {
@@ -597,3 +606,4 @@ li.mainMovie {
 .centerMe {
     position: absolute;
 }
+
