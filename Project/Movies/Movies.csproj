@@ -241,9 +241,12 @@
     <Content Include="Content\images\defaultPoster.png" />
     <Content Include="Content\images\background.jpg" />
     <Content Include="Content\images\grot.png" />
+    <Content Include="Content\images\uploaded\defaultPoster.png" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery-2.1.0.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.js" />
     <Content Include="Scripts\moviesScript.js" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\images\similarToBlue.png" />
@@ -373,11 +376,12 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\User\Registration.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
-    <Content Include="Views\Movie\Movies.cshtml" />
+    <Content Include="Views\Movie\Show.cshtml" />
     <Content Include="Views\Home\Privacy.cshtml" />
     <Content Include="Views\Home\Help.cshtml" />
     <Content Include="Views\Home\Terms.cshtml" />
     <Content Include="Views\Home\Advertising.cshtml" />
+    <Content Include="Views\Movie\AddImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

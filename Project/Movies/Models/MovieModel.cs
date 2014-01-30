@@ -4,6 +4,7 @@ using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.Drawing;
+using System.Web;
 
 namespace Movies.Models
 {
@@ -56,15 +57,18 @@ namespace Movies.Models
     public class AddImageToMovieModel
     {
         [Required]
+        [Display(Name = "Movie id")]
         public int movieId { get; set; }
 
         [Required]
-        public Image image { get; set; }
+        public HttpPostedFileBase file { get; set; }
         
-        public bool isPoster { get; set; }
-        
-        [DefaultValue("")]
+        [Display(Name = "Source of image")]
         public string source { get; set; }
+
+        [Required]
+        [Display(Name = "Main poster image")]
+        public bool isPoster { get; set; }
     }
 
     public class AddCommentToMovieModel

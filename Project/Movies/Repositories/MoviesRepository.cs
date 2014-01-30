@@ -57,15 +57,16 @@ namespace Movies.Repositories
 
         public IQueryable<GlassSearchModel> getGlassMovieBySubstring(string substring)
         {
-              return
-                    db.movies
+            return
+                db.movies
                         .Where(x => x.title.Contains(substring))
                         .Take(10)
                         .Select(x => new GlassSearchModel
                         {
                             id = x.id,
                             title = x.title,
-                            releaseDate = x.release_date.Year
+                            releaseDate = x.release_date.Year,
+                            pictureId = db.image_movie.Where(r => r.movie_id.Equals(x.id)).Select(r => r.id.ToString()).FirstOrDefault()
                         });
         }
 

@@ -27,7 +27,6 @@
     <div id="MainBar">
         <ul id="MainBarList">
             <li><span class="MainBarListLink" id="SearchBarLink">search</span></li>
-            <li>@Html.ActionLink("add movie", "", "", null, new { @class = "MainBarListLink" })</li>
             @{
                 HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
                 if (authCookie == null)
@@ -41,7 +40,8 @@
                     string name = ticket.Name;
                     if (ticket.UserData == "Admin")
                     {
-                        <li><p class="MainBarListAdmin">@Html.Raw(name.ToUpper())</p></li>
+                        <li>@Html.ActionLink("add image", "AddImage", "Movie", null, new { @class = "MainBarListLink" })</li>
+                        <li><p class="MainBarListP">@Html.Raw(name.ToUpper()) (A)</p></li>
                         <li>@Html.ActionLink("logout", "LogOut", "User", null, new {@class = "MainBarListLink"})</li>
                     }
                     else
