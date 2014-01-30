@@ -66,7 +66,7 @@ namespace Movies.Repositories
                             id = x.id,
                             title = x.title,
                             releaseDate = x.release_date.Year,
-                            pictureId = db.image_movie.Where(r => r.movie_id.Equals(x.id)).Select(r => r.id.ToString()).FirstOrDefault()
+                            pictureId = db.image_movie.Where(r => r.movie_id.Equals(x.id)).Select(r => r.id).FirstOrDefault()
                         });
         }
 

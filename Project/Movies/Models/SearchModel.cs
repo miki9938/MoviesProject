@@ -13,7 +13,7 @@ namespace Movies.Models
 
         public int? releaseDate { get; set; }
 
-        public string pictureId { get; set; }
+        public Guid? pictureId { get; set; }
     }
 
     

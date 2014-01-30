@@ -27,6 +27,7 @@ namespace Movies.Mappings
         public string title { get; set; }
         public System.DateTime release_date { get; set; }
         public string description { get; set; }
+        public string trailer_link { get; set; }
     
         public virtual ICollection<cast> casts { get; set; }
         public virtual ICollection<comment> comments { get; set; }
