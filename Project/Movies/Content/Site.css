@@ -607,3 +607,16 @@ li.mainMovie {
     position: absolute;
 }
 
+#panel {
+    position: absolute;
+    top: 100px;
+    color: #ffffff;
+    line-height: 1.3em;
+    font-weight: normal;
+    margin: 15px;
+}
+
+.arrowVertical {
+    width: 10px;
+    height: 20px;
+}

@@ -14,8 +14,6 @@ namespace Movies
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-
-
             routes.MapRoute(
                 name: "PersonDisplay",
                 url: "Person/{id}",

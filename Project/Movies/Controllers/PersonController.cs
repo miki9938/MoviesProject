@@ -110,7 +110,7 @@ namespace Movies.Controllers
 
         [HttpPost]
         [MyAuthorize(Roles = "Admin")]
-        public ActionResult addImage(AddImageToPersonModel newImage)
+        public ActionResult addImageToPerson(AddImageToPersonModel newImage)
         {
             image_person temp = new image_person();
             Guid newId = Guid.NewGuid();
@@ -122,10 +122,12 @@ namespace Movies.Controllers
 
             if (dbPerson.addImageToPerson(temp).Equals(true))
             {
-                newImage.image.Save("\\images\\" + newId.ToString(), System.Drawing.Imaging.ImageFormat.Png);
+                string path = System.IO.Path.Combine(Server.MapPath("~/Content/images/uploaded"),
+                    temp.id.ToString() + ".png");
+                newImage.file.SaveAs(path);
             }
 
-            return View();
+            return RedirectToAction("AddImage", "Person");
         }
 
         [MyAuthorize]
@@ -147,6 +149,36 @@ namespace Movies.Controllers
 
             dbUser.addCommentToMovie(temp);
 
+            return View();
+        }
+
+        [HttpPost]
+        [MyAuthorize]
+        public ActionResult UploadImage(AddImageToPersonModel imagePack)
+        {
+            if (imagePack != null)
+            {
+                image_person temp = new image_person();
+                Guid newId = Guid.NewGuid();
+
+                temp.id = newId;
+                temp.perosn_id = imagePack.personId;
+                temp.source = imagePack.source;
+                temp.is_portrait = imagePack.isPortrait;
+
+                if (dbMovie.addImageToPerson(temp).Equals(true))
+                {
+                    string path = System.IO.Path.Combine(Server.MapPath("~/Content/images/uploaded"),
+                        temp.id.ToString() + ".png");
+                    imagePack.file.SaveAs(path);
+                }
+            }
+            return RedirectToAction("AddImageToPerson", "Person");
+        }
+
+        [MyAuthorize(Roles = "Admin")]
+        public ActionResult AddImageToPerson()
+        {
             return View();
         }
     }

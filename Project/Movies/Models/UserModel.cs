@@ -56,4 +56,13 @@ namespace Movies.Models
         [Required]
         public bool vote { get; set; }
     }
+
+    public class basicUserModel
+    {
+        public string login { get; set; }
+
+        public int id { get; set; }
+
+        public bool adminRights { get; set; }
+    }
 }
