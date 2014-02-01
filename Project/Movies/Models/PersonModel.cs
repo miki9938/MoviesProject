@@ -48,15 +48,18 @@ namespace Movies.Models
     public class AddImageToPersonModel
     {
         [Required]
+        [Display(Name = "Person id")]
         public int personId { get; set; }
 
         [Required]
-        public Image image { get; set; }
+        public HttpPostedFileBase file { get; set; }
 
+        [Display(Name = "Main portrait image")]
         public bool isPortrait { get; set; }
 
-        [DefaultValue("")]
+        [Display(Name = "Source of image")]
         public string source { get; set; }
+
     }
 
     public class AddCommentToPersonModel

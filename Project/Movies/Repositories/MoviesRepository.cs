@@ -286,6 +286,23 @@ namespace Movies.Repositories
             }         
         }
 
+        public bool addImageToPerson(image_person temp)
+        {
+            try
+            {
+                db.image_person.Add(temp);
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                db.image_person.Remove(temp);
+
+                return false;
+            }
+        }
+
         public string getImagebyMovieId(int id)
         {
             return db.image_movie.Where(r => r.movie_id.Equals(id)).Select(r => r.id).FirstOrDefault().ToString();

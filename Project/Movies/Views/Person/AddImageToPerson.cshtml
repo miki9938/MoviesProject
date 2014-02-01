@@ -1,10 +1,9 @@
 ﻿@{
-    ViewBag.Title = "Add Image";
+    ViewBag.Title = "AddImageToPerson";
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Background"] = "background1";
 }
-
-@model Movies.Models.AddImageToMovieModel
+@model Movies.Models.AddImageToPersonModel
 
 
 <div class="centerMe">
@@ -12,10 +11,10 @@
     <h1>@ViewBag.Title</h1>
     <br/><br/>
 
-    @using (Html.BeginForm("UploadImage", "Movie", FormMethod.Post,
+    @using (Html.BeginForm("UploadImage", "Person", FormMethod.Post,
         new { enctype = "multipart/form-data" }))
     {  
-        <label for="browse">Upload image for movie</label> <br/>
+        <label for="browse">Upload image to person</label> <br/>
         <input type="file" name="file" id="file" style="display: none" /> 
         <input type="button" name="browse" value="browse" onclick="bbc()" class="input-submit"/>
         @Html.EditorForModel()<br/>
@@ -27,13 +26,6 @@
         function bbc() {
             $("#file").click();
         }
-
-        function goBack() {
-            window.history.back()
-        }
     </script>
-
-
-<input type="button" value="Back" onclick="goBack()">
     
 </div>

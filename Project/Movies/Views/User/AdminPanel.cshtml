@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "AdminPanel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Background"] = "background1";
+}
+@model Movies.Models.basicUserModel
+
+<h2>AdminPanel</h2>
+
+<div id="panel">
+    
+    <p class="mainTitle">Movies settings</p><br/><br/>
+    <ul>
+        <li><p>Tip: to add new movie or person to database use Similar.to Extender</p></li>
+        <br/><br/>
+        <li><a href='@Url.Action("AddImage", "Movie")' class = "MainBarListLink white">add image to movie <img src='@Url.Content("~/Content/images/arrow-right.png")' class="arrowVertical" /></a>
+
+        </li><br/>
+        <li><a href='@Url.Action("AddImageToPerson", "Person")' class = "MainBarListLink white">add image to person <img src='@Url.Content("~/Content/images/arrow-right.png")' class="arrowVertical" /></a>
+           
+        </li>
+    </ul>
+    <br/><br/><br/>
+    
+    <p class="mainTitle">Users settings</p><br/><br/>
+    <ul>
+
+
+        <li><p>change admin privilages or delete user account</p>
+        @using (Html.BeginForm())
+        {
+            @Html.LabelFor(u => u.id)<br/>
+            @Html.TextBoxFor(u => u.id)<br/>
+            <input type="submit" name="action:deleteUser" value="delete" class="input-submit"/><br/>
+            @Html.LabelFor(u => u.login)<br/>
+            @Html.TextBoxFor(u => u.login)<br/>
+            @Html.LabelFor(u => u.adminRights)<br/>
+            @Html.CheckBoxFor(u => u.adminRights)<br/>
+
+            <input type="submit" name="action:addAdmin" value="change" class="input-submit" />
+
+        }
+        </li><br/>
+    </ul>
+    <br/><br/><br/><br/>
+
+
+</div>

@@ -4,18 +4,47 @@
     <meta charset="utf-8" />
     <title>@ViewBag.Title - SIMILAR.to</title>
     @*projekt: grupa 14 *@
-    @*<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />*@
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />d
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Scripts/moviesScript.js")
+    @{
+        @Styles.Render("~/Content/css");
+        @Scripts.Render("~/bundles/jquery");
+        @Scripts.Render("~/Scripts/moviesScript.js");
+        HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+    }
 </head>
 <body class='@(ViewData["Background"] ?? "")'>
+  @{
+            if (authCookie != null)
+            {
+                FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+                if (ticket.UserData == "Admin")
+                {  
+                    <div id="MainBarName">
+                        <a href='@Url.Action("Index", "Home")'>     
+                            <img src='@Url.Content("~/Content/images/similarToPink.png")' class="TransparentName" />
+                        </a>
+                    </div>
 
-    <div id="MainBarName">
-        <a href='@Url.Action("Index", "Home")'>
-            <img src='@Url.Content("~/Content/images/similarToGreen.png")' class="TransparentName" /></a>
-    </div>
+                }
+                else
+                {
+                    <div id="MainBarName">
+                        <a href='@Url.Action("Index", "Home")'>
+                            <img src='@Url.Content("~/Content/images/similarToGreen.png")' class="TransparentName" />
+                        </a>
+                    </div>
+                }
+             }
+             else
+             {
+                 <div id="MainBarName">
+                     <a href='@Url.Action("Index", "Home")'>
+                         <img src='@Url.Content("~/Content/images/similarToGreen.png")' class="TransparentName" />
+                     </a>
+                 </div>
+             }
+    }
 
     <div id="body">
         @RenderSection("featured", required: false)
@@ -28,7 +57,6 @@
         <ul id="MainBarList">
             <li><span class="MainBarListLink" id="SearchBarLink">search</span></li>
             @{
-                HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
                 if (authCookie == null)
                 {
                     <li>@Html.ActionLink("sign in", "LogIn", "User", null, new { @class = "MainBarListLink" })</li>
@@ -37,16 +65,18 @@
                 else
                 {
                     FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
-                    string name = ticket.Name;
                     if (ticket.UserData == "Admin")
                     {
-                        <li>@Html.ActionLink("add image", "AddImage", "Movie", null, new { @class = "MainBarListLink" })</li>
-                        <li><p class="MainBarListP">@Html.Raw(name.ToUpper()) (A)</p></li>
+                        <li>@Html.ActionLink("configuration", "AdminPanel", "User", null, new { @class = "MainBarListLink" })</li>
+                        <li><p class="MainBarListP">@Html.Raw(ticket.Name.ToUpper()) (A)</p></li>
                         <li>@Html.ActionLink("logout", "LogOut", "User", null, new {@class = "MainBarListLink"})</li>
+                        <script type="text/javascript">
+                            $("#MainBar").css({ "background-color": "#ee1c47" });
+                        </script>
                     }
                     else
                     {
-                        <li><p class="MainBarListP">@Html.Raw(name.ToUpper())</p></li>
+                        <li><p class="MainBarListP">@Html.Raw(ticket.Name.ToUpper())</p></li>
                         <li>@Html.ActionLink("logout", "LogOut", "User", null, new {@class = "MainBarListLink"})</li>
                     }
                 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 using Movies.Mappings;
@@ -100,6 +101,37 @@ namespace Movies.Repositories
         public int getIdbyName(string name)
         {
             return db.users.Where(u => u.login.Equals(name)).Select(u => u.id).FirstOrDefault();
+        }
+
+        public bool addAdminRights(string login, bool status)
+        {
+            try
+            {
+                user tmp = db.users.Where(u => u.login.Equals(login)).FirstOrDefault();
+                tmp.admin = status;
+                db.SaveChanges();
+                return true;
+            }
+
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool deleteUserbyId(int id)
+        {
+            try
+            {
+                user tmp = db.users.Where(u => u.id.Equals(id)).FirstOrDefault();
+                db.users.Remove(tmp);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

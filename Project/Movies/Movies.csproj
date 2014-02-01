@@ -233,6 +233,7 @@
     <Compile Include="Security\MyAuthorizeAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\arrow-right.png" />
     <Content Include="Content\images\arrow.png" />
     <Content Include="Content\images\background2.jpg" />
     <Content Include="Content\images\cameraRoll-footer.png" />
@@ -242,6 +243,7 @@
     <Content Include="Content\images\background.jpg" />
     <Content Include="Content\images\grot.png" />
     <Content Include="Content\images\uploaded\defaultPoster.png" />
+    <Content Include="favicon.ico" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Content\Site.css" />
@@ -308,7 +310,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <EntityDeploy Include="Mappings\MoviesModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -368,7 +369,6 @@
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
@@ -384,6 +384,8 @@
     <Content Include="Views\Movie\AddImage.cshtml" />
     <Content Include="Views\Movie\addSimilarMovie.cshtml" />
     <Content Include="Views\Home\AdminPanel.cshtml" />
+    <Content Include="Views\User\AdminPanel.cshtml" />
+    <Content Include="Views\Person\AddImageToPerson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
