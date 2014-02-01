@@ -52,7 +52,7 @@ namespace Movies.Controllers
             ///Actorzy, typ List<person>
             ViewBag.Actors = dbMovie.getActorsByMovieId(id);
             ///Podobne filmy, typ List<movies>
-            ViewBag.Similars = dbMovie.getSimilarMoviesByMovieId(id); 
+            ViewBag.Similars = dbMovie.getSimilarMoviesById(id); 
             //Url do plakatu
             ViewBag.Image = dbMovie.getImagebyMovieId(id);
             //id filmu

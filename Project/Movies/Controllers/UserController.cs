@@ -10,6 +10,7 @@ using System.Web.Helpers;
 using Movies.Models;
 using System.Web;
 using Movies.Security;
+using Recaptcha;
 
 namespace Movies.Controllers
 {
@@ -77,10 +78,16 @@ namespace Movies.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registration(RegistrationUserModel temp)
+        [RecaptchaControlMvc.CaptchaValidator]
+        public ActionResult Registration(RegistrationUserModel temp, bool captchaValid, string captchaErrorMessage)
         {
             if (ModelState.IsValid)
             {
+                if (!captchaValid)
+                {
+                    ModelState.AddModelError("recaptcha", captchaErrorMessage);
+                    return View(temp);
+                }
                 user newUser = new user();
                 newUser.login = temp.login;
                 newUser.password =  Crypto.HashPassword(temp.password);

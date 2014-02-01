@@ -21,8 +21,10 @@
             @Html.ValidationSummary(true)
             @Html.EditorForModel()
 
+
             <br /> <input type="submit" value="Log in" class="input-submit" />
         }
+
         <br/> <p>Don't have an account yet? @Html.ActionLink("register now", "Registration", "User", null, new { @class = "formFieldsLink" })</p>
     </div>
     
