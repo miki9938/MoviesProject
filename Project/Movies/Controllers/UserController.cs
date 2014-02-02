@@ -10,6 +10,7 @@ using System.Web.Helpers;
 using Movies.Models;
 using System.Web;
 using Movies.Security;
+using Recaptcha;
 
 namespace Movies.Controllers
 {
@@ -77,10 +78,16 @@ namespace Movies.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registration(RegistrationUserModel temp)
+        [RecaptchaControlMvc.CaptchaValidator]
+        public ActionResult Registration(RegistrationUserModel temp, bool captchaValid, string captchaErrorMessage)
         {
             if (ModelState.IsValid)
             {
+                if (!captchaValid)
+                {
+                    ModelState.AddModelError("recaptcha", captchaErrorMessage);
+                    return View(temp);
+                }
                 user newUser = new user();
                 newUser.login = temp.login;
                 newUser.password =  Crypto.HashPassword(temp.password);
@@ -144,6 +151,7 @@ namespace Movies.Controllers
         }
 
         [HttpPost]
+        [MyAuthorize(Roles = "Admin")]
         [MultipleButton(Name = "action", Argument = "addAdmin")]
         public ActionResult addAdmin(basicUserModel userModel)
         {
@@ -153,10 +161,21 @@ namespace Movies.Controllers
         }
 
         [HttpPost]
+        [MyAuthorize(Roles = "Admin")]
         [MultipleButton(Name = "action", Argument = "deleteUser")]
         public ActionResult deleteUser(basicUserModel userModel)
         {
             dbUser.deleteUserbyId(userModel.id);
+
+            return RedirectToAction("AdminPanel", "User");
+        }
+
+        [HttpPost]
+        [MyAuthorize(Roles = "Admin")]
+        [UserController.MultipleButtonAttribute(Name = "action", Argument = "deleteComment")]
+        public ActionResult deleteComment(basicUserModel bum)
+        {
+            dbMovie.deleteCommentById(bum.id);
 
             return RedirectToAction("AdminPanel", "User");
         }

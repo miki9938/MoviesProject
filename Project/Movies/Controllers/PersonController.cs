@@ -147,7 +147,7 @@ namespace Movies.Controllers
             temp.user_id = newComment.userId;
             temp.text = newComment.comment;
 
-            dbUser.addCommentToMovie(temp);
+            dbMovie.addCommentToMovie(temp);
 
             return View();
         }

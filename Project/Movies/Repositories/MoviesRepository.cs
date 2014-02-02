@@ -148,7 +148,7 @@ namespace Movies.Repositories
             }
         }
 
-        public List<movie> getSimilarMoviesByMovieId(int id)
+        /*public List<movie> getSimilarMoviesByMovieId(int id)
         {
             IQueryable<movie_relation> temp = from a in db.movie_relation
                                               where
@@ -166,6 +166,53 @@ namespace Movies.Repositories
             }
 
             return movieList;       
+        }*/
+
+        public List<ViewSimilarMovieModel> getSimilarMoviesById(int id)
+        {
+            IQueryable<movie_relation> temp = from a in db.movie_relation
+                                              where
+                                                  a.movie_1_id == id || a.movie_2_id == id
+                                              select a;
+
+            List<ViewSimilarMovieModel> movieList = new List<ViewSimilarMovieModel>();
+            
+
+            foreach (movie_relation tempRel in temp)
+            {
+                if (tempRel.movie_1_id.Equals(id))
+                {
+                    movie temp2 = getMovieById(tempRel.movie_2_id);
+                    ViewSimilarMovieModel t3 = new ViewSimilarMovieModel();
+
+                    t3.id = temp2.id;
+                    t3.description = temp2.description;
+                    t3.releaseDate = temp2.release_date;
+                    t3.posterId = getImagebyMovieId(t3.id);
+                    t3.title = temp2.title;
+                    t3.trailerLink = temp2.trailer_link;
+
+                    movieList.Add(t3);
+                }
+
+
+                else
+                {
+                    movie temp2 = getMovieById(tempRel.movie_1_id);
+                    ViewSimilarMovieModel t3 = new ViewSimilarMovieModel();
+
+                    t3.id = temp2.id;
+                    t3.description = temp2.description;
+                    t3.releaseDate = temp2.release_date;
+                    t3.posterId = getImagebyMovieId(t3.id);
+                    t3.title = temp2.title;
+                    t3.trailerLink = temp2.trailer_link;
+
+                    movieList.Add(t3);
+                }
+            }
+
+            return movieList;
         }
 
         public bool AddCastToMovie(int personId, int role, int movieId)
@@ -332,6 +379,54 @@ namespace Movies.Repositories
             }
 
             return tempList;
+        }
+
+        public bool addCommentToMovie(comment temp)
+        {
+            try
+            {
+                db.comments.Add(temp);
+                db.SaveChanges();
+                return true;
+            }
+
+            catch
+            {
+                db.comments.Remove(temp);
+
+                return false;
+            }
+        }
+
+        public List<comment> getCommentsByMovieId(int movieId)
+        {
+            List<comment> commentsList = new List<comment>();
+
+            foreach (comment comment in db.comments.Where(c => c.movie_id == movieId))
+            {
+                commentsList.Add(comment);
+            }
+            return commentsList;
+        }
+
+        public IQueryable<comment> getCommentsById(int id)
+        {
+            return db.comments.Where(c => c.id.Equals(id));
+        }
+
+        public bool deleteCommentById(int id)
+        {
+            try
+            {
+                comment tmp = db.comments.Where(u => u.id.Equals(id)).FirstOrDefault();
+                db.comments.Remove(tmp);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

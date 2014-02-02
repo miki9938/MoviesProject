@@ -52,12 +52,14 @@ namespace Movies.Controllers
             ///Actorzy, typ List<person>
             ViewBag.Actors = dbMovie.getActorsByMovieId(id);
             ///Podobne filmy, typ List<movies>
-            ViewBag.Similars = dbMovie.getSimilarMoviesByMovieId(id); 
-            //Url do plakatu
+            ViewBag.Similars = dbMovie.getSimilarMoviesById(id); 
+            ///Id plakatu
             ViewBag.Image = dbMovie.getImagebyMovieId(id);
-            //id filmu
+            ///Id filmu
             ViewBag.MovieId = id;
-            
+            ///Komentarze
+            ViewBag.Comments = dbMovie.getCommentsByMovieId(id);
+
             return View();
         }
 
@@ -163,18 +165,19 @@ namespace Movies.Controllers
 
         [HttpPost]
         [MyAuthorize]
+        [UserController.MultipleButtonAttribute(Name = "action", Argument = "addComment")]
         public ActionResult addComment(AddCommentToMovieModel newComment)
         {
             comment temp = new comment();
 
             temp.date = DateTime.Now;
             temp.movie_id = newComment.movieId;
-            temp.user_id = newComment.userId;
+            temp.user_id = dbUser.getIdbyName(newComment.userName);
             temp.text = newComment.comment;
 
-            dbUser.addCommentToMovie(temp);
+            dbMovie.addCommentToMovie(temp);
 
-            return View();
+            return RedirectToAction("Show", "Movie", new{ id =1 });
         }
 
         [HttpPost]
@@ -200,5 +203,7 @@ namespace Movies.Controllers
             }
             return RedirectToAction("AddImage", "Movie");
         }
+
+
     }
 }

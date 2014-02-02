@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.Drawing;
 using System.Web;
+using Movies.Mappings;
 
 namespace Movies.Models
 {
@@ -77,9 +78,25 @@ namespace Movies.Models
         public int movieId { get; set; }
 
         [Required]
-        public int userId { get; set; }
+        public string userName { get; set; }
 
         [Required]
+        [Display(Name = "Your comment")]
         public string comment { get; set; }
+    }
+
+    public class ViewSimilarMovieModel
+    {
+        public int id { get; set; }
+
+        public string title { get; set; }
+
+        public System.DateTime releaseDate { get; set; }
+
+        public string description { get; set; }
+
+        public string trailerLink { get; set; }
+
+        public string posterId { get; set; }
     }
 }

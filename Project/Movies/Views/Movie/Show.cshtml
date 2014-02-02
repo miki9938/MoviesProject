@@ -4,6 +4,7 @@
     ViewData["Background"] = "background2";
     HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
 }
+@model Movies.Models.AddCommentToMovieModel
 
 <div class="wrapper">
 
@@ -17,8 +18,8 @@
         <ul class="row">
             <li class="col">
                 @if (@ViewBag.Image == "00000000-0000-0000-0000-000000000000")
-                    {
-                   ViewBag.Image = "defaultPoster";
+                {
+                    ViewBag.Image = "defaultPoster";
                 }
                 <img class="searchPoster" src='@Url.Content("~/Content/images/uploaded/" + @ViewBag.Image + ".png")'/>
                 <br />
@@ -82,99 +83,101 @@
     <div class="sim" style="left: 0">
         @if (authCookie == null)
         {
-            <p class="white">@Html.ActionLink("You need to sign in to add new similar movie", "LogIn", "User", null, new {@class = "MainBarListLink"}) </p>
+            <p class="white">@Html.ActionLink("You need to sign in to add new similar movie", "LogIn", "User", null, new { @class = "MainBarListLink" }) </p>
         
         }
         else if (authCookie != null)
         {
-            <p class="white">@Html.ActionLink("Add new similar movie", "addSimilarMovie", "Movie", new {firstMovieId = @ViewBag.MovieId}, new {@class = "MainBarListLink"})</p>
+            <p class="white">@Html.ActionLink("Add new similar movie", "addSimilarMovie", "Movie", new { firstMovieId = @ViewBag.MovieId }, new { @class = "MainBarListLink" })</p>
         }
         <br/><br/>
 
     </div>
     
+    <br/><br/>
     <div id="test" class="sim">
         <p class="mainTitle">Similar movies</p>
-        <br/>
+    </div>
+    <div class=" sim lineSeparator"></div>
+
+    <br/><br/><br/>
+
         @{
             foreach (var movie in ViewBag.Similars)
             {
-                <p class="mainSimTitle">@movie.title</p>
-                <br />
-                <p class="black">Release date (USA): @movie.release_date.ToString("dd MMMM yyyy")</p>
-                <br />
-                <br />
-                <ul class="row">
-                    @*<li class="col">
-                        <img class="searchPoster" src='@Url.Content("~/Content/images/uploaded/" + @ViewBag.Image + ".png")'/>
-                        <br />
-                    </li>
+                <div id="sim @movie.id" class="sim">
+                    <ul class="row">
+                            
+                        <li>@Html.ActionLink((string)@movie.title, "Show", "Movie", new { @movie.id }, new { @class = "mainSimTitle" })</li>
                     
-                    <li class="col">
-                        <p class="subtitle">Cast</p>
                         <br />
-                        <ul>
-                            @{
-                                foreach (var person in movie.cast)
-                                {
-                                    <li class="black">@person.name</li>
-                                }
+                        <li class="col"><p class="black">Release date (USA): @movie.releaseDate.ToString("dd MMMM yyyy")</p></li>
+                        <br />
+                        <br />
+                
+                    
+                        <li class="col">
+                            @if (@movie.posterId == "00000000-0000-0000-0000-000000000000")
+                            {
+                                movie.posterId = "defaultPoster";
                             }
-                        </ul>
-                        <br />
-                        <br />
-                    </li>
-
-                    <li class="col">
-                        <p class="subtitle">Directors</p>
-                        <br />
-                        <ul>
-                            @{
-                                foreach (var person in movie.cast)
-                                {
-                                    <li class="black">@person.name</li>
-                                }
-                            }
-                        </ul>
-                        <br />
-                        <br />
-                    </li>
-
-                    <li class="col">
-                        <p class="subtitle">Writers</p>
-                        <br />
-                        <ul>
-                            @{
-                                foreach (var person in movie.cast)
-                                {
-                                    <li class="black">@person.name</li>
-                                }
-                            }
-                        </ul>
-                    </li>
-
-                    <li class="col">
-                        <br />
-                        <p class="subtitle">Plot</p>
-                        <br />
-                        <p class="black">@movie.description</p>
-                        <br />
-                        <br />
-                    </li>*@
-                </ul> 
+                            <img class="searchPoster" src='@Url.Content("~/Content/images/uploaded/" + @movie.posterId + ".png")'/>
+                            <br />
+                        </li>
+                    
+                        <li class="col" style="width: 300px">
+                            <br />
+                            <p class="subtitle" style="color: #000000">Plot</p>
+                            <br />
+                            <p class="black">@movie.description</p>
+                            <br />
+                            <br />
+                        </li>
+                    </ul> 
+                </div>
+            <br/><br/><br/>            
             }
 
         }
 
     </div>
     
-    <div class="sim">
-        <p class="mainTitle">Comments</p>
+<div class="sim">
+    <br/><br/><br/><br/>
+    <p class="mainTitle">Comments</p>
+    <br/><br/>
+    @foreach (var comment in ViewBag.Comments)
+    {
+        <div class="singleComment">
+            <p class="commentInfo">posted by: @comment.user_id on @comment.date.ToString("dd MMM yyyy")</p>
+            <textarea rows="5" class="commentField">@comment.text</textarea>
+            <br/><br/>
+        </div>
+        
+    }
+    @if (authCookie == null)
+    {
+        <p class="black" style="color: #000000;">@Html.ActionLink("You need to sign in to add new comment", "LogIn", "User", null, new { @class = " black" }) </p>
+    }
 
+    else if (authCookie != null)
+    {
+        using (Html.BeginForm())
+        {
+            <br/>
+            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+            @Html.HiddenFor(u => u.movieId, new {Value = @ViewBag.MovieId})
+            @Html.HiddenFor(u => u.userName, new {Value = ticket.Name})
+            @Html.LabelFor(u => u.comment)<br/>
+            @Html.TextAreaFor(u => u.comment, new {@class = "commentField"})<br/>
 
-    </div>
+            <input type="submit" name="action:addComment" value="add comment" class="input-submit" />
+        }
+    }
 
+    <br/><br/><br/><br/><br/><br/><br/><br/>
 </div>
+
     <script type="text/javascript">
         $(document).ready(function() {
             if ($(document).height() < 770) {
