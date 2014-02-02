@@ -99,7 +99,7 @@ namespace Movies.Models
 
         public string posterId { get; set; }
 
-        public float? score { get; set; }
+        public int? score { get; set; }
 
         public int relationId { get; set; }
     }

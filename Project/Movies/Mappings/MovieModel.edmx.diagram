@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a88954bc3ffb453aae3e0269dcaa16d7" Name="Diagram1">
+      <Diagram DiagramId="c6bef60f71b44a1c9be700ae11f42d27" Name="Diagram1">
         <EntityTypeShape EntityType="MoviesModel.cast" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MoviesModel.comment" Width="1.5" PointX="6" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MoviesModel.image_movie" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
