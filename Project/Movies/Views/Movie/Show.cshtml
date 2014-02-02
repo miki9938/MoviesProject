@@ -148,7 +148,7 @@
         }
 
     </div>
-    
+    <br/><br/>
 <div class="sim">
     <br/><br/><br/><br/>
     <p class="mainTitle">Comments</p>
@@ -160,8 +160,8 @@
             <textarea rows="5" class="commentField">@comment.text</textarea>
             <br/><br/>
         </div>
-        
-    }
+    }   
+
     @if (authCookie == null)
     {
         <p class="black" style="color: #000000;">@Html.ActionLink("You need to sign in to add new comment", "LogIn", "User", null, new { @class = " black" }) </p>
