@@ -211,5 +211,54 @@ namespace Movies.Repositories
 
             return tempList;
         }
+
+
+        public bool addCommentToPerson(comment temp)
+        {
+            try
+            {
+                db.comments.Add(temp);
+                db.SaveChanges();
+                return true;
+            }
+
+            catch
+            {
+                db.comments.Remove(temp);
+
+                return false;
+            }
+        }
+
+        public List<comment> getCommentsByPersonId(int personId)
+        {
+            List<comment> commentsList = new List<comment>();
+
+            foreach (comment comment in db.comments.Where(c => c.person_id == personId))
+            {
+                commentsList.Add(comment);
+            }
+            return commentsList;
+        }
+
+        public IQueryable<comment> getCommentsById(int id)
+        {
+            return db.comments.Where(c => c.id.Equals(id));
+        }
+
+        public bool deleteCommentById(int id)
+        {
+            try
+            {
+                comment tmp = db.comments.Where(u => u.id.Equals(id)).FirstOrDefault();
+                db.comments.Remove(tmp);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

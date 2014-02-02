@@ -75,52 +75,88 @@ namespace Movies.Repositories
            return db.casts.Where(a => a.movie_id.Equals(id));
         }
 
-        public List<person> getDirectorsByMovieId(int id)
+        public List<CastModel> getDirectorsByMovieId(int id)
         {
             PersonRepository dbPerson = new PersonRepository();
 
-            List<person> tempList = new List<person>();
+            List<CastModel> tempList = new List<CastModel>();
 
             IQueryable<cast> temp = getCast(id);
 
             foreach(cast c in temp)
             {
                 if (c.role == 1)
-                    tempList.Add(dbPerson.getPersonById(c.person_id));
+                {
+                    person tempMen = dbPerson.getPersonById(c.person_id);
+
+                    CastModel tempModel = new CastModel();
+
+                    tempModel.id = tempMen.id;
+                    tempModel.name = tempMen.name;
+                    tempModel.photo = tempMen.image_person.Where(i => i.is_portrait.Equals(true))
+                                                          .FirstOrDefault()
+                                                          .id;
+
+                    tempList.Add(tempModel);
+                }
             }
 
             return tempList;
         }
 
-        public List<person> getWritersByMovieId(int id)
+        public List<CastModel> getWritersByMovieId(int id)
         {
             PersonRepository dbPerson = new PersonRepository();
 
-            List<person> tempList = new List<person>();
+            List<CastModel> tempList = new List<CastModel>();
 
             IQueryable<cast> temp = getCast(id);
 
             foreach (cast c in temp)
             {
                 if (c.role == 3)
-                    tempList.Add(dbPerson.getPersonById(c.person_id));
+                {
+                    person tempMen = dbPerson.getPersonById(c.person_id);
+
+                    CastModel tempModel = new CastModel();
+
+                    tempModel.id = tempMen.id;
+                    tempModel.name = tempMen.name;
+                    tempModel.photo = tempMen.image_person.Where(i => i.is_portrait.Equals(true))
+                                                          .FirstOrDefault()
+                                                          .id;
+
+                    tempList.Add(tempModel);
+                }
             }
 
             return tempList;
         }
 
-        public List<person> getActorsByMovieId(int id)
+        public List<CastModel> getActorsByMovieId(int id)
         {
             PersonRepository dbPerson = new PersonRepository();
 
-            List<person> tempList = new List<person>();
+            List<CastModel> tempList = new List<CastModel>();
 
             IQueryable<cast> temp = getCast(id);
 
             foreach (cast c in temp)
             {
-                if(c.role == 2)
-                    tempList.Add(dbPerson.getPersonById(c.person_id));
+                if (c.role == 2)
+                {
+                    person tempMen = dbPerson.getPersonById(c.person_id);
+
+                    CastModel tempModel = new CastModel();
+
+                    tempModel.id = tempMen.id;
+                    tempModel.name = tempMen.name;
+                    tempModel.photo = tempMen.image_person.Where(i => i.is_portrait.Equals(true))
+                                                          .FirstOrDefault()
+                                                          .id;
+
+                    tempList.Add(tempModel);
+                }
             }
 
             return tempList;
