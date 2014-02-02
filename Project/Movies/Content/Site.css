@@ -189,52 +189,38 @@ p{
 .is10{
 	height: 3px;
 	margin-left: 10px;
-	background-color: #a5d028;
 }
 
 .is20{
 	height: 7px;
-	background-color: #a5d028;
 }
 
 .is30{
 	height: 11px;
-	background-color: #a5d028;
 }
 
 .is40{
 	height: 15px;
-	background-color: #a5d028;
 }
 
 .is50{
 	height: 19px;
-	background-color: #a5d028;
 }
 
 .is60{
 	height: 23px;
-	background-color: #a5d028;
 }
 
 .is70{
 	height: 27px;
-	background-color: #a5d028;
 }
 
 .is80{
 	height: 33px;
-	background-color: #a5d028;	 
-  	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3e3f40), to(#a5d028));
- 	background: -webkit-linear-gradient(top, #3e3f40, #a5d028);
- 	background: -moz-linear-gradient(top, #3e3f40, #a5d028);
- 	background: -ms-linear-gradient(top, #3e3f40, #a5d028);
-  	background: -o-linear-gradient(top, #3e3f40, #a5d028);
 }
 
 .is90{
 	height: 40px;
-	/*background-color: #a5d028;*/
 }
 
 .is100{
@@ -641,5 +627,28 @@ li.mainMovie {
 
 .commentInfo {
     font-size: 10px;
-    
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+#radioMovies {
+    background-color: rgba(255, 255, 255, .5);
+}
+
+.radioButton {
+    color: #000000;
+    padding: 5px;
+    width: 10px;
+    height: 10px;
+}
+
+.wholeBars {
+    position: absolute;
+}
+
+.corbel {
+    font-family: Corbel;
+    font-size: 25px;
+    color: #3e3f40;
 }

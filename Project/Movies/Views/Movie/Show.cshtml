@@ -123,10 +123,17 @@
                             }
                             <img class="searchPoster" src='@Url.Content("~/Content/images/uploaded/" + @movie.posterId + ".png")'/>
                             <br />
-                        </li>
+                        </li><br/>
                     
+                        <li class="col corbel" id="@movie.id-Chart">
+                            36%
+                            <script type="text/javascript">
+                                drawChart(39,"@movie.id-Chart");
+                            </script>
+                        </li>
+
                         <li class="col" style="width: 300px">
-                            <br />
+                            
                             <p class="subtitle" style="color: #000000">Plot</p>
                             <br />
                             <p class="black">@movie.description</p>

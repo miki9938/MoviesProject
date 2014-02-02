@@ -208,7 +208,7 @@ function checkWritting() {
         if ($('#searchInput').val().length == 0) {
             $('#searchInput').val(keyValue);
         }
-        console.log("okok: " + e.keyCode);
+        
         searchMovie($('#searchInput').val());
     });
 
@@ -216,7 +216,6 @@ function checkWritting() {
 }
 
 function searchMovie(subtitle) {
-    console.log("substring: " + subtitle);
     var table = new Array();
     var title = subtitle;
     var moviePack = new movie(title);
@@ -251,6 +250,35 @@ function movie(title) {
     this.releaseDate = null;
     this.pictureId = null;
 }
+
+function searchForAddSimilar(subtitle) {
+    console.log("uruchomiono mnie z: " + subtitle);
+    var table = new Array();
+    var title = subtitle;
+    var moviePack = new movie(title);
+    table[0] = moviePack;
+
+    $.ajax({
+        type: 'POST',
+        url: '/Search/glassSearchSubstring',
+        data: JSON.stringify(table),
+        contentType: 'application/json',
+        dataType: 'json',
+        success: function (data) {
+            $("#radioForm").remove();
+            $("#radioMovies").append('<form id="radioForm" action="" method="post">');
+            for (var i = 0; i < data.length; i++) {
+               
+                $("#radioMovies").append("<br><input type='radio' name='rb' value='" + data[i].title + "' class='radioButton' onclick='change' /><p>" + data[i].title + "</p> ");
+            }
+            $("#radioMovies").append('</form>');
+        },
+        error: function (err) {
+            alert('error - ' + err);
+        }
+    });
+}
+
 
 function specialCharacter() {
 
@@ -322,6 +350,114 @@ function checkScrollAndGo() {
     }
 }
 
+function drawChart(procent, divId) {
+
+    $("#"+divId).append("<div id='wholeBars'>"
+        + "<div class='column is10'></div>"
+        + "<div class='column is20'></div>"
+        + "<div class='column is30'></div>"
+        + "<div class='column is40'></div>"
+        + "<div class='column is50'></div>"
+        + "<div class='column is60'></div>"
+        + "<div class='column is70'></div>"
+        + "<div class='column is80'></div>"
+        + "<div class='column is90'></div>"
+        + "<div class='column is100'></div></div>");
+
+    if (procent > 4 && procent < 10)
+        gradient(".is10");
+    else if (procent > 9)
+        solid(".is10");
+
+    if (procent > 14 && procent < 20)
+        gradient(".is20");
+    else if (procent > 19)
+        solid(".is20");
+
+    if (procent > 24 && procent < 30)
+        gradient(".is30");
+    else if (procent > 29)
+        solid(".is30");
+
+    if (procent > 34 && procent < 40)
+        gradient(".is40");
+    else if (procent > 39)
+        solid(".is40");
+
+    if (procent > 44 && procent < 50)
+        gradient(".is50");
+    else if (procent > 49)
+        solid(".is50");
+
+    if (procent > 54 && procent < 60)
+        gradient(".is60");
+    else if (procent > 59)
+        solid(".is60");
+
+    if (procent > 64 && procent < 70)
+        gradient(".is70");
+    else if (procent > 79)
+        solid(".is70");
+
+    if (procent > 74 && procent < 80)
+        gradient(".is80");
+    else if (procent > 79)
+        solid(".is80");
+
+    if (procent > 84 && procent < 90)
+        gradient(".is90");
+    else if (procent > 89)
+        solid(".is90");
+
+    if (procent > 94 && procent < 100)
+        gradient(".is100");
+    else if (procent == 100)
+        solid(".is100");
+
+}
+
+function gradient(id) {
+    $(id).css({ "background": "-ms-linear-gradient(top, #3e3f40, #a5d028)" });
+
+/*
+        "background": "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#3e3f40), to(#a5d028))"
+    }).css({
+        "background": "-webkit-linear-gradient(top, #3e3f40, #a5d028)"
+    }).css({
+        "background": "-moz-linear-gradient(top, #3e3f40, #a5d028)"
+    }).css({
+       
+    }).css({
+        "background": "-o-linear-gradient(top, #3e3f40, #a5d028)"
+    });*/
+}
+function solid(id) {
+    $(id).css({ "background-color": "#a5d028" });
+}
+
+function sprawdzamCzy() {
+
+    /*$("#radioSearch").change(function () {
+        console.log("piszem");
+        searchForAddSimilar($('#searchInput').val());
+    });*/
+
+    $("#radioSubmit").click(function () {
+        console.log("klikam");
+        searchForAddSimilar($('#radioSearch').val());
+    });
+
+}
+
+function clickOnRadio() {
+
+
+}
+
+function change(el) {
+    $(".secondMovieTitleBox").val(el.value);
+    console.log("taaaaaaaaaaaaaaaaaaaaaaaaaaaaaaak!");
+}
 
 $(document).ready(function () {
     setPage();
@@ -329,7 +465,15 @@ $(document).ready(function () {
     //prevent();
     searchOnBar();
     checkWritting();
+    sprawdzamCzy();
+    clickOnRadio();
 
+
+
+    $('input[name="rb"]').click(function () {
+        $('.secondMovieTitleBox').val(this.value);
+        console.log("sfsdsfdasfd");
+    });
 
     $(window).resize(function () {
         setPage();
