@@ -134,7 +134,7 @@
           <Property Name="movie_1_id" Type="int" Nullable="false" />
           <Property Name="movie_2_id" Type="int" Nullable="false" />
           <Property Name="auto_created" Type="bit" Nullable="false" />
-          <Property Name="vote_count" Type="real" />
+          <Property Name="vote_count" Type="int" />
         </EntityType>
         <EntityType Name="person">
           <Key>
@@ -470,7 +470,7 @@
           <Property Name="movie_1_id" Type="Int32" Nullable="false" />
           <Property Name="movie_2_id" Type="Int32" Nullable="false" />
           <Property Name="auto_created" Type="Boolean" Nullable="false" />
-          <Property Name="vote_count" Type="Single" />
+          <Property Name="vote_count" Type="Int32" />
           <NavigationProperty Name="movie" Relationship="MoviesModel.FK_movie_relation_movie" FromRole="movie_relation" ToRole="movie" />
           <NavigationProperty Name="movie1" Relationship="MoviesModel.FK_movie_relation_movie1" FromRole="movie_relation" ToRole="movie" />
           <NavigationProperty Name="users_vote" Relationship="MoviesModel.FK_users_vote_movie_relation" FromRole="movie_relation" ToRole="users_vote" />

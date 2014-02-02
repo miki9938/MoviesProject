@@ -183,49 +183,49 @@
     </Compile>
     <Compile Include="HtmlHelpers\InputHelper.cs" />
     <Compile Include="Mappings\cast.cs">
-      <DependentUpon>MoviesModel.tt</DependentUpon>
+      <DependentUpon>MovieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Mappings\comment.cs">
-      <DependentUpon>MoviesModel.tt</DependentUpon>
+      <DependentUpon>MovieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Mappings\image_movie.cs">
-      <DependentUpon>MoviesModel.tt</DependentUpon>
+      <DependentUpon>MovieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Mappings\image_person.cs">
-      <DependentUpon>MoviesModel.tt</DependentUpon>
+      <DependentUpon>MovieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Mappings\image_relation.cs">
-      <DependentUpon>MoviesModel.tt</DependentUpon>
+      <DependentUpon>MovieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Mappings\movie.cs">
-      <DependentUpon>MoviesModel.tt</DependentUpon>
+      <DependentUpon>MovieModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\MoviesModel.Context.cs">
+    <Compile Include="Mappings\MovieModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MoviesModel.Context.tt</DependentUpon>
+      <DependentUpon>MovieModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\MoviesModel.cs">
+    <Compile Include="Mappings\MovieModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MoviesModel.tt</DependentUpon>
+      <DependentUpon>MovieModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\MoviesModel.Designer.cs">
+    <Compile Include="Mappings\MovieModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MoviesModel.edmx</DependentUpon>
+      <DependentUpon>MovieModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Mappings\movie_relation.cs">
-      <DependentUpon>MoviesModel.tt</DependentUpon>
+      <DependentUpon>MovieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Mappings\person.cs">
-      <DependentUpon>MoviesModel.tt</DependentUpon>
+      <DependentUpon>MovieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Mappings\user.cs">
-      <DependentUpon>MoviesModel.tt</DependentUpon>
+      <DependentUpon>MovieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Mappings\users_vote.cs">
-      <DependentUpon>MoviesModel.tt</DependentUpon>
+      <DependentUpon>MovieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MovieModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
@@ -320,22 +320,22 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Mappings\MoviesModel.edmx">
+    <EntityDeploy Include="Mappings\MovieModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MoviesModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>MovieModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Mappings\MoviesModel.Context.tt">
+    <Content Include="Mappings\MovieModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MoviesModel.edmx</DependentUpon>
-      <LastGenOutput>MoviesModel.Context.cs</LastGenOutput>
+      <DependentUpon>MovieModel.edmx</DependentUpon>
+      <LastGenOutput>MovieModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Mappings\MoviesModel.edmx.diagram">
-      <DependentUpon>MoviesModel.edmx</DependentUpon>
+    <Content Include="Mappings\MovieModel.edmx.diagram">
+      <DependentUpon>MovieModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Mappings\MoviesModel.tt">
+    <Content Include="Mappings\MovieModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MoviesModel.edmx</DependentUpon>
-      <LastGenOutput>MoviesModel.cs</LastGenOutput>
+      <DependentUpon>MovieModel.edmx</DependentUpon>
+      <LastGenOutput>MovieModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
