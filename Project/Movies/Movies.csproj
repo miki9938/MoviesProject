@@ -248,6 +248,9 @@
     <Content Include="Content\images\defaultPoster.png" />
     <Content Include="Content\images\background.jpg" />
     <Content Include="Content\images\grot.png" />
+    <Content Include="Content\images\icon_8560.svg" />
+    <Content Include="Content\images\icon_8561.svg" />
+    <Content Include="Content\images\icon_8562.svg" />
     <Content Include="Content\images\uploaded\defaultPoster.png" />
     <Content Include="favicon.ico" />
     <Content Include="Scripts\jquery-2.0.3.js" />
@@ -392,6 +395,7 @@
     <Content Include="Views\Home\AdminPanel.cshtml" />
     <Content Include="Views\User\AdminPanel.cshtml" />
     <Content Include="Views\Person\AddImageToPerson.cshtml" />
+    <Content Include="Views\Person\People.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

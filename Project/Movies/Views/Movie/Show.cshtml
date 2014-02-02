@@ -80,19 +80,7 @@
 
     </div>
     
-    <div class="sim" style="left: 0">
-        @if (authCookie == null)
-        {
-            <p class="white">@Html.ActionLink("You need to sign in to add new similar movie", "LogIn", "User", null, new { @class = "MainBarListLink" }) </p>
-        
-        }
-        else if (authCookie != null)
-        {
-            <p class="white">@Html.ActionLink("Add new similar movie", "addSimilarMovie", "Movie", new { firstMovieId = @ViewBag.MovieId }, new { @class = "MainBarListLink" })</p>
-        }
-        <br/><br/>
 
-    </div>
     
     <br/><br/>
     <div id="test" class="sim">
@@ -100,7 +88,22 @@
     </div>
     <div class=" sim lineSeparator"></div>
 
-    <br/><br/><br/>
+    <br/><br/>
+
+        <div class="sim" style="left: 0">
+        @if (authCookie == null)
+        {
+            <li style="text-align: center"><a href='@Url.Action("LogIn", "User")' class="black"><img src='@Url.Content("~/Content/images/icon_8562.svg")' class="yesNoIcons" /><p class="black">sign in to add new similar movie</p></a></li>
+        }
+        else if (authCookie != null)
+        {
+            <li style="text-align: center"><a href='@Url.Action("addSimilarMovie", "Movie", new { firstMovieId = @ViewBag.MovieId })' class="black"><img src='@Url.Content("~/Content/images/icon_8562.svg")' class="yesNoIcons" /><br/><p class="black">add new similar movie</p></a></li>
+            //<p class="white">@Html.ActionLink("Add new similar movie", "addSimilarMovie", "Movie", new { firstMovieId = @ViewBag.MovieId }, new { @class = "MainBarListLink" })</p>
+        }
+        <br/><br/><br/>
+
+    </div>
+    
 
         @{
             foreach (var movie in ViewBag.Similars)
@@ -126,9 +129,9 @@
                         </li><br/>
                     
                         <li class="col corbel" id="@movie.id-Chart">
-                            36%
+                            @movie.score%
                             <script type="text/javascript">
-                                drawChart(39,"@movie.id-Chart");
+                                drawChart(movie.score ,"@movie.id-Chart");
                             </script>
                         </li>
 
@@ -140,6 +143,25 @@
                             <br />
                             <br />
                         </li>
+                        
+                        <li class="col">
+                            
+                            @if (authCookie == null)
+                            {
+                                <img src='@Url.Content("~/Content/images/icon_8561.svg")' class="yesNoIcons" />
+                                <img src='@Url.Content("~/Content/images/icon_8560.svg")' class="yesNoIcons" />
+                                <br/><p class="black" style="color: #000000;">&nbsp; &nbsp; &nbsp; @Html.ActionLink("sign in to vote", "LogIn", "User", null, new { @class = " black" }) </p>
+                            }
+                            else if (authCookie != null)
+                            {
+                                FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+                                <a href='@Url.Action("Vote", "User", new { relationId = @movie.relationId, userName = ticket.Name, baseMovieId = @ViewBag.MovieId, vote = true })'><img src='@Url.Content("~/Content/images/icon_8561.svg")' class="yesNoIcons" /></a>
+                                <a href='@Url.Action("Vote", "User", new { relationId = @movie.relationId, userName = ticket.Name, baseMovieId = @ViewBag.MovieId, vote = false })'><img src='@Url.Content("~/Content/images/icon_8560.svg")' class="yesNoIcons" /></a>
+                                <br/><p class="black" style="color: #000000;">&nbsp; &nbsp; &nbsp;similar or not?</p>
+                            }
+                   
+                        </li>
+
                     </ul> 
                 </div>
             <br/><br/><br/>            

@@ -112,19 +112,18 @@ namespace Movies.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
         [MyAuthorize]
-        public ActionResult Vote(voteForSimilarityModel newVote)
+        public ActionResult Vote(int relationId, string userName, int baseMovieId, bool vote)
         {
             users_vote temp = new users_vote();
 
-            temp.relation_id = newVote.relationId;
-            temp.user_id = newVote.userId;
-            temp.vote = newVote.vote;
+            temp.relation_id = relationId;
+            temp.user_id = dbUser.getIdbyName(userName);
+            temp.vote = vote;
 
             dbUser.addVote(temp);
 
-            return View();   
+            return RedirectToAction("Show", "Movie", new { id = baseMovieId });
         }
 
         private bool IsValid(string login, string password)

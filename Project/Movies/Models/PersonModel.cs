@@ -73,4 +73,13 @@ namespace Movies.Models
         [Required]
         public string comment { get; set; }
     }
+
+    public class CastModel
+    {
+        public int id { get; set; }
+
+        public string name { get; set; }
+
+        public Guid? photo { get; set; }
+    }
 }
