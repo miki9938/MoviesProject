@@ -137,11 +137,11 @@ namespace Movies.Controllers
             comment temp = new comment();
 
             temp.date = DateTime.Now;
-            temp.movie_id = newComment.personId;
+            temp.person_id = newComment.personId;
             temp.user_id = newComment.userId;
             temp.text = newComment.comment;
 
-            dbMovie.addCommentToMovie(temp);
+            dbPerson.addCommentToPerson(temp);
 
             return View();
         }

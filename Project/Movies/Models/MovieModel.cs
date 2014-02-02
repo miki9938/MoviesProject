@@ -103,4 +103,13 @@ namespace Movies.Models
 
         public int relationId { get; set; }
     }
+
+    public class CastModel
+    {
+        public int id { get; set; }
+
+        public string name { get; set; }
+
+        public Guid? photo { get; set; }
+    }
 }
