@@ -30,9 +30,9 @@
                 <br />
                 <ul>
                     @{
-                        foreach (var person in ViewBag.Actors)
+                        foreach (var cast in ViewBag.Actors)
                         {
-                            <li class="black">@person.name</li>
+                            <li class="black">@Html.ActionLink((string)@cast.name, "People", "Person", new{ id = @cast.id}, new {@class = "black"})</li>
                         }
                     }
                 </ul>
@@ -45,9 +45,9 @@
                 <br />
                 <ul>
                     @{
-                        foreach (var person in ViewBag.Directors)
+                        foreach (var cast in ViewBag.Directors)
                         {
-                            <li class="black">@person.name</li>
+                            <li class="black">@Html.ActionLink((string)@cast.name, "People", "Person", new { id = @cast.id }, new { @class = "black" })</li>
                         }
                     }
                 </ul>
@@ -60,9 +60,9 @@
                 <br />
                 <ul>
                     @{
-                        foreach (var person in ViewBag.Writers)
+                        foreach (var cast in ViewBag.Writers)
                         {
-                            <li class="black">@person.name</li>
+                           <li class="black">@Html.ActionLink((string)@cast.name, "People", "Person", new{ id = @cast.id}, new {@class = "black"})</li>
                         }
                     }
                 </ul>

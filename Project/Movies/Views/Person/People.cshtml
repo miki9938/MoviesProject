@@ -26,14 +26,14 @@
             </li>*@
 
             <li class="col">
-                <p class="subtitle" style="color: black">Known from</p>
+                <p class="subtitle" >Known from:</p>
                 <br />
                 <ul>
                     @{
                         foreach (var movie in ViewBag.Casts)
                         {
                             <li>@Html.ActionLink((string)@movie.title, "Show", "Movie", new { @movie.id }, new { @class = "mainSimTitle" })</li>
-                            <li class="black">from @movie.release_date.ToString("dd MMMM yyyy")</li>
+                            <li class="black">movie from @movie.release_date.ToString("dd MMMM yyyy")</li>
                         }
                     }
                 </ul>

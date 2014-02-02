@@ -93,9 +93,9 @@ namespace Movies.Repositories
 
                     tempModel.id = tempMen.id;
                     tempModel.name = tempMen.name;
-                    tempModel.photo = tempMen.image_person.Where(i => i.is_portrait.Equals(true))
+                    /*tempModel.photo = tempMen.image_person.Where(i => i.is_portrait.Equals(true))
                                                           .FirstOrDefault()
-                                                          .id;
+                                                          .id;*/
 
                     tempList.Add(tempModel);
                 }
@@ -122,9 +122,9 @@ namespace Movies.Repositories
 
                     tempModel.id = tempMen.id;
                     tempModel.name = tempMen.name;
-                    tempModel.photo = tempMen.image_person.Where(i => i.is_portrait.Equals(true))
+                    /*tempModel.photo = tempMen.image_person.Where(i => i.is_portrait.Equals(true))
                                                           .FirstOrDefault()
-                                                          .id;
+                                                          .id;*/
 
                     tempList.Add(tempModel);
                 }
@@ -151,10 +151,10 @@ namespace Movies.Repositories
 
                     tempModel.id = tempMen.id;
                     tempModel.name = tempMen.name;
-                    tempModel.photo = tempMen.image_person.Where(i => i.is_portrait.Equals(true))
+                    /*tempModel.photo = tempMen.image_person.Where(i => i.is_portrait.Equals(true))
                                                           .FirstOrDefault()
-                                                          .id;
-
+                                                          .id;*/
+                    tempModel.photo = null;
                     tempList.Add(tempModel);
                 }
             }

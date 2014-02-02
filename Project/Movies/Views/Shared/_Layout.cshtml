@@ -67,7 +67,7 @@
                     FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
                     if (ticket.UserData == "Admin")
                     {
-                        <li>@Html.ActionLink("configuration", "AdminPanel", "User", null, new { @class = "MainBarListLink" })</li>
+                        <li>@Html.ActionLink("settings", "AdminPanel", "User", null, new { @class = "MainBarListLink" })</li>
                         <li><p class="MainBarListP">@Html.Raw(ticket.Name.ToUpper()) (A)</p></li>
                         <li>@Html.ActionLink("logout", "LogOut", "User", null, new {@class = "MainBarListLink"})</li>
                         <script type="text/javascript">
