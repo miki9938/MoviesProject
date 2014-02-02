@@ -31,7 +31,8 @@
         {
             @Html.LabelFor(u => u.id)<br/>
             @Html.TextBoxFor(u => u.id)<br/>
-            <input type="submit" name="action:deleteUser" value="delete" class="input-submit"/><br/>
+            <input type="submit" name="action:deleteUser" value="delete user" class="input-submit"/><br/>
+            <input type="submit" name="action:deleteComment" value="delete comment" class="input-submit"/><br/>
             @Html.LabelFor(u => u.login)<br/>
             @Html.TextBoxFor(u => u.login)<br/>
             @Html.LabelFor(u => u.adminRights)<br/>
@@ -41,6 +42,8 @@
 
         }
         </li><br/>
+        
+
     </ul>
     <br/><br/><br/><br/>
 

@@ -78,9 +78,10 @@ namespace Movies.Models
         public int movieId { get; set; }
 
         [Required]
-        public int userId { get; set; }
+        public string userName { get; set; }
 
         [Required]
+        [Display(Name = "Your comment")]
         public string comment { get; set; }
     }
 

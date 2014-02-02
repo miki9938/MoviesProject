@@ -1,10 +1,10 @@
-﻿@using Movies.Models
-@{
+﻿@{
     ViewBag.Title = ViewBag.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Background"] = "background2";
     HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
 }
+@model Movies.Models.AddCommentToMovieModel
 
 <div class="wrapper">
 
@@ -108,7 +108,7 @@
                 <div id="sim @movie.id" class="sim">
                     <ul class="row">
                             
-                        <li>@Html.ActionLink((string)@movie.title, "Show", "Movie", new{@movie.id}, new { @class = "mainSimTitle" })</li>
+                        <li>@Html.ActionLink((string)@movie.title, "Show", "Movie", new { @movie.id }, new { @class = "mainSimTitle" })</li>
                     
                         <br />
                         <li class="col"><p class="black">Release date (USA): @movie.releaseDate.ToString("dd MMMM yyyy")</p></li>
@@ -145,7 +145,37 @@
 <div class="sim">
     <br/><br/><br/><br/>
     <p class="mainTitle">Comments</p>
-        <br/><br/><br/><br/>    <br/><br/><br/><br/>
+    <br/><br/>
+    @foreach (var comment in ViewBag.Comments)
+    {
+        <div class="singleComment">
+            <p class="commentInfo">posted by: @comment.user_id on @comment.date.ToString("dd MMM yyyy")</p>
+            <textarea rows="5" class="commentField">@comment.text</textarea>
+            <br/><br/>
+        </div>
+        
+    }
+    @if (authCookie == null)
+    {
+        <p class="black" style="color: #000000;">@Html.ActionLink("You need to sign in to add new comment", "LogIn", "User", null, new { @class = " black" }) </p>
+    }
+
+    else if (authCookie != null)
+    {
+        using (Html.BeginForm())
+        {
+            <br/>
+            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+            @Html.HiddenFor(u => u.movieId, new {Value = @ViewBag.MovieId})
+            @Html.HiddenFor(u => u.userName, new {Value = ticket.Name})
+            @Html.LabelFor(u => u.comment)<br/>
+            @Html.TextAreaFor(u => u.comment, new {@class = "commentField"})<br/>
+
+            <input type="submit" name="action:addComment" value="add comment" class="input-submit" />
+        }
+    }
+
+    <br/><br/><br/><br/><br/><br/><br/><br/>
 </div>
 
     <script type="text/javascript">

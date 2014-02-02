@@ -621,3 +621,25 @@ li.mainMovie {
     width: 10px;
     height: 20px;
 }
+
+.commentField {
+    width: 380px;
+	height: 40px;
+    border: 1px solid rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, .5);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+	font-size: 14px;
+	font-family: Segoe UI;
+    font-weight: lighter;
+	color: #000000;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    overflow: auto;
+}
+
+.commentInfo {
+    font-size: 10px;
+    
+}

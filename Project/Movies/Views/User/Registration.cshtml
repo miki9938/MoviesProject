@@ -13,8 +13,16 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag</title>
+    
+             <script type="text/javascript">
+                 var RecaptchaOptions = {
+                     theme: 'clean',
+                     lang: 'en',
+                 };
+         </script>
 </head>
     <body>
+
         
         <div class="formFields">
             @using (Html.BeginForm("Registration", "User", FormMethod.Post))

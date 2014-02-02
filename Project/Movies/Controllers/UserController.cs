@@ -151,6 +151,7 @@ namespace Movies.Controllers
         }
 
         [HttpPost]
+        [MyAuthorize(Roles = "Admin")]
         [MultipleButton(Name = "action", Argument = "addAdmin")]
         public ActionResult addAdmin(basicUserModel userModel)
         {
@@ -160,10 +161,21 @@ namespace Movies.Controllers
         }
 
         [HttpPost]
+        [MyAuthorize(Roles = "Admin")]
         [MultipleButton(Name = "action", Argument = "deleteUser")]
         public ActionResult deleteUser(basicUserModel userModel)
         {
             dbUser.deleteUserbyId(userModel.id);
+
+            return RedirectToAction("AdminPanel", "User");
+        }
+
+        [HttpPost]
+        [MyAuthorize(Roles = "Admin")]
+        [UserController.MultipleButtonAttribute(Name = "action", Argument = "deleteComment")]
+        public ActionResult deleteComment(basicUserModel bum)
+        {
+            dbMovie.deleteCommentById(bum.id);
 
             return RedirectToAction("AdminPanel", "User");
         }
