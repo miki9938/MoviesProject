@@ -123,10 +123,17 @@
                             }
                             <img class="searchPoster" src='@Url.Content("~/Content/images/uploaded/" + @movie.posterId + ".png")'/>
                             <br />
-                        </li>
+                        </li><br/>
                     
+                        <li class="col corbel" id="@movie.id-Chart">
+                            36%
+                            <script type="text/javascript">
+                                drawChart(39,"@movie.id-Chart");
+                            </script>
+                        </li>
+
                         <li class="col" style="width: 300px">
-                            <br />
+                            
                             <p class="subtitle" style="color: #000000">Plot</p>
                             <br />
                             <p class="black">@movie.description</p>
@@ -141,7 +148,7 @@
         }
 
     </div>
-    
+    <br/><br/>
 <div class="sim">
     <br/><br/><br/><br/>
     <p class="mainTitle">Comments</p>
@@ -153,8 +160,8 @@
             <textarea rows="5" class="commentField">@comment.text</textarea>
             <br/><br/>
         </div>
-        
-    }
+    }   
+
     @if (authCookie == null)
     {
         <p class="black" style="color: #000000;">@Html.ActionLink("You need to sign in to add new comment", "LogIn", "User", null, new { @class = " black" }) </p>

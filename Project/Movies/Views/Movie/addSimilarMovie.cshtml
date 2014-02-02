@@ -5,13 +5,20 @@
 }
 @model Movies.Models.AddSimilarMovieModel
 
+
+
 <div class="centerMe">
-    <h1>Add new similar movie to </h1>
+    <h1 class="mainTitle">Add new similar movie </h1>
     
+    <br/><br/><br/><br/>
+
+    
+    <p>Check what movies are in database</p>
+    <div id="radioMovies">
+        <input type="text" id="radioSearch" name="radioSearch"/>
+        <input type="submit" id="radioSubmit" name="radioSubmit" value="check" class="input-submit"/>
+    </div>
     <br/><br/>
-    user id - @ViewBag.userId -
-    <br/>
-    first movie id - @ViewBag.firstMovieId -
     
     @using (Html.BeginForm("addSimilarMovie", "Movie", FormMethod.Post))
     {        
@@ -19,10 +26,11 @@
         
         <input name="userId" id="userId" type="hidden" value="@ViewBag.userId">
         
-         @(Html.HiddenFor(m => m.firstMovieId));
-         @(Html.EditorFor(m => m.secondMovieTitle));
+        @(Html.HiddenFor(m => m.firstMovieId));
+        @Html.LabelFor(m => m.secondMovieTitle)<br/>
+        @(Html.TextBoxFor(m => m.secondMovieTitle, new {@class="secondMovieTitleBox"}));
 
-        <input type="submit" value="Add" class="input-submit" /> 
+        <input type="submit" value="Add" class="input-submit" id="addSimilarSubmitButton"/> 
     }
 
 </div>

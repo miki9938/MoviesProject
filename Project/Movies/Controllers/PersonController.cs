@@ -33,7 +33,7 @@ namespace Movies.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Movies(int id)
+        public ActionResult People(int id)
         {
             person temp = dbPerson.getPersonById(id);
 
@@ -103,7 +103,7 @@ namespace Movies.Controllers
         }
 
         [MyAuthorize(Roles = "Admin")]
-        public ActionResult addImage()
+        public ActionResult addImageToPerson()
         {
             return View();
         }
@@ -127,7 +127,7 @@ namespace Movies.Controllers
                 newImage.file.SaveAs(path);
             }
 
-            return RedirectToAction("AddImage", "Person");
+            return RedirectToAction("AddImageToPerson", "Person");
         }
 
         [MyAuthorize]
