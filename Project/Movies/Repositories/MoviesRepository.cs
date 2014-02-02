@@ -191,6 +191,8 @@ namespace Movies.Repositories
                     t3.posterId = getImagebyMovieId(t3.id);
                     t3.title = temp2.title;
                     t3.trailerLink = temp2.trailer_link;
+                    t3.score = tempRel.vote_count;
+                    t3.relationId = tempRel.id;
 
                     movieList.Add(t3);
                 }
@@ -207,6 +209,7 @@ namespace Movies.Repositories
                     t3.posterId = getImagebyMovieId(t3.id);
                     t3.title = temp2.title;
                     t3.trailerLink = temp2.trailer_link;
+                    t3.score = tempRel.vote_count;
 
                     movieList.Add(t3);
                 }

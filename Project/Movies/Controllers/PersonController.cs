@@ -26,12 +26,6 @@ namespace Movies.Controllers
             dbUser = new UsersRepository();
         }
 
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [AllowAnonymous]
         public ActionResult People(int id)
         {

@@ -98,5 +98,9 @@ namespace Movies.Models
         public string trailerLink { get; set; }
 
         public string posterId { get; set; }
+
+        public float? score { get; set; }
+
+        public int relationId { get; set; }
     }
 }

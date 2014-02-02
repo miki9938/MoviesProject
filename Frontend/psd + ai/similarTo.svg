@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="300px" height="80px" viewBox="0 0 300 80" enable-background="new 0 0 300 80" xml:space="preserve">
+<font horiz-adv-x="2048">
+<!-- Arial is a trademark of The Monotype Corporation. -->
+<!-- Copyright: Copyright 2014 Adobe System Incorporated. All rights reserved. -->
+<font-face font-family="Arial-Black" units-per-em="2048" underline-position="-256" underline-thickness="123"/>
+<missing-glyph horiz-adv-x="1536" d="M0,0l0,1280l1024,0l0,-1280M32,32l960,0l0,1216l-960,0z"/>
+<glyph unicode="." horiz-adv-x="682" d="M124,408l435,0l0,-408l-435,0z"/>
+<glyph unicode="A" horiz-adv-x="1593" d="M1052,242l-516,0l-71,-242l-463,0l551,1466l494,0l551,-1466l-474,0M957,559l-162,527l-161,-527z"/>
+<glyph unicode="I" horiz-adv-x="797" d="M168,1466l454,0l0,-1466l-454,0z"/>
+<glyph unicode="L" horiz-adv-x="1366" d="M150,1466l453,0l0,-1105l707,0l0,-361l-1160,0z"/>
+<glyph unicode="M" horiz-adv-x="1933" d="M145,1466l596,0l230,-892l229,892l594,0l0,-1466l-370,0l0,1118l-287,-1118l-335,0l-286,1118l0,-1118l-371,0z"/>
+<glyph unicode="R" horiz-adv-x="1593" d="M156,0l0,1466l755,0C1051,1466 1158,1454 1232,1430C1306,1406 1366,1362 1411,1297C1456,1232 1479,1152 1479,1059C1479,978 1462,908 1427,849C1392,790 1345,742 1284,705C1245,682 1192,662 1125,647C1179,629 1218,611 1243,593C1260,581 1284,555 1316,516C1347,477 1368,446 1379,425l219,-425l-512,0l-242,448C813,506 786,544 762,561C729,584 692,595 651,595l-40,0l0,-595M611,872l191,0C823,872 863,879 922,892C952,898 977,913 996,938C1015,963 1024,991 1024,1023C1024,1070 1009,1107 979,1132C949,1157 893,1170 810,1170l-199,0z"/>
+<glyph unicode="S" horiz-adv-x="1479" d="M71,485l431,27C511,442 530,389 559,352C606,293 672,263 759,263C824,263 874,278 909,309C944,339 961,374 961,414C961,452 944,486 911,516C878,546 800,574 679,601C480,646 339,705 254,779C169,853 126,947 126,1062C126,1137 148,1209 192,1276C235,1343 301,1395 389,1434C476,1472 596,1491 749,1491C936,1491 1079,1456 1178,1387C1276,1317 1334,1206 1353,1054l-427,-25C915,1095 891,1143 855,1173C818,1203 768,1218 704,1218C651,1218 612,1207 585,1185C558,1162 545,1135 545,1103C545,1080 556,1059 578,1040C599,1021 650,1003 730,986C928,943 1070,900 1156,857C1241,813 1304,759 1343,694C1382,629 1401,557 1401,477C1401,383 1375,296 1323,217C1271,138 1198,78 1105,37C1012,-4 894,-25 752,-25C503,-25 330,23 234,119C138,215 84,337 71,485z"/>
+</font>
+
+	<font horiz-adv-x="2048">
+<!-- Arial is a trademark of The Monotype Corporation. -->
+<!-- Copyright: Copyright 2014 Adobe System Incorporated. All rights reserved. -->
+<font-face font-family="Arial-BoldMT" units-per-em="2048" underline-position="-217" underline-thickness="215"/>
+<missing-glyph horiz-adv-x="1536" d="M256,0l0,1280l1024,0l0,-1280M288,32l960,0l0,1216l-960,0z"/>
+<glyph unicode="o" horiz-adv-x="1251" d="M82,546C82,639 105,730 151,817C197,904 262,971 347,1017C431,1063 525,1086 629,1086C790,1086 921,1034 1024,930C1127,825 1178,693 1178,534C1178,373 1126,240 1023,135C919,29 788,-24 631,-24C534,-24 441,-2 353,42C264,86 197,151 151,236C105,321 82,424 82,546M370,531C370,426 395,345 445,289C495,233 557,205 630,205C703,205 765,233 815,289C864,345 889,426 889,533C889,637 864,717 815,773C765,829 703,857 630,857C557,857 495,829 445,773C395,717 370,636 370,531z"/>
+<glyph unicode="t" horiz-adv-x="682" d="M634,1062l0,-224l-192,0l0,-428C442,323 444,273 448,259C451,244 460,232 473,223C486,214 501,209 520,209C546,209 584,218 633,236l24,-218C592,-10 518,-24 435,-24C384,-24 339,-15 298,2C257,19 228,41 209,68C190,95 176,131 169,177C163,210 160,276 160,375l0,463l-129,0l0,224l129,0l0,211l282,164l0,-375z"/>
+</font>
+
+	<rect display="none" fill="#5DBA47" width="300" height="80"/>
+<defs>
+	<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="0" y="0" width="300" height="80">
+		<feFlood  style="flood-color:white;flood-opacity:1" result="back"/>
+		<feBlend  in="SourceGraphic" in2="back" mode="normal"/>
+	</filter>
+</defs>
+<mask maskUnits="userSpaceOnUse" x="0" y="0" width="300" height="80" id="SVGID_1_">
+	<g filter="url(#Adobe_OpacityMaskFilter)">
+		<g>
+			<text transform="matrix(1 0 0 1 -0.7358 80)"><tspan x="0" y="0" font-family="'Arial-Black'" font-size="50.8674">SIMILAR.</tspan><tspan x="254.337" y="0" font-family="'Arial-BoldMT'" font-size="50.8674">to</tspan></text>
+		</g>
+		<g>
+			<text transform="matrix(1 0 0 1 -0.7358 80)"><tspan x="0" y="0" font-family="'Arial-Black'" font-size="50.8674">SIMILAR.</tspan><tspan x="254.337" y="0" font-family="'Arial-BoldMT'" font-size="50.8674">to</tspan></text>
+		</g>
+	</g>
+</mask>
+<rect y="0" mask="url(#SVGID_1_)" width="300" height="80"/>
+<text transform="matrix(1 0 0 1 -0.7358 80)" display="none"><tspan x="0" y="0" display="inline" font-family="'Arial-Black'" font-size="50.8674">SIMILAR.</tspan><tspan x="254.337" y="0" display="inline" font-family="'Arial-BoldMT'" font-size="50.8674">to</tspan></text>
+</svg>

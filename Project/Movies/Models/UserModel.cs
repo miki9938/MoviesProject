@@ -55,6 +55,9 @@ namespace Movies.Models
 
         [Required]
         public bool vote { get; set; }
+
+        [Required]
+        public int baseMovieId { get; set; }
     }
 
     public class basicUserModel
